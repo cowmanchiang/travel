@@ -8,14 +8,35 @@
     <meta name="twitter:title" content="🇯🇵 2026 冬 九州親子自駕之旅" >
     <meta property="og:title" content="🇯🇵 2026 冬 九州親子自駕之旅" >
     <meta property="og:description" content="日期：2026/01/20 (二) ～ 2026/01/27 (二)" >
-    <meta property="og:image" content="https://cowmanchiang.github.io/travel/imgs/1047415_500.png" >     
-    <title>🇯🇵 2026 冬 九州親子自駕之旅 v10</title>
+    <meta property="og:image" content="https://cowmanchiang.github.io/travel/imgs/1047415_500.png" >      
+    <title>🇯🇵 2026 冬 九州親子自駕之旅 v10.3</title>
     <style>
         /* ================= 基礎樣式 ================= */
         :root { --primary-color: #2c3e50; --accent-color: #3498db; --warning-color: #e74c3c; --bg-color: #f5f7fa; --card-bg: #ffffff; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; background-color: var(--bg-color); margin: 0; padding: 20px; }
         .container { max-width: 900px; margin: 0 auto; background-color: var(--card-bg); padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { color: var(--primary-color); text-align: center; border-bottom: 3px solid var(--accent-color); padding-bottom: 15px; margin-bottom: 30px; }
+        
+        /* [修改] H1 設為相對定位，以便內部的版本號進行絕對定位 */
+        h1 { 
+            position: relative; 
+            color: var(--primary-color); 
+            text-align: center; 
+            border-bottom: 3px solid var(--accent-color); 
+            padding-bottom: 15px; 
+            margin-bottom: 30px; 
+        }
+
+        /* [新增] 版本號與日期的樣式 */
+        .version-info {
+            position: absolute;
+            right: 0;
+            bottom: 5px; /* 距離底部線條的距離 */
+            font-size: 0.4em; /* 字體大小設為標題的 0.4 倍 */
+            color: #7f8c8d;
+            font-weight: normal;
+            line-height: 1.2;
+        }
+
         h2 { color: var(--primary-color); border-left: 5px solid var(--accent-color); padding-left: 15px; margin-top: 40px; background-color: #ecf0f1; padding: 10px 15px; border-radius: 0 8px 8px 0; }
         h3 { color: var(--accent-color); margin-top: 25px; border-bottom: 1px dashed #eee; padding-bottom: 10px;}
         .info-box { background-color: #e8f4fd; padding: 20px; border-radius: 8px; margin-bottom: 30px; }
@@ -33,7 +54,22 @@
         .highlight { background-color: #fff3cd; padding: 2px 5px; border-radius: 4px; font-weight: bold; }
         .tips-section { background-color: #fffbe6; padding: 25px; border-radius: 12px; border: 2px dashed #f5a623; margin-top: 40px; }
         .guide-section { background-color: #eefcfc; padding: 25px; border-radius: 12px; border: 2px solid #b2ebf2; margin-top: 40px; }
-        @media (max-width: 600px) { body { padding: 10px; } .container { padding: 15px; } h1 { font-size: 1.5em; } h2 { font-size: 1.2em; } th, td { padding: 8px; font-size: 0.9em; } }
+        
+        @media (max-width: 600px) { 
+            body { padding: 10px; } 
+            .container { padding: 15px; } 
+            h1 { font-size: 1.5em; } 
+            h2 { font-size: 1.2em; } 
+            th, td { padding: 8px; font-size: 0.9em; } 
+            /* 手機版將版本號移到下方，避免擠壓標題 */
+            .version-info {
+                position: static;
+                display: block;
+                text-align: right;
+                font-size: 0.7rem;
+                margin-top: 5px;
+            }
+        }
 
         /* ================= 圖片排列 CSS ================= */
         #imgs {
@@ -103,7 +139,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>🇯🇵 2026 冬 九州親子自駕之旅 v10</h1>
+        <h1>
+            🇯🇵 2026 冬 九州親子自駕之旅
+            <span class="version-info">Ver. 10 | Update: 2025/11/28</span>
+        </h1>
 
         <div id="imgs">
             <img src="imgs/1047415.jpg" width="100%" alt="行程封面">
