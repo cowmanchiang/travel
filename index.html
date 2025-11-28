@@ -9,9 +9,9 @@
     <meta property="og:title" content="🇯🇵 2026 九州冬季親子自駕 8日遊" >
     <meta property="og:description" content="日期：2026/01/20 (二) ～ 2026/01/27 (二)" >
     <meta property="og:image" content="https://cowmanchiang.github.io/travel/imgs/1047415_500.png" >    
-    <title>2026 冬 九州親子自駕 8日遊  V10.1</title>
+    <title>2026 冬 九州親子自駕 8日遊 V10.2</title>
     <style>
-        /* CSS 樣式維持不變，僅新增最下方的圖片區塊設定 */
+        /* ================= 基礎樣式 ================= */
         :root { --primary-color: #2c3e50; --accent-color: #3498db; --warning-color: #e74c3c; --bg-color: #f5f7fa; --card-bg: #ffffff; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; background-color: var(--bg-color); margin: 0; padding: 20px; }
         .container { max-width: 900px; margin: 0 auto; background-color: var(--card-bg); padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
@@ -35,32 +35,75 @@
         .guide-section { background-color: #eefcfc; padding: 25px; border-radius: 12px; border: 2px solid #b2ebf2; margin-top: 40px; }
         @media (max-width: 600px) { body { padding: 10px; } .container { padding: 15px; } h1 { font-size: 1.5em; } h2 { font-size: 1.2em; } th, td { padding: 8px; font-size: 0.9em; } }
 
-        /* =========================================
-           [新增] 圖片區塊排列修正 CSS
-           ========================================= */
+        /* ================= 圖片排列 CSS ================= */
         #imgs {
             display: flex;
             flex-wrap: wrap;
-            margin-bottom: 30px; /* 整個圖片區塊下方留點空白 */
+            margin-bottom: 30px;
         }
         #imgs img {
-            box-sizing: border-box; /* 確保邊框算在寬度內，避免跑版 */
-            vertical-align: bottom; /* 消除圖片下方可能出現的微小空白 */
-            border: 2px solid #fff; /* 加上白色邊框當作間距，視覺更整齊 */
+            box-sizing: border-box;
+            vertical-align: bottom;
+            border: 2px solid #fff;
+            cursor: pointer; /* 滑鼠變成手指 */
+            transition: opacity 0.3s;
         }
-        /* 指定第一張圖片 (大圖) 寬度 100% */
-        #imgs img:nth-child(1) {
-            width: 100%;
+        #imgs img:hover {
+            opacity: 0.8; /* 懸停時稍微變暗提示可點擊 */
         }
-        /* 指定從第二張開始的圖片 (小圖們) 寬度 50%，達成兩兩併排 */
-        #imgs img:nth-child(n+2) {
-            width: 50%;
+        #imgs img:nth-child(1) { width: 100%; } /* 第一張全寬 */
+        #imgs img:nth-child(n+2) { width: 50%; } /* 其餘半寬 */
+
+        /* ================= 點擊放大 (Modal) CSS ================= */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 9999; 
+            padding-top: 50px; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.9); 
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 1200px;
+            max-height: 90vh;
+            object-fit: contain;
+            animation-name: zoom;
+            animation-duration: 0.3s;
+        }
+        @keyframes zoom {
+            from {transform:scale(0)} 
+            to {transform:scale(1)}
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .close:hover, .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        @media only screen and (max-width: 700px){
+            .modal-content { width: 95%; margin-top: 20%; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🇯🇵 2026 九州冬季親子自駕 8日遊<br>(最終定案版 V10.1)</h1>
+        <h1>🇯🇵 2026 九州冬季親子自駕 8日遊<br>(最終定案版 V10.2)</h1>
 
         <div class="info-box">
             <p><strong>📅 日期：</strong>2026/01/20 (二) ～ 2026/01/27 (二)</p>
@@ -68,15 +111,20 @@
         </div>
 
         <div id="imgs">
-            <img src="imgs/1047415.jpg" width="100%">
-            <img src="imgs/1047581.jpg" width="50%">
-            <img src="imgs/1047582.jpg" width="50%">
-            <img src="imgs/1047583.jpg" width="50%">
-            <img src="imgs/1047584.jpg" width="50%">
-            <img src="imgs/1047585.jpg" width="50%">
-            <img src="imgs/1047586.jpg" width="50%">
-            <img src="imgs/1047587.jpg" width="50%">
-            <img src="imgs/1047588.jpg" width="50%">
+            <img src="imgs/1047415.jpg" width="100%" alt="行程封面">
+            <img src="imgs/1047581.jpg" width="50%" alt="行程圖片1">
+            <img src="imgs/1047582.jpg" width="50%" alt="行程圖片2">
+            <img src="imgs/1047583.jpg" width="50%" alt="行程圖片3">
+            <img src="imgs/1047584.jpg" width="50%" alt="行程圖片4">
+            <img src="imgs/1047585.jpg" width="50%" alt="行程圖片5">
+            <img src="imgs/1047586.jpg" width="50%" alt="行程圖片6">
+            <img src="imgs/1047587.jpg" width="50%" alt="行程圖片7">
+            <img src="imgs/1047588.jpg" width="50%" alt="行程圖片8">
+        </div>
+
+        <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
         </div>
 
         <div class="warning-box">
@@ -124,6 +172,20 @@
                     </ul>
                 </li>
                 <li><strong>傍晚：</strong>飯店 Check-in，享受溫泉與豪華晚餐。</li>
+                <li><strong>🏠 住宿：</strong>阿蘇 湯巡追莊</li>
+            </ul>
+        </div>
+        
+        <div class="day-card">
+            <div class="day-title">Day 3 - Day 5 行程概述 (阿蘇/由布院)</div>
+            <ul>
+               <li><span class="note">(詳細行程請參照 V9 版，包含九州自然動物園、九重夢大吊橋、由布院散策等)</span></li>
+            </ul>
+        </div>
+
+        <div class="day-card">
+            <div class="day-title">Day 6 (1/25 日)：告別溫泉鄉 ➔ 前進北九州</div>
+            <ul>
                 <li><strong>上午：</strong>退房，開車上高速公路往北九州小倉方向 (約1.5hr)。</li>
                 <li><strong>中午 (第一站 小倉區)：</strong>抵達並參觀 **小倉城**，於周邊享用午餐。</li>
                 <li><strong>下午 (第二站 門司區)：</strong>體驗 **關門海峽人行隧道** (徒步跨越九州本州交界)。</li>
@@ -232,5 +294,39 @@
 
         <p style="text-align: center; margin-top: 50px; color: #888;">祝您們全家旅途愉快，滿載美好回憶！✈️🎒👨‍👩‍👧‍👦</p>
     </div>
+
+    <script>
+        // 取得 Modal 元素
+        var modal = document.getElementById("imageModal");
+        
+        // 取得 Modal 裡面的圖片元素
+        var modalImg = document.getElementById("img01");
+        
+        // 取得所有在 #imgs 裡面的圖片
+        var images = document.querySelectorAll("#imgs img");
+        
+        // 對每一張圖片加上點擊監聽器
+        images.forEach(function(img) {
+            img.onclick = function(){
+                modal.style.display = "block"; // 顯示 Modal
+                modalImg.src = this.src;       // 將 Modal 圖片源設定為被點擊圖片的源
+            }
+        });
+
+        // 取得關閉按鈕 (X)
+        var span = document.getElementsByClassName("close")[0];
+
+        // 當點擊 X 時，關閉 Modal
+        span.onclick = function() { 
+            modal.style.display = "none";
+        }
+
+        // 當點擊 Modal 視窗以外的區域 (黑色背景) 時，也關閉 Modal
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
