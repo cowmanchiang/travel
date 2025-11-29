@@ -8,68 +8,104 @@
     <meta name="twitter:title" content="🇯🇵 2026 冬 九州親子自駕之旅" >
     <meta property="og:title" content="🇯🇵 2026 冬 九州親子自駕之旅" >
     <meta property="og:description" content="日期：2026/01/20 (二) ～ 2026/01/27 (二)" >
-    <meta property="og:image" content="https://cowmanchiang.github.io/travel/imgs/1047415_500.png" >      
-    <title>🇯🇵 2026 冬 九州親子自駕之旅 v10.3</title>
+    <meta property="og:image" content="https://cowmanchiang.github.io/travel/imgs/1047415_500.png" >          
+    <title>🇹🇼🇯🇵 2026 冬 九州親子自駕8日 (V17)</title>
     <style>
-        /* ================= 基礎樣式 ================= */
-        :root { --primary-color: #2c3e50; --accent-color: #3498db; --warning-color: #e74c3c; --bg-color: #f5f7fa; --card-bg: #ffffff; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; background-color: var(--bg-color); margin: 0; padding: 20px; }
-        .container { max-width: 900px; margin: 0 auto; background-color: var(--card-bg); padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        :root {
+            /* 暖色系配色方案 */
+            --primary-color: #5d4037;   /* 主標題：深暖棕色 */
+            --accent-color: #e67e22;    /* 強調色：溫暖橘 */
+            --warning-color: #c0392b;   /* 警告色：深紅 */
+            --bg-color: #fdf6e3;        /* 背景：米黃/羊皮紙色 */
+            --card-bg: #ffffff;         /* 卡片背景：純白 */
+            --coffee-color: #6f4e37;    /* 咖啡色 */
+            --aso-color: #27ae60;       /* 阿蘇綠 */
+            --tip-color: #d35400;       /* 提示色：南瓜橘 */
+            --toc-bg: rgba(93, 64, 55, 0.95); /* 目錄背景：半透明深棕 */
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #4e342e; background-color: var(--bg-color); margin: 0; padding: 20px; padding-bottom: 80px; }
+        .container { max-width: 900px; margin: 0 auto; background-color: var(--card-bg); padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; border-top: 5px solid var(--accent-color); }
         
-        /* [修改] H1 設為相對定位，以便內部的版本號進行絕對定位 */
-        h1 { 
-            position: relative; 
-            color: var(--primary-color); 
-            text-align: center; 
-            border-bottom: 3px solid var(--accent-color); 
-            padding-bottom: 15px; 
-            margin-bottom: 30px; 
+        /* 標題樣式調整 */
+        h1 { color: var(--primary-color); text-align: center; border-bottom: 2px dashed var(--accent-color); padding-bottom: 20px; margin-bottom: 20px; line-height: 1.4; }
+        .version-info { display: block; font-size: 0.6em; color: #8d6e63; font-weight: normal; margin-top: 10px; }
+        .update-time { display: block; font-size: 0.5em; color: #a1887f; font-weight: normal; margin-top: 5px; }
+
+        /* 圖片預留區樣式 */
+        .header-image-placeholder {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header-image-placeholder img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        /* [新增] 版本號與日期的樣式 */
-        .version-info {
-            position: absolute;
-            right: 0;
-            bottom: 5px; /* 距離底部線條的距離 */
-            font-size: 0.4em; /* 字體大小設為標題的 0.4 倍 */
-            color: #7f8c8d;
-            font-weight: normal;
-            line-height: 1.2;
-        }
-
-        h2 { color: var(--primary-color); border-left: 5px solid var(--accent-color); padding-left: 15px; margin-top: 40px; background-color: #ecf0f1; padding: 10px 15px; border-radius: 0 8px 8px 0; }
-        h3 { color: var(--accent-color); margin-top: 25px; border-bottom: 1px dashed #eee; padding-bottom: 10px;}
-        .info-box { background-color: #e8f4fd; padding: 20px; border-radius: 8px; margin-bottom: 30px; }
-        .warning-box { background-color: #fdedec; border: 2px solid var(--warning-color); padding: 20px; border-radius: 8px; margin-bottom: 30px; }
+        h2 { color: var(--primary-color); border-left: 5px solid var(--accent-color); padding-left: 15px; margin-top: 50px; background-color: #fff3e0; padding: 10px 15px; border-radius: 0 8px 8px 0; scroll-margin-top: 20px; }
+        h3 { color: var(--tip-color); margin-top: 25px; border-bottom: 1px dashed #eee; padding-bottom: 10px; }
+        
+        /* 區塊樣式 */
+        .info-box { background-color: #fff8e1; padding: 20px; border-radius: 8px; margin-bottom: 30px; border: 1px solid #ffe0b2; }
+        .warning-box { background-color: #ffebee; border: 2px solid var(--warning-color); padding: 20px; border-radius: 8px; margin-bottom: 30px; }
         .warning-title { color: var(--warning-color); font-weight: bold; font-size: 1.1em; margin-bottom: 10px; display: flex; align-items: center; }
-        .day-card { border-left: 4px solid var(--accent-color); padding-left: 20px; margin-bottom: 30px; }
+        
+        /* 每日行程卡片 */
+        .day-card { border-left: 4px solid var(--accent-color); padding-left: 20px; margin-bottom: 40px; scroll-margin-top: 80px; }
         .day-title { font-size: 1.3em; font-weight: bold; color: var(--primary-color); margin-bottom: 15px; }
-        .hotel-card { background-color: #f9f9f9; border: 1px solid #eee; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        
+        /* 住宿與表格 */
+        .hotel-card { background-color: #fafafa; border: 1px solid #eee; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
         .hotel-name { font-weight: bold; font-size: 1.1em; color: var(--primary-color); }
         ul { padding-left: 20px; } li { margin-bottom: 8px; }
-        .note { font-size: 0.9em; color: #666; font-style: italic; display: block; margin-top: 5px;}
+        .note { font-size: 0.9em; color: #8d6e63; font-style: italic; display: block; margin-top: 5px; }
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; } th { background-color: #ecf0f1; color: var(--primary-color); }
-        .total-row { font-weight: bold; background-color: #e8f4fd; }
-        .highlight { background-color: #fff3cd; padding: 2px 5px; border-radius: 4px; font-weight: bold; }
-        .tips-section { background-color: #fffbe6; padding: 25px; border-radius: 12px; border: 2px dashed #f5a623; margin-top: 40px; }
-        .guide-section { background-color: #eefcfc; padding: 25px; border-radius: 12px; border: 2px solid #b2ebf2; margin-top: 40px; }
+        th, td { border: 1px solid #e0e0e0; padding: 12px; text-align: left; } 
+        th { background-color: #fff3e0; color: var(--primary-color); }
+        .total-row { font-weight: bold; background-color: #fff8e1; }
+        .highlight { background-color: #ffe0b2; padding: 2px 5px; border-radius: 4px; font-weight: bold; }
         
-        @media (max-width: 600px) { 
-            body { padding: 10px; } 
-            .container { padding: 15px; } 
-            h1 { font-size: 1.5em; } 
-            h2 { font-size: 1.2em; } 
-            th, td { padding: 8px; font-size: 0.9em; } 
-            /* 手機版將版本號移到下方，避免擠壓標題 */
-            .version-info {
-                position: static;
-                display: block;
-                text-align: right;
-                font-size: 0.7rem;
-                margin-top: 5px;
-            }
+        /* 特殊區塊 */
+        .time-section { background-color: #fffde7; padding: 25px; border-radius: 12px; border: 2px solid #fbc02d; margin-top: 40px; }
+        .time-title { color: #f57f17; font-weight: bold; font-size: 1.3em; margin-bottom: 20px; display: flex; align-items: center; }
+        
+        .coffee-section { background-color: #efebe9; padding: 25px; border-radius: 12px; border: 2px solid var(--coffee-color); margin-top: 40px; }
+        .coffee-title { color: var(--coffee-color); font-weight: bold; font-size: 1.3em; margin-bottom: 20px; display: flex; align-items: center; }
+        
+        .guide-section { background-color: #e0f2f1; padding: 25px; border-radius: 12px; border: 2px solid #4db6ac; margin-top: 40px; }
+        
+        .aso-section { background-color: #e8f5e9; padding: 25px; border-radius: 12px; border: 2px solid var(--aso-color); margin-top: 40px; }
+        .aso-title { color: var(--aso-color); font-weight: bold; font-size: 1.3em; margin-bottom: 20px; display: flex; align-items: center; }
+
+        /* 浮動目錄樣式 */
+        .toc-btn {
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            background-color: var(--accent-color); color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            cursor: pointer; z-index: 1000; transition: transform 0.3s;
         }
+        .toc-btn:hover { transform: scale(1.1); background-color: #d35400; }
+        .toc-menu {
+            position: fixed; bottom: 100px; right: 30px;
+            background-color: var(--toc-bg); padding: 15px; border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2); z-index: 999;
+            display: none; width: 200px; backdrop-filter: blur(5px);
+        }
+        .toc-menu a {
+            display: block; color: #fff; text-decoration: none;
+            padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.95em; transition: padding-left 0.2s;
+        }
+        .toc-menu a:last-child { border-bottom: none; }
+        .toc-menu a:hover { padding-left: 15px; color: #ffcc80; }
+        .toc-show { display: block; animation: slideUp 0.3s ease-out; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 600px) { body { padding: 10px; padding-bottom: 80px; } .container { padding: 15px; } h1 { font-size: 1.5em; } h2 { font-size: 1.2em; } th, td { padding: 8px; font-size: 0.9em; } }
 
         /* ================= 圖片排列 CSS ================= */
         #imgs {
@@ -137,11 +173,12 @@
         }
     </style>
 </head>
-<body>
+<body id="top">
     <div class="container">
         <h1>
-            🇯🇵 2026 冬 九州親子自駕之旅
-            <span class="version-info">Ver. 10 | Update: 2025/11/28</span>
+            🇹🇼🇯🇵 2026 冬 九州親子自駕8日
+            <span class="version-info">V17 最終定案版</span>
+            <span class="update-time">更新時間：2025/11/29</span>
         </h1>
 
         <div id="imgs">
@@ -159,99 +196,96 @@
         <div id="imageModal" class="modal">
             <span class="close">&times;</span>
             <img class="modal-content" id="img01">
-        </div>        
+        </div>  
 
         <div class="info-box">
-            <p><strong>📅 日期：</strong>2026/01/20 (二) ～ 2026/01/27 (二)</p>
+            <p><strong>📅 日期：</strong>2026/01/20 (二) ～ 01/27 (二)</p>
             <p><strong>👨‍👩‍👧‍👦 成員：</strong>2位大人、2位小孩（9歲 & 3歲）</p>
         </div>
 
-        <div class="warning-box">
-            <div class="warning-title">🚨 行前最重要！關鍵檢查表 (Must-Do Checklist)</div>
+        <div class="warning-box" id="checklist">
+            <div class="warning-title">🚨 行前最重要！關鍵檢查表</div>
             <ul>
-                <li><strong>🚗 租車關鍵：</strong>務必確認已指定<strong>【雪胎 (Snow Tires)】</strong>。這是冬季行駛阿蘇、由布院山區的絕對必要安全配備。</li>
-                <li><strong>📍 甲租乙還：</strong>確認租車公司知悉「熊本機場(KMJ)取車，福岡機場(FUK)還車」。</li>
-                <li><strong>🎫 提前預約：</strong>
-                    <ul>
-                        <li><strong>Day 7 teamLab Forest Fukuoka：</strong>強烈建議提前上網購買下午場次門票。</li>
-                        <li><strong>Day 5 動物園叢林巴士：</strong>需當天一開園現場排隊買票。</li>
-                    </ul>
-                </li>
-                <li><strong>🧥 冬季穿著：</strong>戶外重點區（火山口、滑雪場、吊橋、動物園）風大寒冷，必備防風外套、毛帽、手套。滑雪日多備一套衣物替換。</li>
+                <li><strong>🚗 租車關鍵：</strong>務必確認已指定<strong>【雪胎 (Snow Tires)】</strong>。</li>
+                <li><strong>📍 機場取還：</strong>確認「熊本機場取車、福岡機場還車」，省去接駁車。</li>
+                <li><strong>🎫 提前預約：</strong>Day 7 teamLab 門票(下午場)、Day 5 動物園叢林巴士(現場排)。</li>
+                <li><strong>🧥 冬季穿著：</strong>戶外重點區必備防風保暖裝備 (毛帽/手套/圍巾)。</li>
             </ul>
         </div>
-
-        <h2>✈️ 航班資訊 (星宇航空)</h2>
+        
+        <h2 id="flights">✈️ 航班資訊 (星宇航空)</h2>
         <ul>
-            <li><strong>去程 (JX846)：</strong>2026/01/20 (二) 07:30 台北桃園 (TPE) ➔ 10:35 熊本 (KMJ)</li>
-            <li><strong>回程 (JX841)：</strong>2026/01/27 (二) 19:10 福岡 (FUK) ➔ 20:50 台北桃園 (TPE)</li>
+            <li><strong>去程 (JX846)：</strong>2026/01/20 (二) 07:30 TPE ➔ 10:35 KMJ</li>
+            <li><strong>回程 (JX841)：</strong>2026/01/27 (二) 19:10 FUK ➔ 20:50 TPE</li>
         </ul>
 
-        <h2>🗺️ 每日詳細行程攻略</h2>
+        <h2 id="itinerary">🗺️ 每日詳細行程攻略</h2>
 
-        <div class="day-card">
-            <div class="day-title">Day 1 (1/20 二)：抵達熊本、與部長相見歡 (輕鬆模式)</div>
+        <div class="day-card" id="day1">
+            <div class="day-title">Day 1 (1/20 二)：抵達熊本、UNIQLO採購</div>
             <ul>
-                <li><strong>10:35</strong> 抵達熊本機場 ➔ 辦理租車手續 (預計12:00前取車)。</li>
-                <li><strong>中午：</strong>開車前往熊本市區，午餐 (推薦：勝烈亭豬排)。</li>
+                <li><strong>10:35</strong> 抵達熊本機場 ➔ <strong>11:30 機場內直接取車出發</strong>。</li>
+                <li><strong>中午：</strong>熊本市區午餐 (推薦：勝烈亭豬排 新市街本店)。</li>
                 <li><strong>下午：</strong>
                     <ul>
-                        <li><strong>熊本熊部長辦公室 (Kumamon Square)：</strong><span class="note">💡查好表演時間提早卡位，專心看部長。</span></li>
-                        <li><strong>城彩苑：</strong>表演結束後，到城彩苑逛街吃點心，感受城下町氣氛。<span class="note">(今日先在城外活動，保留體力)</span></li>
+                        <li><strong>UNIQLO 新市街店：</strong><span class="note">💡餐廳旁走路2分鐘！補齊保暖裝備。</span></li>
+                        <li><strong>熊本熊部長辦公室：</strong><span class="note">💡查好表演時間。</span></li>
+                        <li><strong>城彩苑：</strong>傍晚逛街吃點心。<span class="note">(今日先在城外活動，保留體力)</span></li>
                     </ul>
                 </li>
                 <li><strong>晚餐：</strong>市區馬肉料理或熊本拉麵。</li>
-                <li><strong>🏠 住宿：</strong>熊本城飯店 (Check-in休息)</li>
+                <li><strong>🏠 住宿：</strong>熊本城飯店</li>
             </ul>
         </div>
 
-        <div class="day-card">
-            <div class="day-title">Day 2 (1/21 三)：早安熊本城 ➔ 阿蘇火山震撼</div>
+        <div class="day-card" id="day2">
+            <div class="day-title">Day 2 (1/21 三)：早安熊本城 ➔ 阿蘇震撼</div>
             <ul>
-                <li><strong>上午 (攻城)：</strong>飯店早餐後退房。<span class="note">💡利用地利之便，一早 9:00 <strong>「進去」參觀熊本城天守閣</strong>內部，避開人潮。</span></li>
-                <li><strong>接近中午：</strong>離開熊本，開車往阿蘇 (約1.5hr)。</li>
+                <li><strong>上午 (攻城)：</strong>早餐推薦便利商店買回房間吃。</li>
+                <li><strong>09:00</strong> 準時<strong>「進去」參觀熊本城天守閣</strong>，避開人潮。</li>
+                <li><strong>接近中午：</strong>離開熊本，開車往阿蘇 (約1.5hr)。<span class="note">💡中途必停「道の駅 大津」上廁所。</span></li>
                 <li><strong>下午 (阿蘇)：</strong>
                     <ul>
-                        <li><strong>阿蘇直升機體驗：</strong><span class="note">💡推薦在「卡德利動物樂園」內搭乘。</span></li>
-                        <li><strong>草千里 & 火山口：</strong>視時間與天氣狀況走訪。</li>
+                        <li><strong>阿蘇直升機體驗：</strong><span class="note">💡推薦「卡德利動物樂園」搭乘。</span></li>
+                        <li><strong>草千里 & 火山口：</strong>視天氣狀況走訪。</li>
                     </ul>
                 </li>
                 <li><strong>傍晚：</strong>飯店 Check-in，享受溫泉與豪華晚餐。</li>
-                <li><strong>🏠 住宿：</strong>阿蘇 湯巡追莊 (霜降牛吃到飽 Buffet!)</li>
+                <li><strong>🏠 住宿：</strong>阿蘇 湯巡追莊 (霜降牛吃到飽!)</li>
             </ul>
         </div>
 
-        <div class="day-card">
+        <div class="day-card" id="day3">
             <div class="day-title">Day 3 (1/22 四)：阿蘇歡樂玩雪日</div>
             <ul>
-                <li><strong>全日目標：</strong>**九重森林公園滑雪場**。<span class="note">💡專攻「兒童雪盆區」即可，記得防水保暖裝備。</span></li>
-                <li><strong>☔ 備案：</strong>若風雪太大，可改去 **阿蘇農場 (Aso Farm Land)** 或回飯店泡湯。</li>
+                <li><strong>全日目標：</strong>**九重森林公園滑雪場**。<span class="note">💡專攻「兒童雪盆區」。</span></li>
+                <li><strong>☔ 備案：</strong>若風雪太大，改去 **阿蘇農場 (Aso Farm Land)** 或回飯店泡湯。</li>
                 <li><strong>🏠 住宿：</strong>阿蘇 湯巡追莊 (續住)</li>
             </ul>
         </div>
 
-        <div class="day-card">
+        <div class="day-card" id="day4">
             <div class="day-title">Day 4 (1/23 五)：絕景公路移動日 (阿蘇➔由布院)</div>
             <ul>
-                <li><strong>上午：</strong>行駛絕美 **山並公路**。<span class="note">⚠️冬季請謹慎慢行。</span></li>
-                <li><strong>中途停留：</strong>**九重夢大吊橋**。<span class="note">💡風大寒冷，請戴好帽子手套。</span></li>
-                <li><strong>午餐：</strong>建議在吊橋遊客中心吃漢堡簡單解決。</li>
-                <li><strong>下午：</strong>抵達由布院 Check-in ➔ **湯之坪街道** 散策 ➔ **金鱗湖** 黃昏散步。</li>
-                <li><strong>晚餐：</strong>飯店內享用懷石料理。</li>
+                <li><strong>10:00</strong> 準時退房，行駛 **山並公路**。<span class="note">⚠️冬季慢行。中途必停「瀨之本高原休息站」。</span></li>
+                <li><strong>中途停留：</strong>**九重夢大吊橋**。<span class="note">💡風大寒冷。</span></li>
+                <li><strong>午餐：</strong>吊橋遊客中心吃漢堡。</li>
+                <li><strong>下午：</strong>抵達由布院 ➔ **湯之坪街道** ➔ **金鱗湖** 黃昏散步。</li>
+                <li><strong>晚餐：</strong>飯店內懷石料理。</li>
                 <li><strong>🏠 住宿：</strong>由布院 UBL 飯店</li>
             </ul>
         </div>
 
-        <div class="day-card">
+        <div class="day-card" id="day5">
             <div class="day-title">Day 5 (1/24 六)：別府親子雙重奏 (+重要備案)</div>
             <ul>
-                <li><strong>上午 (主行程)：</strong>**九州自然動物園**。<span class="note">⭐務必一開園就抵達搶搭「叢林巴士」餵獅子。</span></li>
-                <li><strong>下午 (主行程)：</strong>**三麗鷗和諧樂園**。<span class="note">💡戶外設施較多。</span></li>
-                <li><strong>☔ 天氣/興趣備案選擇：</strong>
+                <li><strong>09:00 出發：</strong>**九州自然動物園**。<span class="note">⭐務必一開園搶搭「叢林巴士」。</span></li>
+                <li><strong>下午 (主行程)：</strong>**三麗鷗和諧樂園**。</li>
+                <li><strong>☔ 天氣/興趣備案：</strong>
                     <ul>
-                        <li><em>天氣惡劣/最佳室內備案：</em>大分海洋宮殿水族館「海之卵」(Umitamago)。</li>
-                        <li><em>戶外動物備案：</em>高崎山自然動物園 (看野生猴群)。</li>
-                        <li><em>快速踩點：</em>別府「海地獄」參觀。</li>
+                        <li><em>最佳室內備案：</em>大分海洋宮殿水族館「海之卵」。</li>
+                        <li><em>戶外動物備案：</em>高崎山自然動物園。</li>
+                        <li><em>快速踩點：</em>別府「海地獄」。</li>
                     </ul>
                 </li>
                 <li><strong>晚餐：</strong>飯店內享用晚餐。</li>
@@ -259,202 +293,148 @@
             </ul>
         </div>
 
-        <div class="day-card">
-            <div class="day-title">Day 6 (1/25 日)：跨越北九州名勝 (由布院➔小倉➔福岡)</div>
+        <div class="day-card" id="day6">
+            <div class="day-title">Day 6 (1/25 日)：跨越北九州 (避開塞車策略)</div>
             <ul>
-                <li><strong>上午：</strong>退房，開車上高速公路往北九州小倉方向 (約1.5hr)。</li>
-                <li><strong>中午 (第一站 小倉區)：</strong>抵達並參觀 **小倉城**，於周邊享用午餐。<span class="note">💡小倉城互動性高，9歲孩子會喜歡。</span></li>
-                <li><strong>下午 (第二站 門司區)：</strong>體驗 **關門海峽人行隧道** (徒步跨越九州本州交界)。</li>
-                <li><strong>傍晚 (彈性選項)：</strong>若有時間可快閃 **門司港懷舊區** 拍照，時間不夠則直接跳過。</li>
-                <li><strong>晚上：</strong>抵達福岡市區飯店 Check-in。</li>
+                <li><strong>上午 (早鳥)：</strong>07:30 散步去金鱗湖看晨霧，回飯店吃早餐。</li>
+                <li><strong>10:00 退房：</strong>開車前往北九州小倉 (約1.5hr)。<span class="note">💡中途必停「別府灣SA」看海景。</span></li>
+                <li><strong>中午 (小倉)：</strong>參觀 **小倉城** (互動好玩)，周邊午餐。</li>
+                <li><strong>下午 (門司)：</strong>體驗 **關門海峽人行隧道** (跨縣界)。</li>
+                <li><strong>傍晚 (戰略晚餐)：</strong>前往 **AEON MALL 福津** 吃晚餐。<span class="note">⭐避開進福岡市區塞車潮，吃飽逛完再回飯店。</span></li>
+                <li><strong>19:40：</strong>抵達福岡飯店 Check-in。</li>
                 <li><strong>🏠 住宿：</strong>福岡貝塚 Vessel Hotel</li>
             </ul>
         </div>
 
-        <div class="day-card">
+        <div class="day-card" id="day7">
             <div class="day-title">Day 7 (1/26 一)：海陸空制霸 + 百道濱黃金三角</div>
             <ul>
-                <li><strong>上午：</strong>**海中之道海洋世界** (看海豚秀)。</li>
-                <li><strong>中午【彈性加碼】：</strong>若天氣好，可快閃海濱公園「動物之森」或「兒童廣場」。</li>
-                <li><strong>下午 (百道濱區)：</strong>開車移動至福岡塔周邊 ➔ **teamLab Forest Fukuoka**。<span class="note">⚠️請依預約時間入場。</span></li>
+                <li><strong>上午：</strong>**海中之道海洋世界** (海豚秀)。</li>
+                <li><strong>中午【彈性】：</strong>若天氣好，快閃海濱公園「動物之森」。</li>
+                <li><strong>下午 (百道濱)：</strong>開車移動至福岡塔周邊 ➔ **teamLab Forest Fukuoka**。<span class="note">⚠️請依預約時間入場。</span></li>
                 <li><strong>傍晚/晚上：</strong>**百道海濱公園** 沙灘散步 ➔ 上 **福岡塔** 看夜景。</li>
                 <li><strong>🏠 住宿：</strong>福岡貝塚 Vessel Hotel (續住)</li>
             </ul>
         </div>
 
-        <div class="day-card">
-            <div class="day-title">Day 8 (1/27 二)：鋼彈最後衝刺 ➔ 返家</div>
+        <div class="day-card" id="day8">
+            <div class="day-title">Day 8 (1/27 二)：鋼彈 ➔ 機場大採購</div>
             <ul>
-                <li><strong>上午：</strong>睡到自然醒，約 10:30-11:00 退房。</li>
-                <li><strong>中午/下午：</strong>**LaLaport 福岡購物中心**。午餐、與 1:1 **Nu 鋼彈**合照、最後採買補貨。</li>
-                <li><strong>16:00：</strong>前往機場附近的租車公司還車。</li>
-                <li><strong>17:10 前：</strong>抵達福岡機場國際線航廈，辦理登機。</li>
+                <li><strong>上午：</strong>睡到自然醒，約 10:30 退房前往 LaLaport。</li>
+                <li><strong>11:00 LaLaport：</strong>午餐、看 1:1 **Nu 鋼彈**、玩具/童裝補貨。</li>
+                <li><strong>14:30 離開商場：</strong>提早前往機場，避開下班車潮。</li>
+                <li><strong>15:00 機場還車：</strong>直接在機場停車場還車。</li>
+                <li><strong>16:00 機場免稅店：</strong>預留 2.5 小時逛免稅區 (伴手禮/美妝/酒)。</li>
                 <li><strong>19:10：</strong>搭機返台。</li>
             </ul>
         </div>
 
-        <h2>🏨 住宿訂房明細 (請出示給櫃檯)</h2>
+        <h2 id="hotels">🏨 住宿訂房明細</h2>
+        <div class="hotel-card"><div class="hotel-name">D1: 熊本城飯店 (Kumamoto Hotel Castle)</div><ul><li>入住: 1/20 (15:00) | 退房: 1/21 (12:00)</li><li>房型: 特別和洋室 70m² | 費用: JPY 41,200 (現場付)</li></ul></div>
+        <div class="hotel-card"><div class="hotel-name">D2-3: 阿蘇 湯巡追莊 (Yumeoiso) [2晚]</div><ul><li>入住: 1/21 (15:00) | 退房: 1/23 (10:00)</li><li>房型: 半露天風呂付 3床房 | 餐食: 一泊二食 Buffet</li><li>費用: JPY 127,600 (現場付)</li></ul></div>
+        <div class="hotel-card"><div class="hotel-name">D4-5: 由布院 UBL 飯店 [2晚]</div><ul><li>入住: 1/23 (15:00) | 退房: 1/25 (10:00)</li><li>房型: 標準日式客房 | 餐食: 一泊二食 懷石</li><li>費用: JPY 89,207 (已扣款) + 入湯稅 (現場付)</li></ul></div>
+        <div class="hotel-card"><div class="hotel-name">D6-7: 福岡貝塚 Vessel Hotel [2晚]</div><ul><li>入住: 1/25 (12:00後) | 退房: 1/27 (11:00)</li><li>房型: 寬敞雙床房 (併床) | 餐食: 含早餐</li><li>費用: JPY 35,412 (現場付)</li></ul></div>
 
-        <div class="hotel-card">
-            <div class="hotel-name">第 1 晚：熊本城飯店 (Kumamoto Hotel Castle)</div>
-            <ul>
-                <li><strong>預訂編號：</strong>202511190000993.01</li>
-                <li><strong>入住日期：</strong>1/20 (15:00) ～ 1/21 (12:00)</li>
-                <li><strong>房型：</strong>[Castle side/high floor] Special Japanese-Western style room 70 m2</li>
-                <li><strong>人數：</strong>4人 (2大、9歲、3歲) | <strong>餐食：</strong>不含餐</li>
-                <li><strong>費用：</strong><span class="highlight">JPY 41,200 (現場支付)</span></li>
-            </ul>
-        </div>
-
-        <div class="hotel-card">
-            <div class="hotel-name">第 2-3 晚：阿蘇 湯巡追莊 (Yumeoiso) [連住2晚]</div>
-            <ul>
-                <li><strong>預訂編號：</strong>95259</li>
-                <li><strong>入住日期：</strong>1/21 (15:00) ～ 1/23 (10:00)</li>
-                <li><strong>房型：</strong>[新] 半露天風呂付３ベッドルーム</li>
-                <li><strong>人數：</strong>2大、9歲佔床、3歲添寢 | <strong>餐食：</strong>一泊二食 (豪華 Buffet)</li>
-                <li><strong>費用：</strong><span class="highlight">JPY 127,600 (含入湯稅、現場支付)</span></li>
-            </ul>
-        </div>
-
-        <div class="hotel-card">
-            <div class="hotel-name">第 4-5 晚：由布院 UBL 飯店 (Yufuin Ubl Hotel) [連住2晚]</div>
-            <ul>
-                <li><strong>訂單編號：</strong>(請參照App內訂單)</li>
-                <li><strong>入住日期：</strong>1/23 (15:00) ～ 1/25 (10:00)</li>
-                <li><strong>房型：</strong>Standard Japanese Style Room (標準日式客房)</li>
-                <li><strong>人數：</strong>2大2小 | <strong>餐食：</strong>一泊二食 (懷石料理)</li>
-                <li><strong>費用：</strong><span class="highlight">JPY 89,207 (1/20 自動扣款)</span> + <span class="highlight">入湯稅 JPY 1,200 (現場支付)</span></li>
-            </ul>
-        </div>
-
-        <div class="hotel-card">
-            <div class="hotel-name">第 6-7 晚：福岡貝塚 Vessel Hotel [連住2晚]</div>
-            <ul>
-                <li><strong>預訂編號：</strong>3152-7902-2171</li>
-                <li><strong>入住日期：</strong>1/25 (12:00後) ～ 1/27 (11:00)</li>
-                <li><strong>房型：</strong>寬敞雙床房 (好萊塢床型)</li>
-                <li><strong>人數：</strong>2大 + 2小添寢 | <strong>餐食：</strong>含早餐</li>
-                <li><strong>費用：</strong><span class="highlight">JPY 35,412 (現場支付)</span></li>
-            </ul>
-        </div>
-
-        <h2>💰 住宿費用統計表</h2>
+        <h2 id="cost">💰 住宿費用統計表</h2>
         <table>
-            <thead>
-                <tr>
-                    <th>地點</th>
-                    <th>飯店</th>
-                    <th>付款方式</th>
-                    <th>金額 (日圓)</th>
-                </tr>
-            </thead>
+            <thead><tr><th>地點</th><th>飯店</th><th>付款方式</th><th>金額 (日圓)</th></tr></thead>
             <tbody>
-                <tr>
-                    <td>D1 熊本</td>
-                    <td>熊本城飯店</td>
-                    <td>現場支付</td>
-                    <td>¥41,200</td>
-                </tr>
-                <tr>
-                    <td>D2-3 阿蘇</td>
-                    <td>湯巡追莊</td>
-                    <td>現場支付</td>
-                    <td>¥127,600</td>
-                </tr>
-                <tr>
-                    <td>D4-5 由布院</td>
-                    <td>UBL 飯店</td>
-                    <td>1/20 扣款</td>
-                    <td>¥89,207</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>(UBL 入湯稅)</td>
-                    <td>現場支付</td>
-                    <td>¥1,200</td>
-                </tr>
-                <tr>
-                    <td>D6-7 福岡</td>
-                    <td>Vessel 貝塚</td>
-                    <td>現場支付</td>
-                    <td>¥35,412</td>
-                </tr>
-                <tr class="total-row">
-                    <td colspan="3">總計 (7晚)</td>
-                    <td>¥294,619</td>
-                </tr>
+                <tr><td>熊本</td><td>熊本城飯店</td><td>現場支付</td><td>¥41,200</td></tr>
+                <tr><td>阿蘇</td><td>湯巡追莊</td><td>現場支付</td><td>¥127,600</td></tr>
+                <tr><td>由布院</td><td>UBL 飯店</td><td>已線上扣款</td><td>¥89,207</td></tr>
+                <tr><td></td><td>(UBL 入湯稅)</td><td>現場支付</td><td>¥1,200</td></tr>
+                <tr><td>福岡</td><td>Vessel 貝塚</td><td>現場支付</td><td>¥35,412</td></tr>
+                <tr class="total-row"><td colspan="3">總計 (7晚)</td><td>¥294,619</td></tr>
             </tbody>
         </table>
-        <p class="note">💡 備忘錄：出發前已扣款 ¥89,207；需準備日幣現金或信用卡現場支付約 ¥205,412。</p>
 
-        <div class="tips-section">
-            <h2>🧸 特別收錄Ⅰ：由布院親子散策攻略</h2>
-            <p>UBL飯店離金鱗湖很近，建議 Day 4 下午 Check-in 後輕裝出門散步。</p>
-            <h3>📸 必訪景點</h3>
+        <div class="time-section" id="time">
+            <div class="time-title">⏰ 每日建議出發時間</div>
             <ul>
-                <li><strong>金鱗湖晨霧：</strong>強烈推薦 Day 5 一早 (7:00-8:00) 起床來看冬季限定的夢幻晨霧。</li>
-                <li><strong>Yufuin Floral Village (童話村)：</strong>仿歐式充滿童話感的小村莊，有許多小動物，適合拍照探險。</li>
+                <li><strong>Day 1：</strong>11:30 機場取車。</li>
+                <li><strong>Day 2：</strong>08:40 走路去熊本城 (09:00開門)。</li>
+                <li><strong>Day 3：</strong>09:30 悠閒出發去滑雪。</li>
+                <li><strong>Day 4：</strong>10:00 準時退房 (走山路)。</li>
+                <li><strong>Day 5：</strong>09:00 準時出發 (搶動物園巴士票)。</li>
+                <li><strong>Day 6：</strong>10:00 準時退房 (長途移動)。</li>
+                <li><strong>Day 7：</strong>09:15 輕鬆出發去水族館。</li>
+                <li><strong>Day 8：</strong>10:30 睡飽退房去 LaLaport。</li>
             </ul>
-            <h3>🧸 孩子愛的卡通主題店</h3>
-            <ul>
-                <li><strong>橡子之森：</strong>門口有大龍貓的吉卜力專賣店。</li>
-                <li><strong>SNOOPY 茶屋：</strong>全球第一間史努比茶屋，有可愛的造型饅頭和周邊。</li>
-                <li><strong>Miffy 森之廚房：</strong>米飛兔主題麵包店。</li>
-            </ul>
-            <h3>😋 必吃散步美食</h3>
-            <ul>
-                <li><strong>金賞可樂餅：</strong>熱騰騰酥脆的炸肉餅。</li>
-                <li><strong>Milch 半熟起司蛋糕：</strong>推薦吃「熱的」，像熱起司布丁一樣濃郁。</li>
-                <li><strong>B-Speak 生乳捲：</strong>超人氣蛋糕捲，通常中午前小條裝會售罄。</li>
-            </ul>
-            <span class="note">💡 小叮嚀：由布院店家約下午 5:00-5:30 關門，傍晚溫差大請注意保暖。</span>
         </div>
 
-        <div class="guide-section">
-            <h2>📘 特別收錄Ⅱ：五大重點區域散策攻略集</h2>
-            
-            <h3>1. 🏯 熊本城內部與周邊 (Day 1-2)</h3>
+        <div class="coffee-section" id="coffee">
+            <div class="coffee-title">☕ 每日拿鐵補給站</div>
             <ul>
-                <li><strong>攻略策略：</strong>建議「拆分法」。Day 1 下午逛外圍「城彩苑」吃點心拍照；Day 2 一早 9:00 進「天守閣」參觀避人潮。</li>
-                <li><strong>天守閣內部 (Day 2)：</strong>震後重建的現代化博物館。有冷暖氣和電梯(部分樓層)，對親子友善。9歲孩子可看歷史展示，頂樓可俯瞰市區。</li>
-                <li><strong>櫻之馬場 城彩苑 (Day 1)：</strong>復古街道，聚集熊本美食。推薦「海膽可樂餅」和「いきなり団子 (紅豆地瓜饅頭)」。</li>
+                <li><strong>D1 熊本：</strong>Gluck Coffee Spot (職人烘焙)。</li>
+                <li><strong>D2 阿蘇：</strong>Kusasenri Coffee Roastery (草千里絕景)。</li>
+                <li><strong>D3 阿蘇：</strong>道之驛阿蘇 (牧場鮮奶)。</li>
+                <li><strong>D4 由布院：</strong>Cafe La Ruche (金鱗湖畔)。</li>
+                <li><strong>D5 別府：</strong>Carandonel (可麗露名店)。</li>
+                <li><strong>D6 小倉：</strong>Parts Of Life (質感名店)。</li>
+                <li><strong>D7 福岡：</strong>RHC CAFE (百道濱 Markis)。</li>
+                <li><strong>D8 LaLaport：</strong>倉式珈琲店 (虹吸式)。</li>
             </ul>
+        </div>
 
-            <h3>2. 🌉 九重夢大吊橋 (Day 4)</h3>
+        <div class="guide-section" id="guide">
+            <h2>📘 特別收錄：重點區域攻略</h2>
+            <h3>1. 🏯 熊本城 (Day 1-2)</h3>
+            <ul><li>D1 逛城彩苑，D2 一早 9:00 進天守閣。</li></ul>
+            <h3>2. 🚗 廁所補給站</h3>
+            <ul><li>往阿蘇: 道之驛大津 / 往由布院: 瀨之本高原 / 往福岡: 別府灣SA、AEON福津。</li></ul>
+            <h3>3. 🏰 北九州名勝 (Day 6)</h3>
+            <ul><li>小倉城(互動好玩)、關門海峽隧道(走路跨縣界)。</li></ul>
+            <h3>4. 🗼 百道濱區 (Day 7)</h3>
+            <ul><li>teamLab(必預約)、海濱公園看夕陽、福岡塔夜景。</li></ul>
+            <h3>5. 🛍️ 購物攻略 (Day 1 & 8)</h3>
             <ul>
-                <li><strong>冬季核心提醒：極、度、寒、冷！</strong> 橋上位於風口，體感溫度非常低，請務必幫孩子戴好毛帽、手套、圍巾，外套要防風。</li>
-                <li><strong>看點：</strong>日本最高人行橋，腳下有鏤空鐵網可看谷底(刺激!)。冬季有機會看到壯觀的冰瀑布。</li>
-                <li><strong>親子對策：</strong>風太大不建議推推車。若孩子害怕或太冷，走到一半折返也沒關係。午餐可在遊客中心吃「九重夢漢堡」。</li>
+                <li>D1 (熊本): UNIQLO 新市街店買保暖衣物。</li>
+                <li>D8 (LaLaport): 買鋼彈、玩具、童裝。</li>
+                <li>D8 (機場): 買伴手禮、高單價美妝 (免稅區大且新)。</li>
             </ul>
+        </div>
 
-            <h3>3. 🏰 小倉城內部與周邊 (Day 6)</h3>
+        <div class="aso-section" id="aso">
+            <div class="aso-title">🌋 阿蘇深度攻略</div>
             <ul>
-                <li><strong>特色：</strong>「好玩互動型」城堡。內部全面翻新，有電梯、冷暖氣，非常舒適。</li>
-                <li><strong>親子亮點：</strong>館內有許多互動遊戲，必玩「數位變裝」(虛擬穿武將/公主服拍照)，9歲孩子會喜歡。規模不大，約1小時可逛完。</li>
-                <li><strong>周邊銜接：</strong>旁邊就是大型商場「Riverwalk 北九州」，停車方便，參觀完直接去商場吃飯很順路。</li>
-            </ul>
-
-            <h3>4. 🗼 百道濱黃金三角區 (Day 7 PM)</h3>
-            <ul>
-                <li><strong>動線：</strong>teamLab、福岡塔、海濱公園三者皆步行可達。建議車停好後用走的。</li>
-                <li><strong>teamLab Forest：</strong>務必預約。孩子最愛用手機APP捕捉動物的「捕捉蒐集森林」和需要跳躍攀爬的「運動森林」。</li>
-                <li><strong>海濱公園：</strong>teamLab 結束後走去沙灘看黃昏，非常有異國情調。冬天海風大注意保暖。</li>
-                <li><strong>福岡塔：</strong>晚上亮燈後很美，上塔看夜景是完美句點。</li>
-            </ul>
-
-            <h3>5. 🤖 LaLaport 福岡玩具採購攻略 (Day 8 AM)</h3>
-            <ul>
-                <li><strong>核心目標：</strong>門口的 1:1 超巨大 Nu 鋼彈立像。記得查好整點演出時間 (通常頭部和手會動)。</li>
-                <li><strong>Gundam Side-F (4F)：</strong>鋼彈迷聖地，有許多限定商品。</li>
-                <li><strong>Namco (4F)：</strong>超大夾娃娃機和遊戲區，孩子會瘋掉。</li>
-                <li><strong>Toys"R"Us / Babies"R"Us：</strong>綜合型大玩具店，3歲和9歲的禮物都能在這裡一次買齊。</li>
-                <li><span class="note">💡 建議先把要買的大型玩具買好放車上，再輕鬆吃午餐。</span></li>
+                <li><strong>直升機：</strong>推薦「卡德利動物樂園」(起飛率高)。</li>
+                <li><strong>草千里：</strong>冬季雪白草原超美。</li>
+                <li><strong>滑雪：</strong>九重滑雪場專攻「兒童雪盆區」。</li>
+                <li><strong>雨備：</strong>阿蘇農場 Aso Farm Land。</li>
             </ul>
         </div>
 
         <p style="text-align: center; margin-top: 50px; color: #888;">祝您們全家旅途愉快，滿載美好回憶！✈️🎒👨‍👩‍👧‍👦</p>
     </div>
+
+    <div class="toc-btn" onclick="toggleToc()">☰</div>
+    <div class="toc-menu" id="tocMenu">
+        <a href="#top" onclick="toggleToc()">🏠 回到頂部</a>
+        <a href="#checklist" onclick="toggleToc()">🚨 行前檢查</a>
+        <a href="#flights" onclick="toggleToc()">✈️ 航班資訊</a>
+        <a href="#day1" onclick="toggleToc()">📅 每日行程</a>
+        <a href="#hotels" onclick="toggleToc()">🏨 住宿明細</a>
+        <a href="#cost" onclick="toggleToc()">💰 費用統計</a>
+        <a href="#time" onclick="toggleToc()">⏰ 出發時間</a>
+        <a href="#coffee" onclick="toggleToc()">☕ 咖啡地圖</a>
+        <a href="#guide" onclick="toggleToc()">📘 五大攻略</a>
+        <a href="#aso" onclick="toggleToc()">🌋 阿蘇攻略</a>
+    </div>
+
+    <script>
+        function toggleToc() {
+            var menu = document.getElementById("tocMenu");
+            menu.classList.toggle("toc-show");
+        }
+        // 點擊頁面其他地方關閉選單
+        document.addEventListener('click', function(event) {
+            var menu = document.getElementById("tocMenu");
+            var btn = document.querySelector('.toc-btn');
+            if (!menu.contains(event.target) && !btn.contains(event.target) && menu.classList.contains('toc-show')) {
+                menu.classList.remove('toc-show');
+            }
+        });
+    </script>
 
     <script>
         // 取得 Modal 元素
@@ -488,6 +468,6 @@
                 modal.style.display = "none";
             }
         }
-    </script>    
+    </script>     
 </body>
 </html>
