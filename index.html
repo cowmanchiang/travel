@@ -8,8 +8,8 @@
     <meta name="twitter:title" content="🇯🇵 2026 冬 九州親子自駕之旅" >
     <meta property="og:title" content="🇯🇵 2026 冬 九州親子自駕之旅" >
     <meta property="og:description" content="日期：2026/01/20 (二) ～ 2026/01/27 (二)" >
-    <meta property="og:image" content="https://cowmanchiang.github.io/travel/imgs/1047415_500.png" >          
-    <title>🇹🇼🇯🇵 2026 冬 九州親子自駕8日 (V17)</title>
+    <meta property="og:image" content="https://cowmanchiang.github.io/travel/imgs/1048004_500.png" > 
+    <title>🇹🇼🇯🇵 2026 冬 九州親子自駕8日</title>
     <style>
         :root {
             /* 暖色系配色方案 */
@@ -29,24 +29,19 @@
         
         /* 標題樣式調整 */
         h1 { color: var(--primary-color); text-align: center; border-bottom: 2px dashed var(--accent-color); padding-bottom: 20px; margin-bottom: 20px; line-height: 1.4; }
-        .version-info { display: block; font-size: 0.6em; color: #8d6e63; font-weight: normal; margin-top: 10px; }
-        .update-time { display: block; font-size: 0.5em; color: #a1887f; font-weight: normal; margin-top: 5px; }
-
-        /* 圖片預留區樣式 */
-        .header-image-placeholder {
-            width: 100%;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .header-image-placeholder img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        .version-info {
+            display: block;
+            text-align: right;
+            font-size: 0.4em;
+            color: #7f8c8d;
+            font-weight: normal;
+            line-height: 1.5;
+            margin-top: 2px;
         }
 
         h2 { color: var(--primary-color); border-left: 5px solid var(--accent-color); padding-left: 15px; margin-top: 50px; background-color: #fff3e0; padding: 10px 15px; border-radius: 0 8px 8px 0; scroll-margin-top: 20px; }
-        h3 { color: var(--tip-color); margin-top: 25px; border-bottom: 1px dashed #eee; padding-bottom: 10px; }
+        h3 { color: var(--tip-color); margin-top: 25px; border-bottom: 1px dashed #eee; padding-bottom: 10px; font-size: 1.2em; }
+        h4 { color: #5d4037; margin-top: 15px; margin-bottom: 5px; font-size: 1em; font-weight: bold; }
         
         /* 區塊樣式 */
         .info-box { background-color: #fff8e1; padding: 20px; border-radius: 8px; margin-bottom: 30px; border: 1px solid #ffe0b2; }
@@ -75,11 +70,9 @@
         .coffee-section { background-color: #efebe9; padding: 25px; border-radius: 12px; border: 2px solid var(--coffee-color); margin-top: 40px; }
         .coffee-title { color: var(--coffee-color); font-weight: bold; font-size: 1.3em; margin-bottom: 20px; display: flex; align-items: center; }
         
+        /* 攻略區塊樣式 */
         .guide-section { background-color: #e0f2f1; padding: 25px; border-radius: 12px; border: 2px solid #4db6ac; margin-top: 40px; }
         
-        .aso-section { background-color: #e8f5e9; padding: 25px; border-radius: 12px; border: 2px solid var(--aso-color); margin-top: 40px; }
-        .aso-title { color: var(--aso-color); font-weight: bold; font-size: 1.3em; margin-bottom: 20px; display: flex; align-items: center; }
-
         /* 浮動目錄樣式 */
         .toc-btn {
             position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
@@ -108,81 +101,31 @@
         @media (max-width: 600px) { body { padding: 10px; padding-bottom: 80px; } .container { padding: 15px; } h1 { font-size: 1.5em; } h2 { font-size: 1.2em; } th, td { padding: 8px; font-size: 0.9em; } }
 
         /* ================= 圖片排列 CSS ================= */
-        #imgs {
-            display: flex;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-        #imgs img {
-            box-sizing: border-box;
-            vertical-align: bottom;
-            border: 2px solid #fff;
-            cursor: pointer; /* 滑鼠變成手指 */
-            transition: opacity 0.3s;
-        }
-        #imgs img:hover {
-            opacity: 0.8; /* 懸停時稍微變暗提示可點擊 */
-        }
-        #imgs img:nth-child(1) { width: 100%; } /* 第一張全寬 */
-        #imgs img:nth-child(n+2) { width: 50%; } /* 其餘半寬 */
+        #imgs { display: flex; flex-wrap: wrap; margin-bottom: 30px; }
+        #imgs img { box-sizing: border-box; vertical-align: bottom; border: 2px solid #fff; cursor: pointer; transition: opacity 0.3s; }
+        #imgs img:hover { opacity: 0.8; }
+        #imgs img:nth-child(1) { width: 100%; }
+        #imgs img:nth-child(n+2) { width: 50%; }
 
         /* ================= 點擊放大 (Modal) CSS ================= */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 9999; 
-            padding-top: 50px; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgba(0,0,0,0.9); 
-        }
-        .modal-content {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 1200px;
-            max-height: 90vh;
-            object-fit: contain;
-            animation-name: zoom;
-            animation-duration: 0.3s;
-        }
-        @keyframes zoom {
-            from {transform:scale(0)} 
-            to {transform:scale(1)}
-        }
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-        .close:hover, .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        @media only screen and (max-width: 700px){
-            .modal-content { width: 95%; margin-top: 20%; }
-        }
+        .modal { display: none; position: fixed; z-index: 9999; padding-top: 50px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); }
+        .modal-content { margin: auto; display: block; width: 80%; max-width: 1200px; max-height: 90vh; object-fit: contain; animation-name: zoom; animation-duration: 0.3s; }
+        @keyframes zoom { from {transform:scale(0)} to {transform:scale(1)} }
+        .close { position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer; }
+        .close:hover, .close:focus { color: #bbb; text-decoration: none; cursor: pointer; }
+        @media only screen and (max-width: 700px){ .modal-content { width: 95%; margin-top: 20%; } }
     </style>
 </head>
 <body id="top">
     <div class="container">
         <h1>
             🇹🇼🇯🇵 2026 冬 九州親子自駕8日
-            <span class="version-info">V17 最終定案版</span>
-            <span class="update-time">更新時間：2025/11/29</span>
+            <span class="version-info">Ver. 21</span>
+            <span class="version-info">更新時間：2025/11/29</span>
         </h1>
 
         <div id="imgs">
-            <img src="imgs/1047415.jpg" width="100%" alt="行程封面">
+            <img src="imgs/1048004.jpg" width="100%" alt="行程封面">
             <img src="imgs/1047581.jpg" width="50%" alt="行程圖片1">
             <img src="imgs/1047582.jpg" width="50%" alt="行程圖片2">
             <img src="imgs/1047583.jpg" width="50%" alt="行程圖片3">
@@ -203,10 +146,11 @@
             <p><strong>👨‍👩‍👧‍👦 成員：</strong>2位大人、2位小孩（9歲 & 3歲）</p>
         </div>
 
+
         <div class="warning-box" id="checklist">
             <div class="warning-title">🚨 行前最重要！關鍵檢查表</div>
             <ul>
-                <li><strong>🚗 租車關鍵：</strong>務必確認已指定<strong>【雪胎 (Snow Tires)】</strong>。</li>
+                <li><strong>🚗 租車關鍵：</strong>務必確認已指定<strong>【雪胎 (Snow Tires)】</strong>。車型推薦 Sienta。</li>
                 <li><strong>📍 機場取還：</strong>確認「熊本機場取車、福岡機場還車」，省去接駁車。</li>
                 <li><strong>🎫 提前預約：</strong>Day 7 teamLab 門票(下午場)、Day 5 動物園叢林巴士(現場排)。</li>
                 <li><strong>🧥 冬季穿著：</strong>戶外重點區必備防風保暖裝備 (毛帽/手套/圍巾)。</li>
@@ -228,8 +172,8 @@
                 <li><strong>中午：</strong>熊本市區午餐 (推薦：勝烈亭豬排 新市街本店)。</li>
                 <li><strong>下午：</strong>
                     <ul>
-                        <li><strong>UNIQLO 新市街店：</strong><span class="note">💡餐廳旁走路2分鐘！補齊保暖裝備。</span></li>
-                        <li><strong>熊本熊部長辦公室：</strong><span class="note">💡查好表演時間。</span></li>
+                        <li><strong>UNIQLO 新市街店：</strong><span class="note">💡餐廳旁走路2分鐘！補齊 Heattech、羽絨衣等上山裝備。</span></li>
+                        <li><strong>熊本熊部長辦公室：</strong><span class="note">💡查好表演時間提早卡位。</span></li>
                         <li><strong>城彩苑：</strong>傍晚逛街吃點心。<span class="note">(今日先在城外活動，保留體力)</span></li>
                     </ul>
                 </li>
@@ -267,8 +211,8 @@
         <div class="day-card" id="day4">
             <div class="day-title">Day 4 (1/23 五)：絕景公路移動日 (阿蘇➔由布院)</div>
             <ul>
-                <li><strong>10:00</strong> 準時退房，行駛 **山並公路**。<span class="note">⚠️冬季慢行。中途必停「瀨之本高原休息站」。</span></li>
-                <li><strong>中途停留：</strong>**九重夢大吊橋**。<span class="note">💡風大寒冷。</span></li>
+                <li><strong>10:00</strong> 準時退房，行駛 **山並公路**。<span class="note">⚠️冬季慢行。中途必停「瀨之本高原休息站」上廁所。</span></li>
+                <li><strong>中途停留：</strong>**九重夢大吊橋**。<span class="note">💡風大寒冷，請穿戴保暖。</span></li>
                 <li><strong>午餐：</strong>吊橋遊客中心吃漢堡。</li>
                 <li><strong>下午：</strong>抵達由布院 ➔ **湯之坪街道** ➔ **金鱗湖** 黃昏散步。</li>
                 <li><strong>晚餐：</strong>飯店內懷石料理。</li>
@@ -279,7 +223,7 @@
         <div class="day-card" id="day5">
             <div class="day-title">Day 5 (1/24 六)：別府親子雙重奏 (+重要備案)</div>
             <ul>
-                <li><strong>09:00 出發：</strong>**九州自然動物園**。<span class="note">⭐務必一開園搶搭「叢林巴士」。</span></li>
+                <li><strong>09:00 出發：</strong>**九州自然動物園**。<span class="note">⭐務必一開園搶搭「叢林巴士」餵獅子。</span></li>
                 <li><strong>下午 (主行程)：</strong>**三麗鷗和諧樂園**。</li>
                 <li><strong>☔ 天氣/興趣備案：</strong>
                     <ul>
@@ -296,11 +240,11 @@
         <div class="day-card" id="day6">
             <div class="day-title">Day 6 (1/25 日)：跨越北九州 (避開塞車策略)</div>
             <ul>
-                <li><strong>上午 (早鳥)：</strong>07:30 散步去金鱗湖看晨霧，回飯店吃早餐。</li>
-                <li><strong>10:00 退房：</strong>開車前往北九州小倉 (約1.5hr)。<span class="note">💡中途必停「別府灣SA」看海景。</span></li>
+                <li><strong>上午 (早鳥)：</strong>07:30 散步去金鱗湖看晨霧，回飯店吃早餐。<span class="note">💡冬季晨霧絕景。</span></li>
+                <li><strong>10:00 退房：</strong>開車前往北九州小倉 (約1.5hr)。<span class="note">💡中途必停「別府灣SA」看海景上廁所。</span></li>
                 <li><strong>中午 (小倉)：</strong>參觀 **小倉城** (互動好玩)，周邊午餐。</li>
                 <li><strong>下午 (門司)：</strong>體驗 **關門海峽人行隧道** (跨縣界)。</li>
-                <li><strong>傍晚 (戰略晚餐)：</strong>前往 **AEON MALL 福津** 吃晚餐。<span class="note">⭐避開進福岡市區塞車潮，吃飽逛完再回飯店。</span></li>
+                <li><strong>傍晚 (戰略晚餐)：</strong>前往 **AEON MALL 福津** 吃晚餐。<span class="note">⭐避開進福岡市區的塞車潮，吃飽逛完再回飯店。</span></li>
                 <li><strong>19:40：</strong>抵達福岡飯店 Check-in。</li>
                 <li><strong>🏠 住宿：</strong>福岡貝塚 Vessel Hotel</li>
             </ul>
@@ -376,35 +320,74 @@
             </ul>
         </div>
 
+        <div class="drive-section" id="drive">
+            <div class="time-title" style="color:#2980b9;">🚗 廁所補給站 & 開車指南</div>
+            <ul>
+                <li><strong>Day 2 (往阿蘇)：</strong>必停「道の駅 大津」。</li>
+                <li><strong>Day 4 (往由布院)：</strong>山路長，必停「瀨之本高原休息站」或「長者原遊客中心」。</li>
+                <li><strong>Day 6 (往北九州)：</strong>高速公路，必停「別府灣 Service Area」看海。</li>
+                <li><strong>Day 6 (往福岡)：</strong>避開塞車，必停「AEON MALL 福津」晚餐。</li>
+                <li><strong>車型建議：</strong>Sienta (第三排收起放行李)。山路下坡善用 B 檔。</li>
+            </ul>
+        </div>
+
         <div class="guide-section" id="guide">
-            <h2>📘 特別收錄：重點區域攻略</h2>
-            <h3>1. 🏯 熊本城 (Day 1-2)</h3>
-            <ul><li>D1 逛城彩苑，D2 一早 9:00 進天守閣。</li></ul>
-            <h3>2. 🚗 廁所補給站</h3>
-            <ul><li>往阿蘇: 道之驛大津 / 往由布院: 瀨之本高原 / 往福岡: 別府灣SA、AEON福津。</li></ul>
-            <h3>3. 🏰 北九州名勝 (Day 6)</h3>
-            <ul><li>小倉城(互動好玩)、關門海峽隧道(走路跨縣界)。</li></ul>
-            <h3>4. 🗼 百道濱區 (Day 7)</h3>
-            <ul><li>teamLab(必預約)、海濱公園看夕陽、福岡塔夜景。</li></ul>
-            <h3>5. 🛍️ 購物攻略 (Day 1 & 8)</h3>
+            <h2>📘 區域深度攻略 (按日期排序)</h2>
+            
+            <h3>1. 🏯 熊本城 & 城彩苑 (Day 1/2)</h3>
             <ul>
-                <li>D1 (熊本): UNIQLO 新市街店買保暖衣物。</li>
-                <li>D8 (LaLaport): 買鋼彈、玩具、童裝。</li>
-                <li>D8 (機場): 買伴手禮、高單價美妝 (免稅區大且新)。</li>
+                <li><h4>✨ 親子亮點：</h4>熊本城旁有一個<strong>「湧湧座 (Wakuwakuza)」</strong>歷史文化體驗館，小孩可以體驗穿忍者服或武士服(虛擬或實體)，比單純看城牆有趣。</li>
+                <li><h4>🍦 城彩苑必吃：</h4>海膽可樂餅、熊本熊人形燒。</li>
+                <li><h4>💡 小撇步：</h4>天守閣裡面有現代化冷暖氣與電梯，不用擔心小孩爬樓梯太累，頂樓風景超好。</li>
+            </ul>
+
+            <h3>2. 🌋 阿蘇火山 & 草千里 (Day 2/3)</h3>
+            <ul>
+                <li><h4>🚁 必玩體驗 (直升機)：</h4>強烈推薦去<strong>「卡德利動物樂園」</strong>搭乘。雖然貴一點，但冬季山頂風大常停飛，這裡起飛率高，能帶小孩飛越火山口看冒煙，震撼度滿分。</li>
+                <li><h4>☕ 草千里之冬：</h4>冬天是一片銀白世界。必去<strong>「Kusasenri Coffee Roastery」</strong>，在溫暖的室內透過落地窗看火山喝咖啡。若天氣好，停車場旁還有騎馬體驗。</li>
+                <li><h4>🥩 必吃美食 (赤牛丼)：</h4>半熟嫩牛肉鋪滿的赤牛丼是阿蘇名物。推薦<strong>「Imakin食堂」</strong>(需排隊) 或 <strong>「Restauran Hanamizuki」</strong>。</li>
+                <li><h4>☔ 壞天氣備案：</h4>阿蘇山上天氣變化大，若遇大霧或暴風雪，請直接轉往<strong>「阿蘇農場 (Aso Farm Land)」</strong>，有超大室內體能場「元氣之森」。</li>
+            </ul>
+
+            <h3>3. 🧸 由布院親子散策 (Day 4/5)</h3>
+            <ul>
+                <li><h4>✨ 必訪體驗：</h4>
+                    <ul>
+                        <li><strong>Floral Village (童話村)：</strong>Day 4 下午去，像走進哈利波特場景，還可餵小動物。</li>
+                        <li><strong>金鱗湖晨霧：</strong>Day 5 一早 (7:00-8:00) 雖然冷但必看。</li>                        
+                    </ul>
+                </li>
+                <li><h4>🛍️ 卡通名店：</h4>橡子之森 (大龍貓)、SNOOPY 茶屋 (日式庭園風)、Miffy 森之廚房。</li>
+                <li><h4>🍰 必吃美食：</h4>
+                    <ul>
+                        <li><strong>金賞可樂餅：</strong>冷天吃熱炸物最棒。</li>
+                        <li><strong>Milch 半熟起司蛋糕：</strong>必點「熱的」，用湯匙挖著吃。</li>
+                        <li><strong>B-Speak 生乳捲：</strong>想買小切片請在中午前到。</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>4. 🏰 北九州：小倉城 & 門司港 (Day 6)</h3>
+            <ul>
+                <li><h4>✨ 親子亮點 (小倉城)：</h4>小倉城內部已經改裝成互動樂園！有「和諸侯賽跑」的互動遊戲、還有流鏑馬射箭遊戲，這不是無聊的古蹟，是遊樂場。</li>
+                <li><h4>🌉 必看 (門司港)：</h4><strong>「藍翼門司吊橋」</strong>每天10:00-16:00整點會有開橋秀(音樂噴泉)，小孩會覺得橋打開很神奇。</li>
+                <li><h4>🚶‍♂️ 體驗：</h4>走「關門海峽海底隧道」時，中間有福岡縣與山口縣的交界線，一定要讓小孩在此拍照「一腳跨兩縣」。</li>
+            </ul>
+
+            <h3>5. 🗼 福岡百道濱區 (Day 7)</h3>
+            <ul>
+                <li><h4>📲 teamLab Forest 攻略：</h4>
+                    入場前請先下載 <strong>「Catching and Collecting Forest」APP</strong>。進場後用手機瞄準牆上的動物「射出箭」，抓到後會建立自己的動物圖鑑，這是小孩最瘋狂的環節！
+                </li>
+                <li><h4>🌇 福岡塔：</h4>建議安排在teamLab之後，剛好是黃昏轉夜景的時間，塔上有戀人聖地和超大落地窗。</li>
+            </ul>
+
+            <h3>6. 🛍️ LaLaport 鋼彈 & 購物 (Day 8)</h3>
+            <ul>
+                <li><h4>🤖 鋼彈表演：</h4>1:1 Nu鋼彈立像通常在整點會有頭部與手部動作表演(約2分鐘)。</li>
+                <li><h4>🎮 4F 孩子天堂：</h4>除了鋼彈基地，旁邊還有 Namco 遊戲中心和各種轉蛋機，請預留零錢。</li>
             </ul>
         </div>
-
-        <div class="aso-section" id="aso">
-            <div class="aso-title">🌋 阿蘇深度攻略</div>
-            <ul>
-                <li><strong>直升機：</strong>推薦「卡德利動物樂園」(起飛率高)。</li>
-                <li><strong>草千里：</strong>冬季雪白草原超美。</li>
-                <li><strong>滑雪：</strong>九重滑雪場專攻「兒童雪盆區」。</li>
-                <li><strong>雨備：</strong>阿蘇農場 Aso Farm Land。</li>
-            </ul>
-        </div>
-
-        <p style="text-align: center; margin-top: 50px; color: #888;">祝您們全家旅途愉快，滿載美好回憶！✈️🎒👨‍👩‍👧‍👦</p>
     </div>
 
     <div class="toc-btn" onclick="toggleToc()">☰</div>
@@ -417,8 +400,8 @@
         <a href="#cost" onclick="toggleToc()">💰 費用統計</a>
         <a href="#time" onclick="toggleToc()">⏰ 出發時間</a>
         <a href="#coffee" onclick="toggleToc()">☕ 咖啡地圖</a>
-        <a href="#guide" onclick="toggleToc()">📘 五大攻略</a>
-        <a href="#aso" onclick="toggleToc()">🌋 阿蘇攻略</a>
+        <a href="#drive" onclick="toggleToc()">🚗 開車攻略</a>
+        <a href="#guide" onclick="toggleToc()">📘 區域攻略</a>
     </div>
 
     <script>
@@ -468,6 +451,6 @@
                 modal.style.display = "none";
             }
         }
-    </script>     
+    </script>      
 </body>
 </html>
