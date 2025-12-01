@@ -22,6 +22,10 @@
             --aso-color: #27ae60;       
             --tip-color: #d35400;       
             --drive-color: #2980b9;     
+            --nav-border: #3f51b5;      /* 導航邊框色 */
+            --nav-bg: #e8eaf6;          /* 導航背景色 */
+            --weather-bg: #e1f5fe;      /* 天氣背景色 */
+            --weather-border: #0288d1;  /* 天氣邊框色 */
             --toc-bg: rgba(93, 64, 55, 0.95);
         }
         html { scroll-behavior: smooth; }
@@ -85,6 +89,12 @@
         .guide-section-wrapper { background-color: #e0f2f1; padding: 25px; border-radius: 12px; border: 2px solid #4db6ac; margin-top: 40px; }
         .guide-section-wrapper .slide-group { margin-bottom: 10px; }
 
+        /* 天氣區塊專用樣式 */
+        .weather-section { background-color: var(--weather-bg); padding: 25px; border-radius: 12px; border: 2px solid var(--weather-border); margin-top: 20px; }
+        .weather-title { color: #0277bd; margin-bottom: 5px; }
+        .weather-link { display: inline-block; margin-top: 15px; padding: 8px 15px; background-color: #0288d1; color: white; text-decoration: none; border-radius: 20px; font-size: 0.9em; font-weight: bold; transition: background 0.3s; }
+        .weather-link:hover { background-color: #01579b; }
+
         /* 浮動目錄樣式 */
         .toc-btn {
             position: fixed; bottom: 30px; 
@@ -135,6 +145,36 @@
         
         .reader-only-title { display: none; }
 
+        /* ================= 導航表格無縫拼接 CSS ================= */
+        #nav-mapcode, 
+        #nav-mapcode + .slide-group, 
+        #nav-mapcode + .slide-group + .slide-group {
+            margin-bottom: 0 !important;
+        }
+
+        .nav-merge-top { 
+            border-bottom: none !important; 
+            border-radius: 12px 12px 0 0 !important; 
+            padding-bottom: 5px !important;
+            z-index: 3; position: relative;
+        }
+        .nav-merge-mid { 
+            border-top: none !important; 
+            border-bottom: none !important; 
+            border-radius: 0 !important; 
+            padding-top: 5px !important; 
+            padding-bottom: 5px !important;
+            margin-top: -2px !important;
+            z-index: 2; position: relative;
+        }
+        .nav-merge-bot { 
+            border-top: none !important; 
+            border-radius: 0 0 12px 12px !important; 
+            padding-top: 5px !important;
+            margin-top: -2px !important;
+            z-index: 1; position: relative;
+        }
+
         /* ================= 閱讀模式核心 CSS ================= */
         
         body.reader-active { overflow: hidden; }
@@ -162,6 +202,22 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.5);
             z-index: 10001; 
             animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* 閱讀模式下：強制重置導航表格樣式為獨立卡片 */
+        body.reader-active .nav-merge-top,
+        body.reader-active .nav-merge-mid,
+        body.reader-active .nav-merge-bot {
+            border: 2px solid var(--nav-border) !important;
+            border-radius: 12px !important;
+            margin-top: 0 !important;
+            padding: 25px !important;
+            background-color: var(--nav-bg) !important;
+        }
+        body.reader-active #nav-mapcode, 
+        body.reader-active #nav-mapcode + .slide-group, 
+        body.reader-active #nav-mapcode + .slide-group + .slide-group {
+            margin-bottom: 20px !important;
         }
 
         body.reader-active .slide-group.active-slide.image-only {
@@ -229,7 +285,7 @@
         <div class="slide-group">
             <h1>
                 🇹🇼🇯🇵 2026 冬 九州親子自駕8日
-                <span class="version-info">Ver. 21 (更新：2025/11/29)</span>
+                <span class="version-info">Ver. 24 (更新：2025/11/29)</span>
             </h1>
             <img src="imgs/1048004.png" class="slide-img" alt="行程封面">
         </div>
@@ -270,6 +326,34 @@
             </div>
         </div>
 
+        <div class="slide-group" id="weather-info">
+            <div class="weather-section">
+                <div class="section-title-large weather-title">🌦️ 旅途天氣預報 (1月歷史均溫)</div>
+                <p class="note" style="color: #0277bd;">※ 此為歷史數據參考，山區(阿蘇/由布院)體感約 -5°C，請務必洋蔥式穿搭。</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="background-color: #b3e5fc; color: #01579b;">日期</th>
+                            <th style="background-color: #b3e5fc; color: #01579b;">地點</th>
+                            <th style="background-color: #b3e5fc; color: #01579b;">天氣/氣溫 (參考)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1/20 (二)</td><td>熊本市</td><td>☁️ 多雲 (2°C ~ 11°C)</td></tr>
+                        <tr><td>1/21 (三)</td><td>阿蘇山</td><td>❄️ <strong>降雪機率高</strong> (-4°C ~ 4°C)</td></tr>
+                        <tr><td>1/22 (四)</td><td>阿蘇/九重</td><td>❄️ <strong>滑雪場</strong> (-6°C ~ 1°C)</td></tr>
+                        <tr><td>1/23 (五)</td><td>由布院</td><td>🌫️ 晨霧/寒冷 (-1°C ~ 7°C)</td></tr>
+                        <tr><td>1/24 (六)</td><td>別府</td><td>⛅ 晴時多雲 (3°C ~ 9°C)</td></tr>
+                        <tr><td>1/25 (日)</td><td>門司/小倉</td><td>🌬️ 海風強勁 (4°C ~ 10°C)</td></tr>
+                        <tr><td>1/26 (一)</td><td>福岡市</td><td>☁️ 多雲 (3°C ~ 11°C)</td></tr>
+                        <tr><td>1/27 (二)</td><td>福岡機場</td><td>⛅ 晴朗 (3°C ~ 11°C)</td></tr>
+                    </tbody>
+                </table>
+                <a href="https://weather.yahoo.co.jp/weather/" target="_blank" class="weather-link">🔗 出發前點此查詢日本即時天氣 (Yahoo JP)</a>
+            </div>
+        </div>
+
         <div class="slide-group" id="day1">
             <h2 style="margin-top:0">🗺️ Day 1 (1/20 二)</h2>
             <div class="day-card">
@@ -277,6 +361,7 @@
                 <ul>
                     <li><strong>10:35</strong> 抵達熊本 ➔ <strong>11:30 機場取車</strong>。</li>
                     <li><strong>中午：</strong>熊本市區午餐 (勝烈亭豬排)。</li>
+                    <li><strong>🍢 必吃小吃：</strong>いきなり団子 (紅豆地瓜)、辛子蓮藕。</li>
                     <li><strong>下午：</strong>
                         <ul>
                             <li><strong>UNIQLO 新市街店：</strong>補齊上山裝備。</li>
@@ -297,6 +382,7 @@
                 <ul>
                     <li><strong>09:00</strong> 準時<strong>「進去」參觀熊本城</strong>。</li>
                     <li><strong>中午：</strong>開車往阿蘇 (1.5hr)。<span class="note">必停「道の駅 大津」。</span></li>
+                    <li><strong>🍢 必吃小吃：</strong>阿蘇澤西牛乳霜淇淋 (草千里)、高菜飯。</li>
                     <li><strong>下午 (阿蘇)：</strong>
                         <ul>
                             <li><strong>直升機體驗：</strong>推薦「卡德利動物樂園」。</li>
@@ -315,6 +401,7 @@
                 <div class="day-title">阿蘇歡樂玩雪日</div>
                 <ul>
                     <li><strong>全日目標：</strong>**九重森林公園滑雪場**。<span class="note">專攻「兒童雪盆區」。</span></li>
+                    <li><strong>🍢 必吃小吃：</strong>滑雪場食堂的熱咖哩飯、暖呼呼玉米濃湯。</li>
                     <li><strong>☔ 備案：</strong>**阿蘇農場 (Aso Farm Land)** 或回飯店泡湯。</li>
                     <li><strong>🏠 住宿：</strong>阿蘇 湯巡追莊 (續住)</li>
                 </ul>
@@ -330,6 +417,7 @@
                     <li><strong>中途停留：</strong>**九重夢大吊橋**。</li>
                     <li><strong>午餐：</strong>吊橋遊客中心漢堡。</li>
                     <li><strong>下午：</strong>抵達由布院 ➔ **湯之坪** ➔ **金鱗湖**。</li>
+                    <li><strong>🍢 必吃小吃：</strong>金賞可樂餅、Milch 布丁、B-Speak 蛋糕捲。</li>
                     <li><strong>🏠 住宿：</strong>由布院 UBL 飯店 (懷石料理)</li>
                 </ul>
             </div>
@@ -342,6 +430,7 @@
                 <ul>
                     <li><strong>09:00 出發：</strong>**九州自然動物園**。<span class="note">搶搭「叢林巴士」。</span></li>
                     <li><strong>下午：</strong>**三麗鷗和諧樂園**。</li>
+                    <li><strong>🍢 必吃小吃：</strong>地獄蒸布丁 (別府)、大分炸雞天婦羅 (Toriten)。</li>
                     <li><strong>☔ 備案：</strong>大分海洋宮殿水族館「海之卵」。</li>
                     <li><strong>🏠 住宿：</strong>由布院 UBL 飯店 (續住)</li>
                 </ul>
@@ -356,6 +445,7 @@
                     <li><strong>上午：</strong>07:30 金鱗湖晨霧。10:00 退房往北九州。</li>
                     <li><strong>中午 (小倉)：</strong>參觀 **小倉城**。</li>
                     <li><strong>下午 (門司)：</strong>**關門海峽人行隧道**。</li>
+                    <li><strong>🍢 必吃小吃：</strong>門司港燒咖哩 (Yaki Curry)、鐵鍋餃子。</li>
                     <li><strong>晚餐：</strong>**AEON MALL 福津** (避開福岡市區塞車)。</li>
                     <li><strong>🏠 住宿：</strong>福岡貝塚 Vessel Hotel</li>
                 </ul>
@@ -368,6 +458,7 @@
                 <div class="day-title">海陸空制霸 + 百道濱</div>
                 <ul>
                     <li><strong>上午：</strong>**海中之道海洋世界** (海豚秀)。</li>
+                    <li><strong>🍢 必吃小吃：</strong>明太子法國麵包 (Full Full)、博多豚骨拉麵。</li>
                     <li><strong>下午：</strong>**teamLab Forest Fukuoka**。</li>
                     <li><strong>傍晚：</strong>**百道海濱公園** ➔ **福岡塔** 夜景。</li>
                     <li><strong>🏠 住宿：</strong>福岡貝塚 Vessel Hotel (續住)</li>
@@ -383,6 +474,7 @@
                     <li><strong>上午：</strong>10:30 退房前往 **LaLaport**。</li>
                     <li><strong>午餐/逛街：</strong>看 1:1 Nu 鋼彈、補貨。</li>
                     <li><strong>14:30：</strong>前往機場，避開車潮。</li>
+                    <li><strong>🍢 必買伴手禮：</strong>努努雞 (冷炸雞)、博多通利蒙、Menbei 仙貝。</li>
                     <li><strong>15:00：</strong>機場還車 ➔ 免稅店採購。</li>
                     <li><strong>19:10：</strong>搭機返台。</li>
                 </ul>
@@ -517,11 +609,71 @@
             </div>
         </div>
 
+        <div class="slide-group" id="nav-mapcode">
+            <div class="drive-section nav-merge-top" style="border-color: var(--nav-border); background-color: var(--nav-bg);">
+                <h2 class="section-title-large" style="color: #283593;">🛰️ 導航資訊 (1/3) - 熊本/阿蘇</h2>
+                <p class="note" style="color: #3f51b5;">※ 租車導航請優先輸入 MapCode，若無則輸入電話。<br>※ 此表包含主要景點與住宿點。</p>
+                
+                <h4>📍 熊本 & 阿蘇區域</h4>
+                <table>
+                    <thead><tr><th>地點</th><th>MapCode</th><th>電話 (備用)</th></tr></thead>
+                    <tbody>
+                        <tr><td>熊本機場 (取車)</td><td>415 440 317*41</td><td>096-232-2311</td></tr>
+                        <tr><td>熊本城飯店</td><td>29 459 485*82</td><td>096-326-3311</td></tr>
+                        <tr><td>城彩苑 (停車場)</td><td>29 489 267*58</td><td>096-288-5600</td></tr>
+                        <tr><td>阿蘇 湯巡追莊</td><td>256 657 512*82</td><td>0967-32-0622</td></tr>
+                        <tr><td>卡德利動物樂園</td><td>256 423 487*30</td><td>0967-34-2020</td></tr>
+                        <tr><td>阿蘇火山 (草千里)</td><td>256 456 835*36</td><td>0967-34-2111</td></tr>
+                        <tr><td>九重森林滑雪場</td><td>440 629 036*55</td><td>0973-79-2200</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="slide-group">
+            <div class="drive-section nav-merge-mid" style="border-color: var(--nav-border); background-color: var(--nav-bg);">
+                <h2 class="section-title-large reader-only-title" style="color: #283593;">🛰️ 導航資訊 (2/3) - 由布院/別府</h2>
+                
+                <h4>📍 由布院 & 別府區域</h4>
+                <table>
+                    <thead><tr><th>地點</th><th>MapCode</th><th>電話 (備用)</th></tr></thead>
+                    <tbody>
+                        <tr><td>九重夢大吊橋</td><td>269 012 125*14</td><td>0973-73-3800</td></tr>
+                        <tr><td>由布院 UBL 飯店</td><td>269 359 521*55</td><td>0977-84-3111</td></tr>
+                        <tr><td>九州自然動物園</td><td>46 635 545*60</td><td>0978-48-2331</td></tr>
+                        <tr><td>和諧樂園 (Kitty)</td><td>46 833 460*58</td><td>0977-73-1111</td></tr>
+                        <tr><td>海之卵水族館</td><td>46 405 660*71</td><td>097-534-1010</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="slide-group">
+            <div class="drive-section nav-merge-bot" style="border-color: var(--nav-border); background-color: var(--nav-bg);">
+                <h2 class="section-title-large reader-only-title" style="color: #283593;">🛰️ 導航資訊 (3/3) - 福岡/北九州</h2>
+                
+                <h4>📍 北九州 & 福岡區域</h4>
+                <table>
+                    <thead><tr><th>地點</th><th>MapCode</th><th>電話 (備用)</th></tr></thead>
+                    <tbody>
+                        <tr><td>小倉城</td><td>16 465 525*33</td><td>093-561-1210</td></tr>
+                        <tr><td>門司港 (停車場)</td><td>3 634 322*11</td><td>093-321-4151</td></tr>
+                        <tr><td>AEON MALL 福津</td><td>13 738 238*85</td><td>0940-38-5600</td></tr>
+                        <tr><td>福岡 Vessel 貝塚</td><td>13 469 663*55</td><td>092-642-0101</td></tr>
+                        <tr><td>海中之道水族館</td><td>13 522 795*55</td><td>092-603-0400</td></tr>
+                        <tr><td>teamLab (巨蛋旁)</td><td>13 345 547*55</td><td>092-844-1189</td></tr>
+                        <tr><td>LaLaport 福岡</td><td>13 162 481*63</td><td>092-707-9820</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div> <div class="toc-btn" onclick="toggleToc()">☰</div>
     <div class="toc-menu" id="tocMenu">
         <a href="#top" onclick="toggleToc()">🏠 回到頂部</a>
         <a href="#info-flights" onclick="toggleToc()">✈️ 資訊與航班</a>
         <a href="#checklist" onclick="toggleToc()">🚨 行前檢查</a>
+        <a href="#weather-info" onclick="toggleToc()">🌦️ 天氣預報</a>
         <a href="#day1" onclick="toggleToc()">📅 每日行程</a>
         <a href="#hotels" onclick="toggleToc()">🏨 住宿資訊</a>
         <a href="#cost" onclick="toggleToc()">💰 費用統計</a>
@@ -529,6 +681,7 @@
         <a href="#coffee" onclick="toggleToc()">☕ 咖啡地圖</a>
         <a href="#drive" onclick="toggleToc()">🚗 開車攻略</a>
         <a href="#guide" onclick="toggleToc()">📘 區域攻略</a>
+        <a href="#nav-mapcode" onclick="toggleToc()">🛰️ 導航 MapCode</a>
         <a href="javascript:void(0)" class="reader-mode-link" onclick="toggleReaderMode(); toggleToc();">📖 開啟閱讀模式</a>
     </div>
 
