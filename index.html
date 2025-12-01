@@ -53,7 +53,7 @@
         h4 { color: #5d4037; margin-top: 15px; margin-bottom: 5px; font-size: 1em; font-weight: bold; }
         
         /* 區塊樣式 */
-        .info-box { background-color: #fff8e1; padding: 20px; border-radius: 8px; margin-bottom: 30px; border: 1px solid #ffe0b2; }
+        .info-box { background-color: #fff8e1; padding: 20px; border-radius: 8px; margin-bottom: 30px; border: 1px solid #ffe0b2; margin-top: 0; }
         .warning-box { background-color: #ffebee; border: 2px solid var(--warning-color); padding: 20px; border-radius: 8px; margin-bottom: 30px; }
         .warning-title { color: var(--warning-color); font-weight: bold; font-size: 1.1em; margin-bottom: 10px; display: flex; align-items: center; }
         .day-card { border-left: 4px solid var(--accent-color); padding-left: 20px; margin-bottom: 40px; scroll-margin-top: 80px; }
@@ -71,7 +71,6 @@
         ul { padding-left: 20px; } li { margin-bottom: 8px; }
 
         /* 特殊區塊顏色 (網頁模式標題設定) */
-        /* 調整：確保這裡的 font-size 足夠大，恢復原本設計 */
         .section-title-large { font-size: 1.5em; font-weight: bold; margin-bottom: 20px; display: flex; align-items: center; }
         
         .time-section { background-color: #fffde7; padding: 25px; border-radius: 12px; border: 2px solid #fbc02d; margin-top: 20px; }
@@ -221,7 +220,7 @@
     <div id="reader-overlay"></div>
 
     <div class="reader-top-bar">
-        <span id="page-counter">1 / 30</span>
+        <span id="page-counter">1 / 31</span>
         <button class="ctrl-btn" style="background:transparent; border:1px solid #aaa; font-size:14px;" onclick="toggleReaderMode()">❌ 退出模式</button>
     </div>
 
@@ -240,6 +239,19 @@
             <img src="imgs/1048004.png" class="slide-img" alt="行程封面">
         </div>
 
+        <div class="slide-group" id="info-flights">
+            <div class="info-box">
+                <p><strong>📅 日期：</strong>2026/01/20 (二) ～ 01/27 (二)</p>
+                <p><strong>👨‍👩‍👧‍👦 成員：</strong>2位大人、2位小孩（9歲 & 3歲）</p>
+            </div>
+            
+            <h2 id="flights">✈️ 航班資訊 (星宇航空)</h2>
+            <ul>
+                <li><strong>去程 (JX846)：</strong>1/20 07:30 TPE ➔ 10:35 KMJ</li>
+                <li><strong>回程 (JX841)：</strong>1/27 19:10 FUK ➔ 20:50 TPE</li>
+            </ul>
+        </div>
+
         <div class="image-grid-wrapper">
             <div class="slide-group image-only"><img src="imgs/1047581.jpg" class="slide-img" alt="圖片1"></div>
             <div class="slide-group image-only"><img src="imgs/1047582.jpg" class="slide-img" alt="圖片2"></div>
@@ -252,10 +264,6 @@
         </div>
 
         <div class="slide-group" id="info">
-            <div class="info-box">
-                <p><strong>📅 日期：</strong>2026/01/20 (二) ～ 01/27 (二)</p>
-                <p><strong>👨‍👩‍👧‍👦 成員：</strong>2位大人、2位小孩（9歲 & 3歲）</p>
-            </div>
             <div class="warning-box" id="checklist">
                 <div class="warning-title">🚨 行前最重要！關鍵檢查表</div>
                 <ul>
@@ -265,11 +273,6 @@
                     <li><strong>🧥 冬季穿著：</strong>戶外重點區必備防風保暖裝備。</li>
                 </ul>
             </div>
-            <h2 id="flights">✈️ 航班資訊 (星宇航空)</h2>
-            <ul>
-                <li><strong>去程 (JX846)：</strong>1/20 07:30 TPE ➔ 10:35 KMJ</li>
-                <li><strong>回程 (JX841)：</strong>1/27 19:10 FUK ➔ 20:50 TPE</li>
-            </ul>
         </div>
 
         <div class="slide-group" id="day1">
