@@ -87,26 +87,39 @@
 
         /* 浮動目錄樣式 */
         .toc-btn {
-            position: fixed; bottom: 85px; right: 20px; width: 50px; height: 50px;
+            position: fixed; bottom: 30px; 
+            right: 20px; width: 60px; height: 60px;
             background-color: var(--accent-color); color: white; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            font-size: 28px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             cursor: pointer; z-index: 9997; transition: transform 0.3s;
         }
         .toc-btn:hover { transform: scale(1.1); background-color: #d35400; }
+        
         .toc-menu {
-            position: fixed; bottom: 150px; right: 20px;
+            position: fixed; bottom: 100px;
+            right: 20px;
             background-color: var(--toc-bg); padding: 15px; border-radius: 12px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2); z-index: 9996;
-            display: none; width: 200px; backdrop-filter: blur(5px);
+            display: none; width: 220px; backdrop-filter: blur(5px);
         }
         .toc-menu a {
             display: block; color: #fff; text-decoration: none;
-            padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.95em; transition: padding-left 0.2s;
+            padding: 12px 10px; border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 1em; transition: padding-left 0.2s;
         }
         .toc-menu a:last-child { border-bottom: none; }
         .toc-menu a:hover { padding-left: 15px; color: #ffcc80; }
+        
+        .reader-mode-link { 
+            font-weight: bold; 
+            background-color: rgba(255, 255, 255, 0.1); 
+            border-radius: 6px; 
+            margin-top: 5px; 
+            color: #ffeb3b !important; 
+        }
+        .reader-mode-link:hover { background-color: rgba(255, 255, 255, 0.2); }
+
         .toc-show { display: block; animation: slideUp 0.3s ease-out; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -118,10 +131,8 @@
         
         .slide-group { margin-bottom: 20px; display: block; }
         
-        /* 網頁模式圖片雙欄 */
         .slide-group.image-only { width: 50%; padding: 5px; box-sizing: border-box; }
         
-        /* 輔助類：控制只在閱讀模式顯示的標題 */
         .reader-only-title { display: none; }
 
         /* ================= 閱讀模式核心 CSS ================= */
@@ -133,18 +144,14 @@
         }
         body.reader-active .slide-group { display: none !important; }
 
-        /* 閱讀模式：顯示隱藏的標題 */
         body.reader-active .reader-only-title { display: block; margin-top: 0; }
 
-        /* 閱讀模式：特殊區塊標題放大 */
         body.reader-active .section-title-large { font-size: 1.8em; margin-bottom: 25px; }
 
-        /* 閱讀模式：隱藏 Guide Wrapper 樣式 */
         body.reader-active .guide-section-wrapper {
             display: contents; background: none; border: none; padding: 0; margin: 0;
         }
 
-        /* 閱讀模式：一般內容卡片樣式 */
         body.reader-active .slide-group.active-slide {
             display: block !important;
             position: fixed; top: 50%; left: 50%;
@@ -157,7 +164,6 @@
             animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* 閱讀模式：純圖片 Slide 設定 */
         body.reader-active .slide-group.active-slide.image-only {
             background: transparent; box-shadow: none; padding: 0; 
             width: 100%; height: 100%; max-width: none; max-height: none;
@@ -169,7 +175,6 @@
             object-fit: contain; box-shadow: 0 0 20px rgba(0,0,0,0.8);
         }
 
-        /* 控制按鈕列 */
         .reader-controls, .reader-top-bar {
             display: none; position: fixed; left: 0; width: 100%;
             background: rgba(50, 50, 50, 0.9); z-index: 10002;
@@ -187,16 +192,6 @@
         }
         .ctrl-btn:hover { background: #d35400; }
         
-        #mode-toggle-btn {
-            position: fixed; bottom: 20px; right: 20px;
-            background-color: #2980b9; color: white;
-            border: none; border-radius: 50px;
-            padding: 12px 24px; font-size: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            cursor: pointer; z-index: 9998; transition: transform 0.2s;
-        }
-        #mode-toggle-btn:hover { transform: scale(1.05); }
-
         @keyframes popIn {
             from { opacity: 0; transform: translate(-50%, -40%) scale(0.9); }
             to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
@@ -396,14 +391,14 @@
 
         <div class="slide-group" id="hotels" style="margin-bottom: 0;">
             <h2 id="cost">🏨 住宿訂房明細</h2>
-            <div class="hotel-card"><div class="hotel-name">D1: 熊本城飯店 (Kumamoto Hotel Castle)</div><ul><li>入住: 1/20 (15:00) | 退房: 1/21 (12:00)</li><li>房型: 特別和洋室 70m² | 費用: JPY 41,200 (現場付)</li></ul></div>
-            <div class="hotel-card"><div class="hotel-name">D2-3: 阿蘇 湯巡追莊 (Yumeoiso) [2晚]</div><ul><li>入住: 1/21 (15:00) | 退房: 1/23 (10:00)</li><li>房型: 半露天風呂付 3床房 | 餐食: 一泊二食 Buffet</li><li>費用: JPY 127,600 (現場付)</li></ul></div>
+            <div class="hotel-card"><div class="hotel-name">Day 1: 熊本城飯店 (Kumamoto Hotel Castle)</div><ul><li>入住: 1/20 (15:00) | 退房: 1/21 (12:00)</li><li>房型: 特別和洋室 70m² | 費用: JPY 41,200 (現場付)</li></ul></div>
+            <div class="hotel-card"><div class="hotel-name">Day 2-3: 阿蘇 湯巡追莊 (Yumeoiso) [2晚]</div><ul><li>入住: 1/21 (15:00) | 退房: 1/23 (10:00)</li><li>房型: 半露天風呂付 3床房 | 餐食: 一泊二食 Buffet</li><li>費用: JPY 127,600 (現場付)</li></ul></div>
         </div>
 
         <div class="slide-group" style="margin-top: 20px;">
             <h2 class="reader-only-title">🏨 住宿訂房明細 (續)</h2>
-            <div class="hotel-card"><div class="hotel-name">D4-5: 由布院 UBL 飯店 [2晚]</div><ul><li>入住: 1/23 (15:00) | 退房: 1/25 (10:00)</li><li>房型: 標準日式客房 | 餐食: 一泊二食 懷石</li><li>費用: JPY 89,207 (已扣款) + 入湯稅 (現場付)</li></ul></div>
-            <div class="hotel-card"><div class="hotel-name">D6-7: 福岡貝塚 Vessel Hotel [2晚]</div><ul><li>入住: 1/25 (12:00後) | 退房: 1/27 (11:00)</li><li>房型: 寬敞雙床房 (併床) | 餐食: 含早餐</li><li>費用: JPY 35,412 (現場付)</li></ul></div>
+            <div class="hotel-card"><div class="hotel-name">Day 4-5: 由布院 UBL 飯店 [2晚]</div><ul><li>入住: 1/23 (15:00) | 退房: 1/25 (10:00)</li><li>房型: 標準日式客房 | 餐食: 一泊二食 懷石</li><li>費用: JPY 89,207 (已扣款) + 入湯稅 (現場付)</li></ul></div>
+            <div class="hotel-card"><div class="hotel-name">Day 6-7: 福岡貝塚 Vessel Hotel [2晚]</div><ul><li>入住: 1/25 (12:00後) | 退房: 1/27 (11:00)</li><li>房型: 寬敞雙床房 (併床) | 餐食: 含早餐</li><li>費用: JPY 35,412 (現場付)</li></ul></div>
         </div>
 
         <div class="slide-group" id="cost-table">
@@ -441,14 +436,14 @@
             <div class="coffee-section">
                 <div class="section-title-large coffee-title">☕ 每日拿鐵補給站</div>
                 <ul>
-                    <li><strong>D1 熊本：</strong>Gluck Coffee Spot</li>
-                    <li><strong>D2 阿蘇：</strong>Kusasenri Coffee (草千里)</li>
-                    <li><strong>D3 阿蘇：</strong>道之驛阿蘇</li>
-                    <li><strong>D4 由布院：</strong>Cafe La Ruche</li>
-                    <li><strong>D5 別府：</strong>Carandonel</li>
-                    <li><strong>D6 小倉：</strong>Parts Of Life</li>
-                    <li><strong>D7 福岡：</strong>RHC CAFE</li>
-                    <li><strong>D8 LaLaport：</strong>倉式珈琲店</li>
+                    <li><strong>Day 1 熊本：</strong>Gluck Coffee Spot</li>
+                    <li><strong>Day 2 阿蘇：</strong>Kusasenri Coffee (草千里)</li>
+                    <li><strong>Day 3 阿蘇：</strong>道之驛阿蘇</li>
+                    <li><strong>Day 4 由布院：</strong>Cafe La Ruche</li>
+                    <li><strong>Day 5 別府：</strong>Carandonel</li>
+                    <li><strong>Day 6 小倉：</strong>Parts Of Life</li>
+                    <li><strong>Day 7 福岡：</strong>RHC CAFE</li>
+                    <li><strong>Day 8 LaLaport：</strong>倉式珈琲店</li>
                 </ul>
             </div>
         </div>
@@ -522,13 +517,11 @@
             </div>
         </div>
 
-    </div> <button id="mode-toggle-btn" onclick="toggleReaderMode()">📖 開啟閱讀模式</button>
-    
-    <div class="toc-btn" onclick="toggleToc()">☰</div>
+    </div> <div class="toc-btn" onclick="toggleToc()">☰</div>
     <div class="toc-menu" id="tocMenu">
         <a href="#top" onclick="toggleToc()">🏠 回到頂部</a>
+        <a href="#info-flights" onclick="toggleToc()">✈️ 資訊與航班</a>
         <a href="#checklist" onclick="toggleToc()">🚨 行前檢查</a>
-        <a href="#flights" onclick="toggleToc()">✈️ 航班資訊</a>
         <a href="#day1" onclick="toggleToc()">📅 每日行程</a>
         <a href="#hotels" onclick="toggleToc()">🏨 住宿資訊</a>
         <a href="#cost" onclick="toggleToc()">💰 費用統計</a>
@@ -536,6 +529,7 @@
         <a href="#coffee" onclick="toggleToc()">☕ 咖啡地圖</a>
         <a href="#drive" onclick="toggleToc()">🚗 開車攻略</a>
         <a href="#guide" onclick="toggleToc()">📘 區域攻略</a>
+        <a href="javascript:void(0)" class="reader-mode-link" onclick="toggleReaderMode(); toggleToc();">📖 開啟閱讀模式</a>
     </div>
 
     <div id="imageModal" class="modal">
@@ -579,7 +573,6 @@
         const body = document.body;
         const overlay = document.getElementById('reader-overlay');
         const pageCounter = document.getElementById('page-counter');
-        const toggleBtn = document.getElementById('mode-toggle-btn');
         const tocBtn = document.querySelector('.toc-btn');
 
         function toggleReaderMode() {
@@ -589,14 +582,12 @@
                 // 關閉閱讀模式
                 body.classList.remove('reader-active');
                 overlay.style.display = 'none';
-                toggleBtn.style.display = 'block';
                 tocBtn.style.display = 'flex'; // 顯示目錄按鈕
                 slideGroups.forEach(s => s.classList.remove('active-slide'));
             } else {
                 // 開啟閱讀模式
                 body.classList.add('reader-active');
                 overlay.style.display = 'block';
-                toggleBtn.style.display = 'none';
                 tocBtn.style.display = 'none'; // 隱藏目錄按鈕
                 showSlide(0);
             }
