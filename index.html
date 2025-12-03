@@ -17,7 +17,7 @@
             --accent-color: #e67e22;    
             --warning-color: #c0392b;   
             --bg-color: #fdf6e3;        
-            --card-bg: #ffffff;          
+            --card-bg: #ffffff;           
             --coffee-color: #6f4e37;    
             --aso-color: #27ae60;        
             --tip-color: #d35400;        
@@ -27,7 +27,8 @@
             --weather-bg: #e1f5fe;      /* 天氣背景色 */
             --weather-border: #0288d1;  /* 天氣邊框色 */
             --toc-bg: rgba(93, 64, 55, 0.95);
-            --backup-bg: #f3e5f5;       /* 雨備背景色 */
+            /* --- 修改處 1：備案背景色改為柔和綠 --- */
+            --backup-bg: #f1f8e9;       /* 雨備背景色 (鼠尾草綠) */
             --shop-bg: #fff3e0;         /* 購物背景色 */
             --shop-border: #e67e22;     /* 購物邊框色 */
             --coupon-color: #e91e63;    /* 折價券文字色 */
@@ -72,16 +73,16 @@
         .hotel-name { font-weight: bold; font-size: 1.1em; color: var(--primary-color); }
         .note { font-size: 0.9em; color: #8d6e63; font-style: italic; display: block; margin-top: 5px; }
         
-        /* 備案樣式 */
+        /* --- 修改處 2：備案文字與邊框配色 (改為柔和綠色系) --- */
         .backup-plan {
             background-color: var(--backup-bg);
             padding: 8px 12px;
             border-radius: 6px;
-            color: #4a148c;
+            color: #33691e;           /* 深綠色文字 */
             font-weight: bold;
             display: block;
             margin-top: 8px;
-            border-left: 3px solid #ab47bc;
+            border-left: 3px solid #8bc34a; /* 草綠色邊框 */
         }
 
         /* 購物清單樣式 */
@@ -358,6 +359,9 @@
             
             /* 住宿表格專用：縮小內距以塞入4欄 */
             #cost-table td { padding: 6px 3px !important; font-size: 0.8em; }
+            
+            /* --- 修改處 3：手機版住宿表格的「金額欄」強制靠右對齊 --- */
+            #cost-table td:last-child { text-align: right !important; }
             
             /* 調整天氣表格欄位寬度與對齊 */
             .weather-section td:nth-child(1) { width: 15%; white-space: nowrap; text-align: center; } /* 日期 */
