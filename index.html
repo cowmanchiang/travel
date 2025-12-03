@@ -27,6 +27,7 @@
             --weather-bg: #e1f5fe;      /* 天氣背景色 */
             --weather-border: #0288d1;  /* 天氣邊框色 */
             --toc-bg: rgba(93, 64, 55, 0.95);
+            --backup-bg: #f3e5f5;       /* 雨備背景色 */
         }
         html { scroll-behavior: smooth; }
         body { 
@@ -66,6 +67,18 @@
         .hotel-name { font-weight: bold; font-size: 1.1em; color: var(--primary-color); }
         .note { font-size: 0.9em; color: #8d6e63; font-style: italic; display: block; margin-top: 5px; }
         
+        /* 備案樣式 */
+        .backup-plan {
+            background-color: var(--backup-bg);
+            padding: 8px 12px;
+            border-radius: 6px;
+            color: #4a148c;
+            font-weight: bold;
+            display: block;
+            margin-top: 8px;
+            border-left: 3px solid #ab47bc;
+        }
+
         /* 表格樣式 */
         table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.95em; }
         th, td { border: 1px solid #e0e0e0; padding: 12px; text-align: left; } 
@@ -296,7 +309,7 @@
         <div class="slide-group">
             <h1>
                 🇹🇼🇯🇵 2026 冬 九州親子自駕8日
-                <span class="version-info">Ver. 26 (更新：2025/12/02)</span>
+                <span class="version-info">Ver. 28 (更新：2025/12/03)</span>
             </h1>
             <img src="imgs/1048004.png" class="slide-img" alt="行程封面">
         </div>
@@ -382,6 +395,7 @@
                     </li>
                     <li><strong>晚餐：</strong>馬肉料理或熊本拉麵。</li>
                     <li><strong>🏠 住宿：</strong>熊本城飯店</li>
+                    <li class="backup-plan">☔ 雨雪備案：下通商店街 (全區有屋頂)、SAKURA MACHI 購物中心 (室內)。</li>
                 </ul>
             </div>
         </div>
@@ -402,6 +416,7 @@
                     </li>
                     <li><strong>傍晚：</strong>飯店 Check-in 溫泉晚餐。</li>
                     <li><strong>🏠 住宿：</strong>阿蘇 湯巡追莊 (霜降牛吃到飽!)</li>
+                    <li class="backup-plan">☔ 雨雪備案：阿蘇火山博物館 (草千里旁室內)、阿蘇農場 Aso Farm Land (室內巨蛋)。</li>
                 </ul>
             </div>
         </div>
@@ -413,8 +428,8 @@
                 <ul>
                     <li><strong>全日目標：</strong>**九重森林公園滑雪場**。<span class="note">專攻「兒童雪盆區」。</span></li>
                     <li><strong>🍢 必吃小吃：</strong>滑雪場食堂的熱咖哩飯、暖呼呼玉米濃湯。</li>
-                    <li><strong>☔ 備案：</strong>**阿蘇農場 (Aso Farm Land)** 或回飯店泡湯。</li>
                     <li><strong>🏠 住宿：</strong>阿蘇 湯巡追莊 (續住)</li>
+                    <li class="backup-plan">☔ 暴風雪備案：改去「阿蘇農場 (元気の森)」室內運動區，或飯店溫泉耍廢。</li>
                 </ul>
             </div>
         </div>
@@ -430,6 +445,7 @@
                     <li><strong>下午：</strong>抵達由布院 ➔ **湯之坪** ➔ **金鱗湖**。</li>
                     <li><strong>🍢 必吃小吃：</strong>金賞可樂餅、Milch 布丁、B-Speak 蛋糕捲。</li>
                     <li><strong>🏠 住宿：</strong>由布院 UBL 飯店 (懷石料理)</li>
+                    <li class="backup-plan">☔ 雨雪備案：由布院彩繪玻璃美術館、Comico Art Museum (隈研吾建築)、岩下收藏館。</li>
                 </ul>
             </div>
         </div>
@@ -442,8 +458,8 @@
                     <li><strong>09:00 出發：</strong>**九州自然動物園**。<span class="note">搶搭「叢林巴士」。</span></li>
                     <li><strong>下午：</strong>**三麗鷗和諧樂園**。</li>
                     <li><strong>🍢 必吃小吃：</strong>地獄蒸布丁 (別府)、大分炸雞天婦羅 (Toriten)。</li>
-                    <li><strong>☔ 備案：</strong>大分海洋宮殿水族館「海之卵」。</li>
                     <li><strong>🏠 住宿：</strong>由布院 UBL 飯店 (續住)</li>
+                    <li class="backup-plan">☔ 雨雪備案：大分海洋宮殿水族館「海之卵」(室內為主)、別府竹細工傳統產業會館。</li>
                 </ul>
             </div>
         </div>
@@ -459,6 +475,7 @@
                     <li><strong>🍢 必吃小吃：</strong>門司港燒咖哩 (Yaki Curry)、鐵鍋餃子。</li>
                     <li><strong>晚餐：</strong>**AEON MALL 福津** (避開福岡市區塞車)。</li>
                     <li><strong>🏠 住宿：</strong>福岡貝塚 Vessel Hotel</li>
+                    <li class="backup-plan">☔ 雨雪備案：九州鐵道紀念館 (門司港/室內)、北九州市立自然史博物館 (生命之旅/恐龍)。</li>
                 </ul>
             </div>
         </div>
@@ -473,6 +490,7 @@
                     <li><strong>下午：</strong>**teamLab Forest Fukuoka**。</li>
                     <li><strong>傍晚：</strong>**百道海濱公園** ➔ **福岡塔** 夜景。</li>
                     <li><strong>🏠 住宿：</strong>福岡貝塚 Vessel Hotel (續住)</li>
+                    <li class="backup-plan">☔ 雨雪備案：福岡市科學館 (六本松/室內互動多)、Mark Is 福岡 (百道濱大型商場)。</li>
                 </ul>
             </div>
         </div>
@@ -488,6 +506,7 @@
                     <li><strong>🍢 必買伴手禮：</strong>努努雞 (冷炸雞)、博多通利蒙、Menbei 仙貝。</li>
                     <li><strong>15:00：</strong>機場還車 ➔ 免稅店採購。</li>
                     <li><strong>19:10：</strong>搭機返台。</li>
+                    <li class="backup-plan">☔ 雨雪備案：LaLaport 為全室內商場，無須擔心天氣。</li>
                 </ul>
             </div>
         </div>
@@ -644,6 +663,11 @@
                             <td><a href="https://goo.gl/maps/search/?api=1&query=32.8041,130.7042" target="_blank">29 489 267*58</a><br><span class="note">(即停車場入口)</span></td>
                             <td>096-288-5600</td>
                         </tr>
+                        <tr>
+                            <td style="background-color: var(--backup-bg);">☔ SAKURA MACHI (室內商場)</td>
+                            <td><a href="https://goo.gl/maps/search/?api=1&query=32.7990,130.7056" target="_blank">29 459 644*63</a></td>
+                            <td>096-354-1111</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -677,6 +701,16 @@
                             <td><a href="https://goo.gl/maps/search/?api=1&query=33.1090,131.2177" target="_blank">440 629 036*55</a></td>
                             <td>0973-79-2200</td>
                         </tr>
+                        <tr>
+                            <td style="background-color: var(--backup-bg);">☔ 阿蘇火山博物館 (室內)</td>
+                            <td><a href="https://goo.gl/maps/search/?api=1&query=32.8847,131.0514" target="_blank">256 456 770*85</a></td>
+                            <td>0967-34-2111</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: var(--backup-bg);">☔ 阿蘇農場 (元気の森)</td>
+                            <td><a href="https://goo.gl/maps/search/?api=1&query=32.8988,131.0069" target="_blank">256 512 856*85</a></td>
+                            <td>0967-67-2100</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -699,6 +733,16 @@
                             <td><a href="http://www.yufuin-ublhotel.jp/" target="_blank">🏨 由布院 UBL 飯店</a><br><span class="note">🅿️ 飯店專用停車場</span></td>
                             <td><a href="https://goo.gl/maps/search/?api=1&query=33.2687,131.3687" target="_blank">269 359 521*55</a></td>
                             <td>0977-84-3111</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: var(--backup-bg);">☔ 由布院彩繪玻璃美術館</td>
+                            <td><a href="https://goo.gl/maps/search/?api=1&query=33.2566,131.3630" target="_blank">269 328 355*55</a></td>
+                            <td>0977-84-5575</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: var(--backup-bg);">☔ Comico Art Museum</td>
+                            <td><a href="https://goo.gl/maps/search/?api=1&query=Comico+Art+Museum+Yufuin" target="_blank">Google Map</a></td>
+                            <td>0977-28-8830</td>
                         </tr>
                     </tbody>
                 </table>
@@ -728,6 +772,11 @@
                             <td><a href="https://goo.gl/maps/search/?api=1&query=33.2647,131.5317" target="_blank">46 405 660*71</a></td>
                             <td>097-534-1010</td>
                         </tr>
+                        <tr>
+                            <td style="background-color: var(--backup-bg);">☔ 別府竹細工傳統產業會館</td>
+                            <td><a href="https://goo.gl/maps/search/?api=1&query=33.3031,131.4727" target="_blank">46 437 816*30</a></td>
+                            <td>0977-23-1072</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -753,6 +802,16 @@
                             <td><a href="https://www.mojiko.info/" target="_blank">⚓ 門司港懷舊區</a><br><span class="note">🅿️ 門司港懷舊停車場</span></td>
                             <td><a href="https://goo.gl/maps/search/?api=1&query=33.9463,130.9615" target="_blank">3 634 322*11</a><br><span class="note">(即停車場入口)</span></td>
                             <td>093-321-4151</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: var(--backup-bg);">☔ 九州鐵道紀念館</td>
+                            <td><a href="https://goo.gl/maps/search/?api=1&query=33.9431,130.9592" target="_blank">3 714 075*25</a></td>
+                            <td>093-322-1006</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: var(--backup-bg);">☔ 生命之旅博物館 (恐龍)</td>
+                            <td><a href="https://goo.gl/maps/search/?api=1&query=33.8682,130.8105" target="_blank">16 343 325*17</a></td>
+                            <td>093-681-1011</td>
                         </tr>
                     </tbody>
                 </table>
@@ -794,6 +853,16 @@
                             <td><a href="https://mitsui-shopping-park.com/lalaport/fukuoka/" target="_blank">🤖 LaLaport 福岡</a><br><span class="note">🅿️ 商場停車場 (鋼彈旁)</span></td>
                             <td><a href="https://goo.gl/maps/search/?api=1&query=33.5658,130.4419" target="_blank">13 162 481*63</a></td>
                             <td>092-707-9820</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: var(--backup-bg);">☔ 福岡市科學館 (六本松)<br><span class="note">※無停車場，請停周邊付費車位</span></td>
+                            <td><a href="https://goo.gl/maps/search/?api=1&query=33.5788,130.3789" target="_blank">13 255 798*52</a></td>
+                            <td>092-731-2525</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: var(--backup-bg);">☔ Mark Is 福岡 (百道濱)</td>
+                            <td><a href="https://goo.gl/maps/search/?api=1&query=33.5932,130.3637" target="_blank">13 344 863*52</a></td>
+                            <td>092-407-1111</td>
                         </tr>
                     </tbody>
                 </table>
