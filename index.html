@@ -31,6 +31,8 @@
             --shop-bg: #fff3e0;         /* 購物背景色 */
             --shop-border: #e67e22;     /* 購物邊框色 */
             --coupon-color: #e91e63;    /* 折價券文字色 */
+            --fish-color: #0288d1;      /* 釣魚區塊色 */
+            --fish-bg: #e1f5fe;         /* 釣魚背景色 */
         }
         html { scroll-behavior: smooth; }
         body { 
@@ -99,6 +101,7 @@
             color: var(--coupon-color);
             font-weight: bold;
             text-decoration: underline;
+            margin-left: 5px;
         }
 
         /* 表格樣式 */
@@ -323,41 +326,49 @@
             .slide-group.image-only { width: 50%; } 
 
             /* ----- 導航表格手機版優化 (卡片式) ----- */
-            /* 只對導航相關表格與一般表格套用卡片模式，但排除天氣表格 */
+            /* 1. 只對導航相關表格與一般表格套用卡片模式 */
+            /* 2. 排除天氣表格 (.weather-section table) */
+            /* 3. 排除住宿費用表格 (#cost-table table) */
             table, thead, tbody, th, td, tr { display: block; }
             
-            /* --- ⚠️ 天氣表格修正區 (開始) --- */
-            /* 強制將天氣區塊表格改回正常表格顯示，不使用卡片堆疊 */
-            .weather-section table { display: table !important; border-collapse: collapse; width: 100%; }
-            .weather-section thead { display: table-header-group !important; }
-            .weather-section tbody { display: table-row-group !important; }
-            .weather-section tr { 
+            /* --- ⚠️ 天氣表格 & 住宿費用表格修正區 (開始) --- */
+            /* 強制將這些表格改回正常表格顯示，不使用卡片堆疊 */
+            .weather-section table, #cost-table table { display: table !important; border-collapse: collapse; width: 100%; }
+            .weather-section thead, #cost-table thead { display: table-header-group !important; }
+            .weather-section tbody, #cost-table tbody { display: table-row-group !important; }
+            .weather-section tr, #cost-table tr { 
                 display: table-row !important; 
                 margin-bottom: 0; 
                 border: none; 
                 box-shadow: none; 
                 grid-template-columns: none !important; 
             }
-            .weather-section thead tr { position: static !important; } /* 顯示標題列 */
-            .weather-section th, .weather-section td { 
+            .weather-section thead tr, #cost-table thead tr { position: static !important; } /* 顯示標題列 */
+            
+            /* 統一單元格樣式 */
+            .weather-section th, .weather-section td, #cost-table th, #cost-table td { 
                 display: table-cell !important; 
                 border: 1px solid #e0e0e0 !important; 
                 padding: 5px !important; 
                 text-align: left; 
                 font-size: 0.85em; 
             }
-            .weather-section th { background-color: #b3e5fc; color: #01579b; font-weight: bold; text-align: center; }
+            .weather-section th, #cost-table th { background-color: #b3e5fc; color: #01579b; font-weight: bold; text-align: center; }
+            #cost-table th { background-color: #fff3e0; color: var(--primary-color); } /* 住宿表格標題維持暖色 */
+            
+            /* 住宿表格專用：縮小內距以塞入4欄 */
+            #cost-table td { padding: 6px 3px !important; font-size: 0.8em; }
             
             /* 調整天氣表格欄位寬度與對齊 */
             .weather-section td:nth-child(1) { width: 15%; white-space: nowrap; text-align: center; } /* 日期 */
             .weather-section td:nth-child(2) { width: 15%; white-space: nowrap; text-align: center; } /* 地點 */
             .weather-section td:nth-child(3) { text-align: left; } /* 天氣 */
 
-            /* ⚠️ 關鍵修正：強制移除天氣表格內的假元素圖示 (車子/電話) */
-            .weather-section td::before { content: none !important; }
+            /* ⚠️ 關鍵修正：強制移除表格內的假元素圖示 (車子/電話) */
+            .weather-section td::before, #cost-table td::before { content: none !important; }
 
-            /* 覆寫卡片模式對第一欄的特殊設定 */
-            .weather-section td:nth-of-type(1) {
+            /* 覆寫卡片模式對第一欄的特殊設定 (還原成普通欄位) */
+            .weather-section td:nth-of-type(1), #cost-table td:nth-of-type(1) {
                 grid-column: auto !important;
                 border-bottom: 1px solid #e0e0e0 !important;
                 padding-bottom: 5px !important;
@@ -365,14 +376,14 @@
                 color: inherit !important;
                 font-weight: normal !important;
             }
-            /* --- 天氣表格修正區 (結束) --- */
+            /* --- 天氣表格 & 住宿表格修正區 (結束) --- */
 
-            /* 以下為導航/住宿表格的卡片式設定 */
-            /* 隱藏標題列 (排除天氣表格) */
-            table:not(.weather-section table) thead tr { position: absolute; top: -9999px; left: -9999px; }
+            /* 以下為導航表格的卡片式設定 (使用更精確的選擇器) */
+            /* 隱藏標題列 (排除天氣與住宿表格) */
+            table:not(.weather-section table):not(#cost-table table) thead tr { position: absolute; top: -9999px; left: -9999px; }
             
-            /* 將每一行變成一個卡片 (排除天氣表格) */
-            table:not(.weather-section table) tr { 
+            /* 將每一行變成一個卡片 */
+            table:not(.weather-section table):not(#cost-table table) tr { 
                 display: grid; 
                 grid-template-columns: 1fr 1fr; 
                 border: 1px solid #e0e0e0; 
@@ -384,10 +395,10 @@
             }
             
             /* 清除單元格邊框 */
-            table:not(.weather-section table) td { border: none; padding: 4px 0; position: relative; }
+            table:not(.weather-section table):not(#cost-table table) td { border: none; padding: 4px 0; position: relative; }
             
             /* 地點名稱：佔滿整行，加粗 */
-            table:not(.weather-section table) td:nth-of-type(1) { 
+            table:not(.weather-section table):not(#cost-table table) td:nth-of-type(1) { 
                 grid-column: 1 / -1; 
                 font-weight: bold; 
                 font-size: 1.1em; 
@@ -781,6 +792,36 @@
                     </li>
                 </ul>
             </div>
+
+            <div class="slide-group">
+                <h3>7. 🎟️ 購物與優惠券 (含藥妝/電器)</h3>
+                <ul>
+                    <li><strong>🏔️ Alpen FUKUOKA (博多運河城)：</strong><a href="https://www.alpen-group.jp/campaign/inbound/coupon.html" target="_blank" class="coupon-link">👉 點此開啟優惠券 (官方網站)</a></li>
+                    <li><strong>📸 Bic Camera (必記本)：</strong><a href="https://www.letsgojp.com/coupon/biccamera/" target="_blank" class="coupon-link">👉 點此開啟優惠券 (樂吃購！日本)</a></li>
+                    <li><strong>💊 Cocokarafine (可開嘉來)：</strong><a href="https://www.letsgojp.com/coupon/cocokarafine/" target="_blank" class="coupon-link">👉 點此開啟優惠券 (樂吃購！日本)</a></li>
+                    <li><strong>💊 松本清 (Matsumoto Kiyoshi)：</strong><a href="https://www.letsgojp.com/coupon/matsukiyo/" target="_blank" class="coupon-link">👉 點此開啟優惠券 (樂吃購！日本)</a></li>
+                    <li><strong>🐧 唐吉訶德 (Don Quijote)：</strong><a href="https://www.letsgojp.com/coupon/" target="_blank" class="coupon-link">👉 點此開啟優惠券 (樂吃購！日本)</a></li>
+                    <li><strong>🔌 愛電王 (Edion)：</strong><a href="https://www.letsgojp.com/coupon/" target="_blank" class="coupon-link">👉 點此開啟優惠券 (樂吃購！日本)</a></li>
+                </ul>
+            </div>
+            
+            <div class="slide-group">
+                <h3>8. 🎣 九州親子釣魚指南</h3>
+                <ul>
+                    <li><h4>🛒 推薦釣具店 (補給站)：</h4>
+                        <strong>Fishing Point (釣具のポイント)</strong>：九州最大連鎖。<br>
+                        <span class="note">※ 推薦「八幡本店」(北九州) 或「福岡花畑本店」。可免稅。</span>
+                    </li>
+                    <li><h4>📍 推薦釣點 (親子友善)：</h4>
+                        <strong>1. 福岡市海づり公園：</strong>有護欄、販賣部、租借服務。<br>
+                        <strong>2. 門司港懷舊區：</strong>岸壁安全，目標魚竹莢魚。
+                    </li>
+                    <li><h4>⚠️ 注意事項：</h4>
+                        兒童務必穿著救生衣。垃圾請自行帶走。推薦使用「薩比基 (Sabiki)」釣組。
+                    </li>
+                </ul>
+            </div>
+
         </div>
 
         <div class="slide-group" id="nav-mapcode">
@@ -948,6 +989,11 @@
                             <td>093-321-4151</td>
                         </tr>
                         <tr>
+                            <td style="background-color: var(--fish-bg); border-left: 3px solid var(--fish-color);"><a href="https://www.point-i.jp/shops/1297" target="_blank">🎣 釣具のポイント 八幡本店</a><br><span class="note">※ 北九州最大級釣具店</span></td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&query=32.7990,130.70562" target="_blank">16 341 782*25</a></td>
+                            <td>093-661-3111</td>
+                        </tr>
+                        <tr>
                             <td style="background-color: var(--backup-bg);">☔ <a href="http://www.k-rhm.jp/" target="_blank">九州鐵道紀念館</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=33.9431,130.9592" target="_blank">3 714 075*25</a></td>
                             <td>093-322-1006</td>
@@ -997,6 +1043,31 @@
                             <td><a href="https://mitsui-shopping-park.com/lalaport/fukuoka/" target="_blank">🤖 LaLaport 福岡</a><br><span class="note">🅿️ 商場停車場 (鋼彈旁)</span></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=33.5658,130.4419" target="_blank">13 162 481*63</a></td>
                             <td>092-707-9820</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://canalcity.co.jp/" target="_blank">🛍️ 博多運河城 (Canal City)</a><br><span class="note">※ Alpen/愛電王/松本清</span></td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&query=32.7990,130.70565" target="_blank">13 318 632*52</a></td>
+                            <td>092-282-2525</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.biccamera.com/bc/i/shop/shoplist/shop118.jsp" target="_blank">📸 Bic Camera 天神二號館</a><br><span class="note">🅿️ 需停周邊收費停車場</span></td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&query=32.7990,130.70566" target="_blank">13 317 763*41</a></td>
+                            <td>092-732-1112</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.donki.com/store/shop_detail.php?shop_id=315" target="_blank">🐧 唐吉訶德 箱崎店</a><br><span class="note">🅿️ 免費停車場 (近Vessel飯店)</span></td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&query=32.7990,130.70567" target="_blank">13 469 353*22</a></td>
+                            <td>0570-079-711</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: var(--fish-bg); border-left: 3px solid var(--fish-color);"><a href="https://umizuri.com/" target="_blank">🎣 福岡市海づり公園</a><br><span class="note">※ 需入場費，有租借服務</span></td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&query=32.7990,130.70563" target="_blank">13 431 354*11</a></td>
+                            <td>092-809-2666</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: var(--fish-bg); border-left: 3px solid var(--fish-color);"><a href="https://www.point-i.jp/shops/1296" target="_blank">🎣 釣具のポイント 福岡花畑本店</a><br><span class="note">※ 市區大型釣具店</span></td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&query=32.7990,130.70564" target="_blank">13 086 524*55</a></td>
+                            <td>092-564-3371</td>
                         </tr>
                         <tr>
                             <td style="background-color: var(--backup-bg);">☔ <a href="https://www.fukuokacity-kagakukan.jp/" target="_blank">福岡市科學館 (六本松)</a><br><span class="note">※無停車場，請停周邊付費車位</span></td>
