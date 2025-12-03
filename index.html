@@ -12,92 +12,160 @@
     <title>🇹🇼🇯🇵 2026 冬 九州親子自駕8日</title>
     <style>
         :root {
-            /* 暖色系配色方案 */
-            --primary-color: #5d4037;   
-            --accent-color: #e67e22;    
-            --warning-color: #c0392b;   
-            --bg-color: #fdf6e3;        
-            --card-bg: #ffffff;           
-            --coffee-color: #6f4e37;    
-            --aso-color: #27ae60;        
-            --tip-color: #d35400;        
-            --drive-color: #2980b9;      
-            --nav-border: #3f51b5;      /* 導航邊框色 */
-            --nav-bg: #e8eaf6;          /* 導航背景色 */
-            --weather-bg: #e1f5fe;      /* 天氣背景色 */
-            --weather-border: #0288d1;  /* 天氣邊框色 */
-            --toc-bg: rgba(93, 64, 55, 0.95);
-            /* --- 修改處 1：備案背景色改為柔和綠 --- */
-            --backup-bg: #f1f8e9;       /* 雨備背景色 (鼠尾草綠) */
-            --shop-bg: #fff3e0;         /* 購物背景色 */
-            --shop-border: #e67e22;     /* 購物邊框色 */
-            --coupon-color: #e91e63;    /* 折價券文字色 */
-            --fish-color: #0288d1;      /* 釣魚區塊色 */
-            --fish-bg: #e1f5fe;         /* 釣魚背景色 */
+            /* === 清新冬季藍白配色方案 === */
+            --primary-color: #2c3e50;   /* 主標題：深海軍藍 */
+            --accent-color: #3498db;    /* 強調色：明亮冰藍 */
+            --warning-color: #e74c3c;   /* 警告色：珊瑚紅 */
+            --bg-color: #f0f4f8;        /* 背景：極淡的灰藍色 */
+            --card-bg: #ffffff;         /* 卡片背景：純白 */
+            --text-color: #333333;      /* 正文文字：深灰 */
+            
+            /* 特殊功能色 */
+            --coffee-color: #8e44ad;    /* 咖啡：紫羅蘭色 */
+            --aso-color: #27ae60;       /* 阿蘇綠 */
+            --tip-color: #f39c12;       /* 提示色：溫暖橙 */
+            --toc-bg: rgba(44, 62, 80, 0.95); /* 目錄背景：半透明深藍 */
+
+            /* 表格與區塊微調 */
+            --table-header-bg: #eaf2f8; 
+            --section-border-radius: 16px; 
+
+            /* 衍生變數 */
+            --nav-border: #3498db;      
+            --nav-bg: #eaf2f8;          
+            --weather-bg: #e3f2fd;      
+            --weather-border: #90caf9;  
+            
+            --backup-bg: #e8f5e9;       
+            --backup-text: #2e7d32;     
+            --backup-border: #a5d6a7;   
+
+            --shop-bg: #fff8e1;         
+            --shop-border: #ffcc80;     
+            
+            --coupon-color: #d81b60;    
+            --fish-color: #0277bd;      
+            --fish-bg: #e1f5fe;         
+            --drive-color: #546e7a;     
         }
+
         html { scroll-behavior: smooth; }
+        
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            line-height: 1.6; 
-            color: #4e342e; 
+            line-height: 1.7; 
+            color: var(--text-color); 
             background-color: var(--bg-color); 
             margin: 0; 
             padding: 20px; 
             padding-bottom: 80px; 
+            overflow-x: hidden; 
         }
+
         .container { 
             max-width: 900px; 
             margin: 0 auto; 
             background-color: var(--card-bg); 
             padding: 30px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            border-radius: var(--section-border-radius); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
             position: relative; 
-            border-top: 5px solid var(--accent-color); 
+            border-top: 6px solid var(--accent-color); 
+            z-index: 10; /* 一般模式下層級較低 */
         }
         
         /* 標題與文字樣式 */
-        h1 { color: var(--primary-color); text-align: center; border-bottom: 2px dashed var(--accent-color); padding-bottom: 20px; margin-bottom: 20px; line-height: 1.4; }
-        .version-info { display: block; text-align: right; font-size: 0.4em; color: #7f8c8d; font-weight: normal; line-height: 1.5; margin-top: 2px; }
-        h2 { color: var(--primary-color); border-left: 5px solid var(--accent-color); padding-left: 15px; margin-top: 10px; background-color: #fff3e0; padding: 10px 15px; border-radius: 0 8px 8px 0; scroll-margin-top: 60px; }
-        h3 { color: var(--tip-color); margin-top: 25px; border-bottom: 1px dashed #eee; padding-bottom: 10px; font-size: 1.2em; }
-        h4 { color: #5d4037; margin-top: 15px; margin-bottom: 5px; font-size: 1em; font-weight: bold; }
+        h1 { 
+            color: var(--primary-color); 
+            text-align: center; 
+            border-bottom: 2px dashed var(--accent-color); 
+            padding-bottom: 20px; 
+            margin-bottom: 20px; 
+            line-height: 1.4; 
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .version-info { display: block; text-align: right; font-size: 0.45em; color: #78909c; font-weight: normal; margin-top: 5px; }
         
-        /* 區塊樣式 */
-        .info-box { background-color: #fff8e1; padding: 20px; border-radius: 8px; margin-bottom: 30px; border: 1px solid #ffe0b2; margin-top: 0; }
-        .warning-box { background-color: #ffebee; border: 2px solid var(--warning-color); padding: 20px; border-radius: 8px; margin-bottom: 30px; }
+        h2 { 
+            color: var(--primary-color); 
+            border-left: 5px solid var(--accent-color); 
+            padding-left: 15px; 
+            margin-top: 15px; 
+            background-color: var(--table-header-bg); 
+            padding: 12px 15px; 
+            border-radius: 0 var(--section-border-radius) var(--section-border-radius) 0; 
+            scroll-margin-top: 70px; 
+        }
+        
+        h3 { color: var(--tip-color); margin-top: 30px; border-bottom: 1px dashed #cfd8dc; padding-bottom: 10px; font-size: 1.25em; }
+        h4 { color: var(--primary-color); margin-top: 20px; margin-bottom: 8px; font-size: 1.05em; font-weight: 700; }
+        
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s, opacity 0.2s;
+        }
+        a:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+            color: #2980b9;
+        }
+
+        .info-box { background-color: #fff9c4; padding: 20px; border-radius: 12px; margin-bottom: 30px; border: 1px solid #fff59d; margin-top: 0; color: #555; }
+        
+        .warning-box { 
+            background-color: #ffebee; 
+            border: 2px solid var(--warning-color); 
+            padding: 20px; 
+            border-radius: 12px; 
+            margin-bottom: 30px; 
+        }
         .warning-title { color: var(--warning-color); font-weight: bold; font-size: 1.1em; margin-bottom: 10px; display: flex; align-items: center; }
-        .day-card { border-left: 4px solid var(--accent-color); padding-left: 20px; margin-bottom: 40px; scroll-margin-top: 80px; }
-        .day-title { font-size: 1.3em; font-weight: bold; color: var(--primary-color); margin-bottom: 15px; }
-        .hotel-card { background-color: #fafafa; border: 1px solid #eee; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-        .hotel-name { font-weight: bold; font-size: 1.1em; color: var(--primary-color); }
-        .note { font-size: 0.9em; color: #8d6e63; font-style: italic; display: block; margin-top: 5px; }
         
-        /* --- 修改處 2：備案文字與邊框配色 (改為柔和綠色系) --- */
+        .day-card { 
+            border-left: 4px solid var(--accent-color); 
+            padding-left: 25px; 
+            margin-bottom: 40px; 
+            scroll-margin-top: 80px; 
+        }
+        .day-title { font-size: 1.4em; font-weight: bold; color: var(--primary-color); margin-bottom: 15px; }
+        
+        .hotel-card { 
+            background-color: #fafafa; 
+            border: 1px solid #eee; 
+            padding: 20px; 
+            border-radius: 12px; 
+            margin-bottom: 20px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+        .hotel-name { font-weight: bold; font-size: 1.1em; color: var(--primary-color); }
+        
+        .note { font-size: 0.9em; color: #78909c; font-style: italic; display: block; margin-top: 5px; }
+        
         .backup-plan {
             background-color: var(--backup-bg);
-            padding: 8px 12px;
-            border-radius: 6px;
-            color: #33691e;           /* 深綠色文字 */
+            padding: 10px 15px;
+            border-radius: 8px;
+            color: var(--backup-text);
             font-weight: bold;
             display: block;
-            margin-top: 8px;
-            border-left: 3px solid #8bc34a; /* 草綠色邊框 */
+            margin-top: 10px;
+            border-left: 4px solid var(--backup-border);
         }
 
-        /* 購物清單樣式 */
         .shopping-tag {
             background-color: var(--shop-bg);
-            padding: 8px 12px;
-            border-radius: 6px;
-            color: #d35400;
+            padding: 10px 15px;
+            border-radius: 8px;
+            color: #ef6c00;
             font-weight: bold;
             display: block;
-            margin-top: 8px;
-            border-left: 3px solid var(--shop-border);
+            margin-top: 10px;
+            border-left: 4px solid var(--shop-border);
         }
 
-        /* 折價券連結樣式 */
         .coupon-link {
             color: var(--coupon-color);
             font-weight: bold;
@@ -105,36 +173,40 @@
             margin-left: 5px;
         }
 
-        /* 表格樣式 */
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.95em; }
-        th, td { border: 1px solid #e0e0e0; padding: 12px; text-align: left; } 
-        th:last-child, td:last-child { text-align: right; }
-        th { background-color: #fff3e0; color: var(--primary-color); white-space: nowrap; }
-        .total-row { font-weight: bold; background-color: #fff8e1; }
+        table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 20px; font-size: 0.95em; border: 1px solid #cfd8dc; border-radius: 8px; overflow: hidden; }
+        th, td { border-bottom: 1px solid #cfd8dc; border-right: 1px solid #cfd8dc; padding: 14px; text-align: left; } 
+        th:last-child, td:last-child { border-right: none; text-align: right; }
+        tr:last-child td { border-bottom: none; }
+        
+        th { 
+            background-color: var(--table-header-bg); 
+            color: var(--primary-color); 
+            white-space: nowrap; 
+            font-weight: 600; 
+        }
+        .total-row { font-weight: bold; background-color: #eceff1; }
+        
         ul { padding-left: 20px; } li { margin-bottom: 8px; }
 
-        /* 特殊區塊顏色 (網頁模式標題設定) */
-        .section-title-large { font-size: 1.5em; font-weight: bold; margin-bottom: 20px; display: flex; align-items: center; }
+        .section-title-large { font-size: 1.5em; font-weight: bold; margin-bottom: 20px; display: flex; align-items: center; color: var(--primary-color); }
         
-        .time-section { background-color: #fffde7; padding: 25px; border-radius: 12px; border: 2px solid #fbc02d; margin-top: 20px; }
+        .time-section { background-color: #fffde7; padding: 25px; border-radius: var(--section-border-radius); border: 2px solid #fbc02d; margin-top: 20px; }
         .time-title { color: #f57f17; }
         
-        .coffee-section { background-color: #efebe9; padding: 25px; border-radius: 12px; border: 2px solid var(--coffee-color); margin-top: 20px; }
+        .coffee-section { background-color: #f3e5f5; padding: 25px; border-radius: var(--section-border-radius); border: 2px solid var(--coffee-color); margin-top: 20px; }
         .coffee-title { color: var(--coffee-color); }
         
-        .drive-section { background-color: #e3f2fd; padding: 25px; border-radius: 12px; border: 2px solid var(--drive-color); margin-top: 20px; }
+        .drive-section { background-color: #eceff1; padding: 25px; border-radius: var(--section-border-radius); border: 2px solid var(--drive-color); margin-top: 20px; }
         .drive-title { color: var(--drive-color); }
 
-        .guide-section-wrapper { background-color: #e0f2f1; padding: 25px; border-radius: 12px; border: 2px solid #4db6ac; margin-top: 40px; }
+        .guide-section-wrapper { background-color: #e0f2f1; padding: 25px; border-radius: var(--section-border-radius); border: 2px solid #4db6ac; margin-top: 40px; }
         .guide-section-wrapper .slide-group { margin-bottom: 10px; }
 
-        /* 天氣區塊專用樣式 */
-        .weather-section { background-color: var(--weather-bg); padding: 25px; border-radius: 12px; border: 2px solid var(--weather-border); margin-top: 20px; }
+        .weather-section { background-color: var(--weather-bg); padding: 25px; border-radius: var(--section-border-radius); border: 2px solid var(--weather-border); margin-top: 20px; }
         .weather-title { color: #0277bd; margin-bottom: 5px; }
-        .weather-link { display: inline-block; margin-top: 15px; padding: 8px 15px; background-color: #0288d1; color: white; text-decoration: none; border-radius: 20px; font-size: 0.9em; font-weight: bold; transition: background 0.3s; }
-        .weather-link:hover { background-color: #01579b; }
+        .weather-link { display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: var(--accent-color); color: white; text-decoration: none; border-radius: 50px; font-size: 0.95em; font-weight: bold; transition: background 0.3s; box-shadow: 0 4px 6px rgba(52, 152, 219, 0.2); }
+        .weather-link:hover { background-color: #2980b9; text-decoration: none; opacity: 1;}
 
-        /* 天氣地點連結樣式 (表格內) */
         .weather-location-link {
             color: #0277bd;
             text-decoration: none;
@@ -142,27 +214,26 @@
             font-weight: bold;
         }
         .weather-location-link:hover {
-            color: #d35400;
-            border-bottom: 1px solid #d35400;
+            color: var(--warning-color);
+            border-bottom: 1px solid var(--warning-color);
         }
 
-        /* 浮動目錄樣式 */
         .toc-btn {
             position: fixed; bottom: 30px; 
             right: 20px; width: 60px; height: 60px;
             background-color: var(--accent-color); color: white; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 28px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            font-size: 28px; box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
             cursor: pointer; z-index: 9997; transition: transform 0.3s;
         }
-        .toc-btn:hover { transform: scale(1.1); background-color: #d35400; }
+        .toc-btn:hover { transform: scale(1.1); background-color: #2980b9; }
         
         .toc-menu {
             position: fixed; bottom: 100px;
             right: 20px;
             background-color: var(--toc-bg); padding: 15px; border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2); z-index: 9996;
-            display: none; width: 220px; backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 9996;
+            display: none; width: 220px; backdrop-filter: blur(8px);
         }
         .toc-menu a {
             display: block; color: #fff; text-decoration: none;
@@ -170,35 +241,33 @@
             font-size: 1em; transition: padding-left 0.2s;
         }
         .toc-menu a:last-child { border-bottom: none; }
-        .toc-menu a:hover { padding-left: 15px; color: #ffcc80; }
+        .toc-menu a:hover { padding-left: 15px; color: #81d4fa; }
         
         .reader-mode-link { 
             font-weight: bold; 
-            background-color: rgba(255, 255, 255, 0.1); 
+            background-color: rgba(255, 255, 255, 0.15); 
             border-radius: 6px; 
             margin-top: 5px; 
             color: #ffeb3b !important; 
         }
-        .reader-mode-link:hover { background-color: rgba(255, 255, 255, 0.2); }
+        .reader-mode-link:hover { background-color: rgba(255, 255, 255, 0.25); }
 
         .toc-show { display: block; animation: slideUp 0.3s ease-out; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* ================= 圖片排列設定 ================= */
-        .slide-img { width: 100%; height: auto; display: block; border-radius: 4px; border: 2px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer; transition: opacity 0.3s; }
-        .slide-img:hover { opacity: 0.9; }
+        .slide-img { width: 100%; height: auto; display: block; border-radius: 8px; border: 3px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; transition: opacity 0.3s, transform 0.3s; }
+        .slide-img:hover { opacity: 0.95; transform: scale(1.01); }
 
-        .image-grid-wrapper { display: flex; flex-wrap: wrap; margin: 0 -5px; }
+        .image-grid-wrapper { display: flex; flex-wrap: wrap; margin: 0 -8px; }
         
-        .slide-group { margin-bottom: 20px; display: block; }
+        .slide-group { margin-bottom: 25px; display: block; }
         
-        .slide-group.image-only { width: 50%; padding: 5px; box-sizing: border-box; }
+        .slide-group.image-only { width: 50%; padding: 8px; box-sizing: border-box; }
         
         .reader-only-title { display: none; }
 
-        /* ================= 導航表格無縫拼接 CSS (已更新支援6區塊) ================= */
+        /* ================= 導航表格無縫拼接 CSS ================= */
         
-        /* 針對第1個到第6個導航區塊，強制消除底部間距，讓它們黏在一起 */
         #nav-mapcode, 
         #nav-mapcode + .slide-group, 
         #nav-mapcode + .slide-group + .slide-group,
@@ -208,31 +277,28 @@
             margin-bottom: 0 !important;
         }
 
-        /* 頂部區塊：保留圓角，去掉下邊框 */
         .nav-merge-top { 
             border-bottom: none !important; 
-            border-radius: 12px 12px 0 0 !important; 
+            border-radius: 16px 16px 0 0 !important; 
             padding-bottom: 5px !important;
-            z-index: 6; position: relative; /* z-index 設高一點確保壓在下方區塊上 */
+            z-index: 6; position: relative; 
         }
 
-        /* 中間區塊：去掉上下邊框與圓角，並往上推移覆蓋縫隙 */
         .nav-merge-mid { 
             border-top: none !important; 
             border-bottom: none !important; 
             border-radius: 0 !important; 
             padding-top: 5px !important; 
             padding-bottom: 5px !important;
-            margin-top: -2px !important; /* 關鍵：往上推2px消除接縫 */
+            margin-top: -2px !important; 
             z-index: 5; position: relative;
         }
 
-        /* 底部區塊：去掉上邊框，保留下圓角，並往上推移 */
         .nav-merge-bot { 
             border-top: none !important; 
-            border-radius: 0 0 12px 12px !important; 
+            border-radius: 0 0 16px 16px !important; 
             padding-top: 5px !important;
-            margin-top: -2px !important; /* 關鍵：往上推2px消除接縫 */
+            margin-top: -2px !important; 
             z-index: 4; position: relative;
         }
 
@@ -241,7 +307,7 @@
         body.reader-active { overflow: hidden; }
         #reader-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.9); z-index: 9990; backdrop-filter: blur(5px);
+            background-color: rgba(44, 62, 80, 0.92); z-index: 9990; backdrop-filter: blur(8px);
         }
         body.reader-active .slide-group { display: none !important; }
 
@@ -259,10 +325,18 @@
             transform: translate(-50%, -50%); 
             width: 90%; max-width: 800px; max-height: 85vh;
             overflow-y: auto; 
-            background: white; padding: 25px; border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            background: white; padding: 30px; border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
             z-index: 10001; 
             animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* ⚠️ 重要修正：閱讀模式下，提升容器層級以高於雪花，並移除容器背景 */
+        body.reader-active .container {
+            z-index: 10000; /* 高於雪花的 9995 */
+            background-color: transparent;
+            box-shadow: none;
+            border: none;
         }
 
         /* 閱讀模式下：強制重置導航表格樣式為獨立卡片 */
@@ -270,7 +344,7 @@
         body.reader-active .nav-merge-mid,
         body.reader-active .nav-merge-bot {
             border: 2px solid var(--nav-border) !important;
-            border-radius: 12px !important;
+            border-radius: 16px !important;
             margin-top: 0 !important;
             padding: 25px !important;
             background-color: var(--nav-bg) !important;
@@ -289,52 +363,92 @@
 
         body.reader-active .slide-group.active-slide.image-only img {
             width: auto; height: auto; max-width: 95vw; max-height: 85vh; 
-            object-fit: contain; box-shadow: 0 0 20px rgba(0,0,0,0.8);
+            object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            border: none;
         }
 
         .reader-controls, .reader-top-bar {
             display: none; position: fixed; left: 0; width: 100%;
-            background: rgba(50, 50, 50, 0.9); z-index: 10002;
+            background: rgba(30, 30, 30, 0.9); z-index: 10002;
             box-sizing: border-box;
         }
-        .reader-controls { bottom: 0; padding: 15px; justify-content: space-between; align-items: center; }
-        .reader-top-bar { top: 0; height: 50px; color: white; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .reader-controls { bottom: 0; padding: 20px; justify-content: space-between; align-items: center; }
+        .reader-top-bar { top: 0; height: 60px; color: white; justify-content: space-between; align-items: center; padding: 0 25px; }
         
         body.reader-active .reader-controls, body.reader-active .reader-top-bar { display: flex; }
 
         .ctrl-btn {
-            background: #e67e22; border: none; color: white;
-            padding: 8px 20px; border-radius: 25px;
+            background: var(--accent-color); border: none; color: white;
+            padding: 10px 24px; border-radius: 30px;
             font-size: 16px; cursor: pointer; font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: background 0.2s;
         }
-        .ctrl-btn:hover { background: #d35400; }
+        .ctrl-btn:hover { background: #2980b9; }
         
         @keyframes popIn {
-            from { opacity: 0; transform: translate(-50%, -40%) scale(0.9); }
+            from { opacity: 0; transform: translate(-50%, -40%) scale(0.95); }
             to { opacity: 1; transform: translateY(-50%, -50%) scale(1); }
         }
 
-        .modal { display: none; position: fixed; z-index: 11000; padding-top: 50px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.95); }
+        .modal { display: none; position: fixed; z-index: 11000; padding-top: 50px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.95); backdrop-filter: blur(5px); }
         .modal-content { margin: auto; display: block; width: 80%; max-width: 1200px; max-height: 90vh; object-fit: contain; }
         .close { position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; }
 
-        /* ================= 📱 手機版專屬修正 (已修改) ================= */
+        /* ================= ❄️ 雪花特效 CSS ❄️ ================= */
+        #snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* 讓滑鼠點擊穿透 */
+            z-index: 9995; /* 雪花層級：高於一般內容，但低於閱讀模式內容 */
+            overflow: hidden;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -20px;
+            color: var(--accent-color); /* 冰藍色 */
+            text-shadow: 0 0 2px rgba(0,0,0,0.1); 
+            opacity: 0.8;
+            user-select: none;
+            pointer-events: none; /* 確保單一雪花也不會擋住點擊 */
+            will-change: transform; 
+            
+            animation-name: snowfall;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes snowfall {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(var(--drift), 105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ================= 📱 手機版優化 ================= */
         @media (max-width: 600px) { 
-            body { padding: 10px; padding-bottom: 80px; } 
-            .container { padding: 15px; } 
-            body.reader-active .slide-group.active-slide { width: 95%; padding: 15px; }
-            th, td { padding: 8px; font-size: 0.85em; } 
+            body { padding: 15px; padding-bottom: 90px; } 
+            .container { padding: 20px 15px; } 
+            h1 { font-size: 1.6em; margin-bottom: 20px; }
+
+            body.reader-active .slide-group.active-slide { width: 92%; padding: 20px; }
+            th, td { padding: 10px; font-size: 0.9em; } 
             .slide-group.image-only { width: 50%; } 
 
-            /* ----- 導航表格手機版優化 (卡片式) ----- */
-            /* 1. 只對導航相關表格與一般表格套用卡片模式 */
-            /* 2. 排除天氣表格 (.weather-section table) */
-            /* 3. 排除住宿費用表格 (#cost-table table) */
             table, thead, tbody, th, td, tr { display: block; }
             
-            /* --- ⚠️ 天氣表格 & 住宿費用表格修正區 (開始) --- */
-            /* 強制將這些表格改回正常表格顯示，不使用卡片堆疊 */
-            .weather-section table, #cost-table table { display: table !important; border-collapse: collapse; width: 100%; }
+            .weather-section table, #cost-table table { display: table !important; border-collapse: separate; width: 100%; border-radius: 8px; overflow: hidden;}
             .weather-section thead, #cost-table thead { display: table-header-group !important; }
             .weather-section tbody, #cost-table tbody { display: table-row-group !important; }
             .weather-section tr, #cost-table tr { 
@@ -344,64 +458,54 @@
                 box-shadow: none; 
                 grid-template-columns: none !important; 
             }
-            .weather-section thead tr, #cost-table thead tr { position: static !important; } /* 顯示標題列 */
+            .weather-section thead tr, #cost-table thead tr { position: static !important; }
             
-            /* 統一單元格樣式 */
             .weather-section th, .weather-section td, #cost-table th, #cost-table td { 
                 display: table-cell !important; 
-                border: 1px solid #e0e0e0 !important; 
-                padding: 5px !important; 
+                border-bottom: 1px solid #cfd8dc !important;
+                border-right: 1px solid #cfd8dc !important;
+                padding: 8px !important; 
                 text-align: left; 
                 font-size: 0.85em; 
             }
-            .weather-section th, #cost-table th { background-color: #b3e5fc; color: #01579b; font-weight: bold; text-align: center; }
-            #cost-table th { background-color: #fff3e0; color: var(--primary-color); } /* 住宿表格標題維持暖色 */
+            .weather-section td:last-child, #cost-table td:last-child { border-right: none !important; }
+
+            .weather-section th, #cost-table th { background-color: var(--weather-bg); color: #0277bd; font-weight: bold; text-align: center; }
+            #cost-table th { background-color: #fff3e0; color: #5d4037; }
             
-            /* 住宿表格專用：縮小內距以塞入4欄 */
             #cost-table td { padding: 6px 3px !important; font-size: 0.8em; }
-            
-            /* --- 修改處 3：手機版住宿表格的「金額欄」強制靠右對齊 --- */
             #cost-table td:last-child { text-align: right !important; }
             
-            /* 調整天氣表格欄位寬度與對齊 */
-            .weather-section td:nth-child(1) { width: 15%; white-space: nowrap; text-align: center; } /* 日期 */
-            .weather-section td:nth-child(2) { width: 15%; white-space: nowrap; text-align: center; } /* 地點 */
-            .weather-section td:nth-child(3) { text-align: left; } /* 天氣 */
+            .weather-section td:nth-child(1) { width: 15%; white-space: nowrap; text-align: center; } 
+            .weather-section td:nth-child(2) { width: 15%; white-space: nowrap; text-align: center; } 
+            .weather-section td:nth-child(3) { text-align: left; } 
 
-            /* ⚠️ 關鍵修正：強制移除表格內的假元素圖示 (車子/電話) */
             .weather-section td::before, #cost-table td::before { content: none !important; }
 
-            /* 覆寫卡片模式對第一欄的特殊設定 (還原成普通欄位) */
             .weather-section td:nth-of-type(1), #cost-table td:nth-of-type(1) {
                 grid-column: auto !important;
-                border-bottom: 1px solid #e0e0e0 !important;
-                padding-bottom: 5px !important;
+                border-bottom: 1px solid #cfd8dc !important;
+                padding-bottom: 8px !important;
                 margin-bottom: 0 !important;
                 color: inherit !important;
                 font-weight: normal !important;
             }
-            /* --- 天氣表格 & 住宿表格修正區 (結束) --- */
 
-            /* 以下為導航表格的卡片式設定 (使用更精確的選擇器) */
-            /* 隱藏標題列 (排除天氣與住宿表格) */
             table:not(.weather-section table):not(#cost-table table) thead tr { position: absolute; top: -9999px; left: -9999px; }
             
-            /* 將每一行變成一個卡片 */
             table:not(.weather-section table):not(#cost-table table) tr { 
                 display: grid; 
                 grid-template-columns: 1fr 1fr; 
                 border: 1px solid #e0e0e0; 
-                border-radius: 8px; 
-                margin-bottom: 12px; 
+                border-radius: 12px; 
+                margin-bottom: 15px; 
                 background: #fff; 
-                padding: 10px; 
-                box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+                padding: 12px; 
+                box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             }
             
-            /* 清除單元格邊框 */
             table:not(.weather-section table):not(#cost-table table) td { border: none; padding: 4px 0; position: relative; }
             
-            /* 地點名稱：佔滿整行，加粗 */
             table:not(.weather-section table):not(#cost-table table) td:nth-of-type(1) { 
                 grid-column: 1 / -1; 
                 font-weight: bold; 
@@ -412,14 +516,12 @@
                 color: var(--primary-color);
             }
             
-            /* MapCode：左下 (限制作用於導航區塊) */
             .drive-section td:nth-of-type(2) { 
                 grid-column: 1 / 2; 
                 font-size: 0.95em; 
             }
             .drive-section td:nth-of-type(2)::before { content: "🚗 "; }
             
-            /* 電話：右下 (限制作用於導航區塊) */
             .drive-section td:nth-of-type(3) { 
                 grid-column: 2 / 3; 
                 text-align: right; 
@@ -430,12 +532,14 @@
     </style>
 </head>
 <body id="top">
+    
+    <div id="snow-container"></div>
 
     <div id="reader-overlay"></div>
 
     <div class="reader-top-bar">
         <span id="page-counter">1 / 31</span>
-        <button class="ctrl-btn" style="background:transparent; border:1px solid #aaa; font-size:14px;" onclick="toggleReaderMode()">❌ 退出模式</button>
+        <button class="ctrl-btn" style="background:transparent; border:1px solid #ccc; font-size:14px;" onclick="toggleReaderMode()">❌ 退出模式</button>
     </div>
 
     <div class="reader-controls">
@@ -499,9 +603,9 @@
                 <table>
                     <thead>
                         <tr>
-                            <th style="background-color: #b3e5fc; color: #01579b;">日期</th>
-                            <th style="background-color: #b3e5fc; color: #01579b;">地點</th>
-                            <th style="background-color: #b3e5fc; color: #01579b;">天氣/氣溫 (參考)</th>
+                            <th style="background-color: var(--weather-bg); color: #0277bd;">日期</th>
+                            <th style="background-color: var(--weather-bg); color: #0277bd;">地點</th>
+                            <th style="background-color: var(--weather-bg); color: #0277bd;">天氣/氣溫 (參考)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -842,8 +946,8 @@
 
         <div class="slide-group" id="nav-mapcode">
             <div class="drive-section nav-merge-top" style="border-color: var(--nav-border); background-color: var(--nav-bg);">
-                <h2 class="section-title-large" style="color: #283593;">🛰️ 導航資訊</h2>
-                <p class="note" style="color: #3f51b5;">※ 點擊「MapCode」可開啟 Google Maps 導航。<br>※ 若景點與停車場不同位置，已分別列出。</p>
+                <h2 class="section-title-large" style="color: var(--drive-color);">🛰️ 導航資訊</h2>
+                <p class="note" style="color: var(--primary-color);">※ 點擊「MapCode」可開啟 Google Maps 導航。<br>※ 若景點與停車場不同位置，已分別列出。</p>
                 
                 <h4 style="border-left:4px solid #e74c3c; padding-left:10px; margin-top: 20px;">📍 熊本區域 (Kumamoto)</h4>
                 <table style="margin-top: 5px;">
@@ -876,7 +980,7 @@
 
         <div class="slide-group">
             <div class="drive-section nav-merge-mid" style="border-color: var(--nav-border); background-color: var(--nav-bg);">
-                <h2 class="section-title-large reader-only-title" style="color: #283593;">🛰️ 導航：阿蘇區域</h2>
+                <h2 class="section-title-large reader-only-title" style="color: var(--drive-color);">🛰️ 導航：阿蘇區域</h2>
 
                 <h4 style="border-left:4px solid #27ae60; padding-left:10px; margin-top: 5px;">📍 阿蘇區域 (Aso)</h4>
                 <table style="margin-top: 5px;">
@@ -919,7 +1023,7 @@
 
         <div class="slide-group">
             <div class="drive-section nav-merge-mid" style="border-color: var(--nav-border); background-color: var(--nav-bg);">
-                <h2 class="section-title-large reader-only-title" style="color: #283593;">🛰️ 導航：由布院區域</h2>
+                <h2 class="section-title-large reader-only-title" style="color: var(--drive-color);">🛰️ 導航：由布院區域</h2>
 
                 <h4 style="border-left:4px solid #f39c12; padding-left:10px; margin-top: 5px;">📍 由布院/九重區域 (Yufuin)</h4>
                 <table style="margin-top: 5px;">
@@ -952,7 +1056,7 @@
 
         <div class="slide-group">
             <div class="drive-section nav-merge-mid" style="border-color: var(--nav-border); background-color: var(--nav-bg);">
-                <h2 class="section-title-large reader-only-title" style="color: #283593;">🛰️ 導航：別府區域</h2>
+                <h2 class="section-title-large reader-only-title" style="color: var(--drive-color);">🛰️ 導航：別府區域</h2>
 
                 <h4 style="border-left:4px solid #3498db; padding-left:10px; margin-top: 5px;">📍 別府區域 (Beppu)</h4>
                 <table style="margin-top: 5px;">
@@ -985,7 +1089,7 @@
 
         <div class="slide-group">
             <div class="drive-section nav-merge-mid" style="border-color: var(--nav-border); background-color: var(--nav-bg);">
-                <h2 class="section-title-large reader-only-title" style="color: #283593;">🛰️ 導航：北九州區域</h2>
+                <h2 class="section-title-large reader-only-title" style="color: var(--drive-color);">🛰️ 導航：北九州區域</h2>
 
                 <h4 style="border-left:4px solid #8e44ad; padding-left:10px; margin-top: 5px;">📍 北九州區域 (Kitakyushu)</h4>
                 <table style="margin-top: 5px;">
@@ -1026,7 +1130,7 @@
 
         <div class="slide-group">
             <div class="drive-section nav-merge-bot" style="border-color: var(--nav-border); background-color: var(--nav-bg);">
-                <h2 class="section-title-large reader-only-title" style="color: #283593;">🛰️ 導航：福岡區域</h2>
+                <h2 class="section-title-large reader-only-title" style="color: var(--drive-color);">🛰️ 導航：福岡區域</h2>
 
                 <h4 style="border-left:4px solid #2980b9; padding-left:10px; margin-top: 5px;">📍 福岡區域 (Fukuoka)</h4>
                 <table style="margin-top: 5px;">
@@ -1199,6 +1303,41 @@
             if (e.key === 'ArrowLeft') changeSlide(-1);
             if (e.key === 'Escape') toggleReaderMode();
         });
+
+        // ================= ❄️ 雪花特效 JS ❄️ =================
+        function createSnowflake() {
+            const snow = document.createElement('div');
+            snow.classList.add('snowflake');
+            snow.innerHTML = '❄'; 
+            
+            // 隨機大小 (10px - 25px)
+            const size = Math.random() * 15 + 10 + 'px';
+            snow.style.fontSize = size;
+            
+            // 隨機水平位置 (0% - 100%)
+            snow.style.left = Math.random() * 100 + 'vw';
+            
+            // 隨機飄落時間 (15s - 25s) -> 速度緩慢
+            const duration = Math.random() * 10 + 15;
+            snow.style.animationDuration = duration + 's';
+            
+            // 隨機延遲時間 (0s - 5s)
+            snow.style.animationDelay = Math.random() * 5 + 's';
+            
+            // 隨機水平飄移量 (-100px 到 100px)
+            const drift = (Math.random() * 200 - 100) + 'px';
+            snow.style.setProperty('--drift', drift);
+
+            document.getElementById('snow-container').appendChild(snow);
+
+            // 動畫結束後移除元素
+            setTimeout(() => {
+                snow.remove();
+            }, (duration + 5) * 1000);
+        }
+
+        // 每 500ms 產生一個雪花
+        setInterval(createSnowflake, 500);
     </script>
 </body>
 </html>
