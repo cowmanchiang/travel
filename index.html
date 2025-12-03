@@ -17,11 +17,11 @@
             --accent-color: #e67e22;    
             --warning-color: #c0392b;   
             --bg-color: #fdf6e3;        
-            --card-bg: #ffffff;         
+            --card-bg: #ffffff;          
             --coffee-color: #6f4e37;    
-            --aso-color: #27ae60;       
-            --tip-color: #d35400;       
-            --drive-color: #2980b9;     
+            --aso-color: #27ae60;        
+            --tip-color: #d35400;        
+            --drive-color: #2980b9;      
             --nav-border: #3f51b5;      /* 導航邊框色 */
             --nav-bg: #e8eaf6;          /* 導航背景色 */
             --weather-bg: #e1f5fe;      /* 天氣背景色 */
@@ -129,6 +129,18 @@
         .weather-title { color: #0277bd; margin-bottom: 5px; }
         .weather-link { display: inline-block; margin-top: 15px; padding: 8px 15px; background-color: #0288d1; color: white; text-decoration: none; border-radius: 20px; font-size: 0.9em; font-weight: bold; transition: background 0.3s; }
         .weather-link:hover { background-color: #01579b; }
+
+        /* 天氣地點連結樣式 (表格內) */
+        .weather-location-link {
+            color: #0277bd;
+            text-decoration: none;
+            border-bottom: 1px dotted #0277bd;
+            font-weight: bold;
+        }
+        .weather-location-link:hover {
+            color: #d35400;
+            border-bottom: 1px solid #d35400;
+        }
 
         /* 浮動目錄樣式 */
         .toc-btn {
@@ -295,29 +307,72 @@
         
         @keyframes popIn {
             from { opacity: 0; transform: translate(-50%, -40%) scale(0.9); }
-            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            to { opacity: 1; transform: translateY(-50%, -50%) scale(1); }
         }
 
         .modal { display: none; position: fixed; z-index: 11000; padding-top: 50px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.95); }
         .modal-content { margin: auto; display: block; width: 80%; max-width: 1200px; max-height: 90vh; object-fit: contain; }
         .close { position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; }
 
+        /* ================= 📱 手機版專屬修正 (已修改) ================= */
         @media (max-width: 600px) { 
             body { padding: 10px; padding-bottom: 80px; } 
             .container { padding: 15px; } 
             body.reader-active .slide-group.active-slide { width: 95%; padding: 15px; }
             th, td { padding: 8px; font-size: 0.85em; } 
-            /* 修正：強制手機版也維持 50% 寬度，讓圖片呈現兩張一行 */
             .slide-group.image-only { width: 50%; } 
 
-            /* 導航表格手機版優化：卡片式佈局 */
+            /* ----- 導航表格手機版優化 (卡片式) ----- */
+            /* 只對導航相關表格與一般表格套用卡片模式，但排除天氣表格 */
             table, thead, tbody, th, td, tr { display: block; }
             
-            /* 隱藏標題列 */
-            thead tr { position: absolute; top: -9999px; left: -9999px; }
+            /* --- ⚠️ 天氣表格修正區 (開始) --- */
+            /* 強制將天氣區塊表格改回正常表格顯示，不使用卡片堆疊 */
+            .weather-section table { display: table !important; border-collapse: collapse; width: 100%; }
+            .weather-section thead { display: table-header-group !important; }
+            .weather-section tbody { display: table-row-group !important; }
+            .weather-section tr { 
+                display: table-row !important; 
+                margin-bottom: 0; 
+                border: none; 
+                box-shadow: none; 
+                grid-template-columns: none !important; 
+            }
+            .weather-section thead tr { position: static !important; } /* 顯示標題列 */
+            .weather-section th, .weather-section td { 
+                display: table-cell !important; 
+                border: 1px solid #e0e0e0 !important; 
+                padding: 5px !important; 
+                text-align: left; 
+                font-size: 0.85em; 
+            }
+            .weather-section th { background-color: #b3e5fc; color: #01579b; font-weight: bold; text-align: center; }
             
-            /* 將每一行變成一個卡片 */
-            tr { 
+            /* 調整天氣表格欄位寬度與對齊 */
+            .weather-section td:nth-child(1) { width: 15%; white-space: nowrap; text-align: center; } /* 日期 */
+            .weather-section td:nth-child(2) { width: 15%; white-space: nowrap; text-align: center; } /* 地點 */
+            .weather-section td:nth-child(3) { text-align: left; } /* 天氣 */
+
+            /* ⚠️ 關鍵修正：強制移除天氣表格內的假元素圖示 (車子/電話) */
+            .weather-section td::before { content: none !important; }
+
+            /* 覆寫卡片模式對第一欄的特殊設定 */
+            .weather-section td:nth-of-type(1) {
+                grid-column: auto !important;
+                border-bottom: 1px solid #e0e0e0 !important;
+                padding-bottom: 5px !important;
+                margin-bottom: 0 !important;
+                color: inherit !important;
+                font-weight: normal !important;
+            }
+            /* --- 天氣表格修正區 (結束) --- */
+
+            /* 以下為導航/住宿表格的卡片式設定 */
+            /* 隱藏標題列 (排除天氣表格) */
+            table:not(.weather-section table) thead tr { position: absolute; top: -9999px; left: -9999px; }
+            
+            /* 將每一行變成一個卡片 (排除天氣表格) */
+            table:not(.weather-section table) tr { 
                 display: grid; 
                 grid-template-columns: 1fr 1fr; 
                 border: 1px solid #e0e0e0; 
@@ -329,10 +384,10 @@
             }
             
             /* 清除單元格邊框 */
-            td { border: none; padding: 4px 0; position: relative; }
+            table:not(.weather-section table) td { border: none; padding: 4px 0; position: relative; }
             
             /* 地點名稱：佔滿整行，加粗 */
-            td:nth-of-type(1) { 
+            table:not(.weather-section table) td:nth-of-type(1) { 
                 grid-column: 1 / -1; 
                 font-weight: bold; 
                 font-size: 1.1em; 
@@ -342,20 +397,20 @@
                 color: var(--primary-color);
             }
             
-            /* MapCode：左下 */
-            td:nth-of-type(2) { 
+            /* MapCode：左下 (限制作用於導航區塊) */
+            .drive-section td:nth-of-type(2) { 
                 grid-column: 1 / 2; 
                 font-size: 0.95em; 
             }
-            td:nth-of-type(2)::before { content: "🚗 "; }
+            .drive-section td:nth-of-type(2)::before { content: "🚗 "; }
             
-            /* 電話：右下 */
-            td:nth-of-type(3) { 
+            /* 電話：右下 (限制作用於導航區塊) */
+            .drive-section td:nth-of-type(3) { 
                 grid-column: 2 / 3; 
                 text-align: right; 
                 font-size: 0.95em; 
             }
-            td:nth-of-type(3)::before { content: "📞 "; }
+            .drive-section td:nth-of-type(3)::before { content: "📞 "; }
         }
     </style>
 </head>
@@ -424,6 +479,7 @@
             <div class="weather-section">
                 <div class="section-title-large weather-title">🌦️ 旅途天氣預報 (1月歷史均溫)</div>
                 <p class="note" style="color: #0277bd;">※ 此為歷史數據參考，山區(阿蘇/由布院)體感約 -5°C，請務必洋蔥式穿搭。</p>
+                <p class="note" style="color: #0277bd;">※ 點擊地點名稱可查看詳細天氣預報 (Yahoo JP)</p>
                 
                 <table>
                     <thead>
@@ -434,17 +490,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>1/20 (二)</td><td>熊本市</td><td>☁️ 多雲 (2°C ~ 11°C)</td></tr>
-                        <tr><td>1/21 (三)</td><td>阿蘇山</td><td>❄️ <strong>降雪機率高</strong> (-4°C ~ 4°C)</td></tr>
-                        <tr><td>1/22 (四)</td><td>阿蘇/九重</td><td>❄️ <strong>滑雪場</strong> (-6°C ~ 1°C)</td></tr>
-                        <tr><td>1/23 (五)</td><td>由布院</td><td>🌫️ 晨霧/寒冷 (-1°C ~ 7°C)</td></tr>
-                        <tr><td>1/24 (六)</td><td>別府</td><td>⛅ 晴時多雲 (3°C ~ 9°C)</td></tr>
-                        <tr><td>1/25 (日)</td><td>門司/小倉</td><td>🌬️ 海風強勁 (4°C ~ 10°C)</td></tr>
-                        <tr><td>1/26 (一)</td><td>福岡市</td><td>☁️ 多雲 (3°C ~ 11°C)</td></tr>
-                        <tr><td>1/27 (二)</td><td>福岡機場</td><td>⛅ 晴朗 (3°C ~ 11°C)</td></tr>
+                        <tr><td>1/20 (二)</td><td><a href="https://weather.yahoo.co.jp/weather/jp/43/8610.html" target="_blank" class="weather-location-link">熊本市</a></td><td>☁️ 多雲 (2°C ~ 11°C)</td></tr>
+                        <tr><td>1/21 (三)</td><td><a href="https://weather.yahoo.co.jp/weather/jp/43/8620.html" target="_blank" class="weather-location-link">阿蘇山</a></td><td>❄️ <strong>降雪機率高</strong> (-4°C ~ 4°C)</td></tr>
+                        <tr><td>1/22 (四)</td><td><a href="https://weather.yahoo.co.jp/weather/jp/44/8313.html" target="_blank" class="weather-location-link">阿蘇/九重</a></td><td>❄️ <strong>滑雪場</strong> (-6°C ~ 1°C)</td></tr>
+                        <tr><td>1/23 (五)</td><td><a href="https://weather.yahoo.co.jp/weather/jp/44/8311.html" target="_blank" class="weather-location-link">由布院</a></td><td>🌫️ 晨霧/寒冷 (-1°C ~ 7°C)</td></tr>
+                        <tr><td>1/24 (六)</td><td><a href="https://weather.yahoo.co.jp/weather/jp/44/8310.html" target="_blank" class="weather-location-link">別府</a></td><td>⛅ 晴時多雲 (3°C ~ 9°C)</td></tr>
+                        <tr><td>1/25 (日)</td><td><a href="https://weather.yahoo.co.jp/weather/jp/40/8220.html" target="_blank" class="weather-location-link">門司/小倉</a></td><td>🌬️ 海風強勁 (4°C ~ 10°C)</td></tr>
+                        <tr><td>1/26 (一)</td><td><a href="https://weather.yahoo.co.jp/weather/jp/40/8210.html" target="_blank" class="weather-location-link">福岡市</a></td><td>☁️ 多雲 (3°C ~ 11°C)</td></tr>
+                        <tr><td>1/27 (二)</td><td><a href="https://weather.yahoo.co.jp/weather/jp/40/8210.html" target="_blank" class="weather-location-link">福岡機場</a></td><td>⛅ 晴朗 (3°C ~ 11°C)</td></tr>
                     </tbody>
                 </table>
-                <a href="https://weather.yahoo.co.jp/weather/" target="_blank" class="weather-link">🔗 出發前點此查詢日本即時天氣 (Yahoo JP)</a>
+                <a href="https://weather.yahoo.co.jp/weather/" target="_blank" class="weather-link">🔗 出發前點此查詢日本即時天氣 (Yahoo JP 首頁)</a>
             </div>
         </div>
 
