@@ -28,6 +28,8 @@
             --weather-border: #0288d1;  /* 天氣邊框色 */
             --toc-bg: rgba(93, 64, 55, 0.95);
             --backup-bg: #f3e5f5;       /* 雨備背景色 */
+            --shop-bg: #fff3e0;         /* 購物背景色 */
+            --shop-border: #e67e22;     /* 購物邊框色 */
         }
         html { scroll-behavior: smooth; }
         body { 
@@ -77,6 +79,18 @@
             display: block;
             margin-top: 8px;
             border-left: 3px solid #ab47bc;
+        }
+
+        /* 購物清單樣式 */
+        .shopping-tag {
+            background-color: var(--shop-bg);
+            padding: 8px 12px;
+            border-radius: 6px;
+            color: #d35400;
+            font-weight: bold;
+            display: block;
+            margin-top: 8px;
+            border-left: 3px solid var(--shop-border);
         }
 
         /* 表格樣式 */
@@ -309,7 +323,7 @@
         <div class="slide-group">
             <h1>
                 🇹🇼🇯🇵 2026 冬 九州親子自駕8日
-                <span class="version-info">Ver. 29 (更新：2025/12/03)</span>
+                <span class="version-info">Ver. 30 (更新：2025/12/03)</span>
             </h1>
             <img src="imgs/1048004.png" class="slide-img" alt="行程封面">
         </div>
@@ -346,6 +360,7 @@
                     <li><strong>📍 機場取還：</strong>確認「熊本機場取車、福岡機場還車」。</li>
                     <li><strong>🎫 提前預約：</strong>Day 7 teamLab、Day 5 動物園叢林巴士。</li>
                     <li><strong>🧥 冬季穿著：</strong>戶外重點區必備防風保暖裝備。</li>
+                    <li><strong>📦 打包提醒：</strong>布丁、果醬類屬液體，回程請務必放託運。</li>
                 </ul>
             </div>
         </div>
@@ -395,6 +410,7 @@
                     </li>
                     <li><strong>晚餐：</strong>馬肉料理或熊本拉麵。</li>
                     <li><strong>🏠 住宿：</strong>熊本城飯店</li>
+                    <li class="shopping-tag">🎁 必買特產：熊本熊周邊 (辦公室/城彩苑)、譽之陣太鼓 (金色包裝求肥甜點)、芥末蓮藕脆片 (下酒菜)。</li>
                     <li class="backup-plan">☔ 雨雪備案：下通商店街 (全區有屋頂)、SAKURA MACHI 購物中心 (室內)。</li>
                 </ul>
             </div>
@@ -429,6 +445,7 @@
                     <li><strong>全日目標：</strong>**九重森林公園滑雪場**。<span class="note">專攻「兒童雪盆區」。</span></li>
                     <li><strong>🍢 必吃小吃：</strong>滑雪場食堂的熱咖哩飯、暖呼呼玉米濃湯。</li>
                     <li><strong>🏠 住宿：</strong>阿蘇 湯巡追莊 (續住)</li>
+                    <li class="shopping-tag">🎁 必買特產：阿部牧場 ASOMILK (三星獎鮮奶)、阿蘇牛奶年輪蛋糕 (常溫好帶)。</li>
                     <li class="backup-plan">☔ 暴風雪備案：改去「阿蘇農場 (元気の森)」室內運動區，或飯店溫泉耍廢。</li>
                 </ul>
             </div>
@@ -445,6 +462,7 @@
                     <li><strong>下午：</strong>抵達由布院 ➔ **湯之坪** ➔ **金鱗湖**。</li>
                     <li><strong>🍢 必吃小吃：</strong>金賞可樂餅、Milch 布丁、B-Speak 蛋糕捲。</li>
                     <li><strong>🏠 住宿：</strong>由布院 UBL 飯店 (懷石料理)</li>
+                    <li class="shopping-tag">🎁 必買特產：柚子胡椒 (湯之坪醬料店)、Milch 烤甜甜圈 (常溫)、GOEMON 蛋糕卷。</li>
                     <li class="backup-plan">☔ 雨雪備案：由布院彩繪玻璃美術館、Comico Art Museum (隈研吾建築)、岩下收藏館。</li>
                 </ul>
             </div>
@@ -475,6 +493,7 @@
                     <li><strong>🍢 必吃小吃：</strong>門司港燒咖哩 (Yaki Curry)、鐵鍋餃子。</li>
                     <li><strong>晚餐：</strong>**AEON MALL 福津** (避開福岡市區塞車)。</li>
                     <li><strong>🏠 住宿：</strong>福岡貝塚 Vessel Hotel</li>
+                    <li class="shopping-tag">🎁 必買特產：螺絲巧克力 (小倉城/門司港)、香蕉夾心餅乾、燒咖哩調理包。</li>
                     <li class="backup-plan">☔ 雨雪備案：九州鐵道紀念館 (門司港/室內)、北九州市立自然史博物館 (生命之旅/恐龍)。</li>
                 </ul>
             </div>
@@ -490,6 +509,7 @@
                     <li><strong>下午：</strong>**teamLab Forest Fukuoka**。</li>
                     <li><strong>傍晚：</strong>**百道海濱公園** ➔ **福岡塔** 夜景。</li>
                     <li><strong>🏠 住宿：</strong>福岡貝塚 Vessel Hotel (續住)</li>
+                    <li class="shopping-tag">🎁 必買特產：一蘭/一風堂拉麵禮盒 (超市買便宜)、福岡甜王草莓 (Amaou) 限定零食。</li>
                     <li class="backup-plan">☔ 雨雪備案：福岡市科學館 (六本松/室內互動多)、Mark Is 福岡 (百道濱大型商場)。</li>
                 </ul>
             </div>
@@ -506,6 +526,8 @@
                     <li><strong>🍢 必買伴手禮：</strong>努努雞 (冷炸雞)、博多通利蒙、Menbei 仙貝。</li>
                     <li><strong>15:00：</strong>機場還車 ➔ 免稅店採購。</li>
                     <li><strong>19:10：</strong>搭機返台。</li>
+                    <li class="shopping-tag">🎁 機場必掃：福太郎 Menbei (明太子仙貝)、博多通饅頭 (奶香白豆沙)、管狀明太子 (Tubu Tube)。</li>
+                    <li class="backup-plan">⚠️ 重要提醒：布丁/果醬屬液體，請在機場報到前放入託運！明太子機場買可附保冷劑。</li>
                     <li class="backup-plan">☔ 雨雪備案：LaLaport 為全室內商場，無須擔心天氣。</li>
                 </ul>
             </div>
@@ -887,7 +909,7 @@
     </div>
 
     <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
+        <span class="close">×</span>
         <img class="modal-content" id="img01">
     </div>
 
