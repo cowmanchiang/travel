@@ -522,7 +522,7 @@
         <div class="slide-group">
             <h1>
                 🇹🇼🇯🇵 2026 冬 九州親子自駕8日
-                <span class="version-info">Ver. 39 (更新：2025/12/03)</span>
+                <span class="version-info">Ver. 40 (更新：2025/12/03)</span>
             </h1>
             <img src="imgs/1048004.png" class="slide-img" alt="行程封面">
         </div>
@@ -1316,7 +1316,10 @@
                     this.x = Math.random() * width;
                     this.y = initial ? Math.random() * -height : Math.random() * -50;
                     this.size = Math.random() * 15 + 10; // 雪花大小 10-25
-                    this.speed = Math.random() * 1 + 2.5; // 下落速度 (加快)
+                    
+                    // 修正 1：雪花飄落速度調慢
+                    this.speed = Math.random() * 1 + 1; // 輕飄飄的速度
+                    
                     this.drift = (Math.random() - 0.5) * 1.5; // 左右飄移
                     this.wobble = Math.random() * Math.PI * 2;
                     this.wobbleSpeed = 0.05;
@@ -1333,46 +1336,40 @@
                     
                     // 檢查是否落地
                     let floorX = Math.floor(this.x);
-                    // 確保 floorX 在陣列範圍內
                     if (floorX >= 0 && floorX < width) {
-                        // 如果接觸到積雪地面 (因為 groundHeight 是從頂部算下來的 Y 座標，數值越小代表堆得越高)
-                        // 所以當雪花的 Y + size 大於等於地面的 Y 時，代表接觸了
                         if (this.y + this.size >= groundHeight[floorX]) {
                             this.land(floorX);
                             this.reset();
                         }
                     }
                     
-                    // 如果掉出螢幕（理論上會被上面攔截，但以防萬一）
                     if (this.y > height + 20) {
                         this.reset();
                     }
                 }
                 
                 land(x) {
-                    // 積雪邏輯：增加高度 (即減少 Y 座標數值)
-                    const range = 20; // 影響範圍 (擴大)
-                    const pileAmount = 4; // 每次堆積高度 (增加)
+                    // 積雪邏輯
+                    const range = 20; 
+                    const pileAmount = 4; // 每次堆積高度
                     
                     for(let i = -range; i <= range; i++) {
                         let targetX = x + i;
                         if(targetX >= 0 && targetX < width) {
-                            // 距離中心越近，堆積越高（高斯分佈感覺）
                             let amount = pileAmount * (1 - Math.abs(i) / range);
                             groundHeight[targetX] -= amount;
                             
-                            // 限制最高積雪高度（避免蓋住整個螢幕，例如最高到螢幕 60% 處）
-                            if(groundHeight[targetX] < height * 0.6) {
-                                groundHeight[targetX] = height * 0.6;
+                            // 修正 2：移除積雪高度限制，可以積滿整個螢幕 (直到 y=0)
+                            if(groundHeight[targetX] < 0) {
+                                groundHeight[targetX] = 0;
                             }
                         }
                     }
                 }
                 
                 draw() {
-                    // 繪製 unicode 雪花 (淡藍色)
                     ctx.fillStyle = "rgba(135, 206, 250, 0.9)";
-                    ctx.shadowBlur = 0; // 雪花本身不加陰影以保持效能
+                    ctx.shadowBlur = 0; 
                     ctx.font = `${this.size}px Arial`;
                     ctx.fillText("❄", this.x, this.y);
                 }
@@ -1380,7 +1377,7 @@
 
             // 創建雪花池
             const particles = [];
-            const maxParticles = 80; // 增加雪花數量
+            const maxParticles = 80; 
             for(let i=0; i<maxParticles; i++) {
                 particles.push(new Snowflake());
             }
@@ -1389,25 +1386,23 @@
             function animate() {
                 ctx.clearRect(0, 0, width, height);
                 
-                // 1. 繪製積雪地面
-                // 使用白色，但帶有一點點藍色陰影，讓它在白背景上突顯出來
+                // 1. 繪製積雪地面 (帶陰影)
                 ctx.fillStyle = "rgba(255, 255, 255, 1)";
-                ctx.shadowColor = "rgba(0, 0, 0, 0.15)"; // 陰影顏色
-                ctx.shadowBlur = 10; // 陰影模糊
-                ctx.shadowOffsetY = -2; // 陰影向上偏移一點
+                ctx.shadowColor = "rgba(0, 0, 0, 0.15)"; 
+                ctx.shadowBlur = 10; 
+                ctx.shadowOffsetY = -2; 
 
                 ctx.beginPath();
                 ctx.moveTo(0, height);
                 
-                // 優化：每 2px 畫一次，減少點數但保持平滑
                 for(let i=0; i<width; i+=2) { 
                     ctx.lineTo(i, groundHeight[i]);
                 }
                 ctx.lineTo(width, height);
+                ctx.lineTo(0, height); // 確保閉合路徑正確填滿下方區域
                 ctx.closePath();
                 ctx.fill();
 
-                // 重置陰影設定，避免影響雪花
                 ctx.shadowColor = "transparent";
                 ctx.shadowBlur = 0;
                 ctx.shadowOffsetY = 0;
@@ -1427,23 +1422,19 @@
                 const clickY = e.clientY;
                 const clickX = Math.floor(e.clientX);
                 
-                // 判定：如果點擊位置低於目前的積雪線，就視為點擊積雪
-                // groundHeight 紀錄的是 Y 軸位置 (數值越小越高)，所以 clickY > groundHeight 代表點在雪裡
                 let hitSnow = false;
                 if(clickX >= 0 && clickX < width) {
-                     // 給一點緩衝區 (+50px)，不用點得非常準
                      if(clickY >= groundHeight[clickX] - 50) {
                          hitSnow = true;
                      }
                 }
                 
-                // 為了方便手機操作，點擊螢幕最下方 10% 區域也算
                 if (clickY > window.innerHeight * 0.9) {
                     hitSnow = true;
                 }
 
                 if (hitSnow) {
-                    initGround(); // 重置積雪
+                    initGround(); 
                 }
             });
         })();
