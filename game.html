@@ -9,7 +9,7 @@
     <meta property="og:title" content="🇹🇼🇯🇵 2026 冬 九州親子自駕之旅" >
     <meta property="og:description" content="日期：2026/01/20 (二) ～ 2026/01/27 (二)" >
     <meta property="og:image" content="https://cowmanchiang.github.io/travel/imgs/1048004_500.png" > 
-    <title>🇹🇼🇯🇵 2026 冬 九州親子自駕8日 + 熊熊大作戰</title>
+    <title>🇹🇼🇯🇵 2026 冬 九州親子自駕8日 + 三麗鷗全明星大亂鬥</title>
     <style>
         :root {
             /* === 清新冬季藍白配色方案 === */
@@ -62,47 +62,148 @@
             padding: 20px; 
             padding-bottom: 80px; 
             overflow-x: hidden; 
-            /* === 熊熊遊戲：游標設定為瞄準線 === */
+            /* === 遊戲：游標設定為瞄準線 === */
             cursor: crosshair; 
         }
 
-        /* === 熊熊遊戲 CSS 開始 (修正版) === */
-        #ebi-score-board {
+        /* === 遊戲元素 CSS 開始 === */
+        #game-score-board {
             position: fixed;
             top: 20px;
             right: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border: 3px solid #795548; /* 改成熊的棕色 */
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 3px solid #ff9ff3; /* 三麗鷗粉 */
             border-radius: 50px;
-            padding: 10px 25px;
+            padding: 5px 20px; 
             font-size: 1.2em;
             font-weight: bold;
-            color: #5d4037; /* 改成深棕色文字 */
+            color: #ff6b6b; 
             z-index: 12000; /* 最上層 */
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            pointer-events: none; /* 讓點擊穿透 */
+            cursor: pointer; /* 設定為可點擊手勢 */
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
+            transition: transform 0.2s;
+            min-width: 90px;
+        }
+        
+        #game-score-board:hover {
+            transform: scale(1.05);
+            background-color: #fff0f5;
         }
 
-        .falling-ebi {
+        /* 計分板上的圖示容器 */
+        #score-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em; /* 文字emoji大小 */
+        }
+
+        /* 計分板上的小圖示 img */
+        .score-icon-img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* 角色選擇選單 Modal */
+        #char-selector-modal {
+            display: none; /* 預設隱藏 */
             position: fixed;
-            top: -100px; /* 初始位置在畫面外 */
-            font-size: 60px; /* 熊熊大一點比較好點 */
+            z-index: 13000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .selector-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            max-width: 95%;
+            border: 5px solid #ff9ff3; /* 三麗鷗粉 */
+            animation: popIn 0.3s;
+        }
+
+        .selector-title {
+            color: #ff6b6b;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .char-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 10px;
+            justify-items: center;
+        }
+
+        .char-btn {
+            font-size: 2.5em;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background-color: #fff0f5;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            overflow: hidden;
+        }
+
+        .char-btn img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+        }
+
+        .char-btn:hover {
+            background-color: #ffe4e1;
+            transform: scale(1.1);
+            border-color: #ff9ff3;
+        }
+
+        /* 掉落動畫容器 */
+        .falling-item {
+            position: fixed;
+            top: -150px;
+            font-size: 65px; /* 文字Emoji的大小 */
             z-index: 11500;
             cursor: crosshair;
             user-select: none;
-            /* 修正：加上預設時間 5s，確保動畫會執行 */
-            animation: dropEbi 5s linear forwards; 
+            /* 關鍵：預設動畫設定，確保有在動 */
+            animation: dropItem 8s linear forwards; 
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .falling-ebi:active {
+        /* 專門控制掉落圖片的大小 */
+        .falling-img {
+            width: 90px;  /* 圖片大一點比較可愛 */
+            height: 90px;
+            object-fit: contain;
+            pointer-events: none; /* 讓點擊穿透到 div */
+        }
+
+        .falling-item:active {
             transform: scale(0.9);
         }
 
-        @keyframes dropEbi {
-            0% { top: -100px; transform: rotate(0deg); }
+        @keyframes dropItem {
+            0% { top: -150px; transform: rotate(0deg); }
             100% { top: 110vh; transform: rotate(360deg); }
         }
 
@@ -112,16 +213,15 @@
             z-index: 11501;
             pointer-events: none;
             animation: explode 0.5s forwards;
-            /* 讓爆炸中心對準滑鼠點擊處 */
             transform: translate(-50%, -50%); 
         }
 
         @keyframes explode {
             0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
-            50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.8; }
-            100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.9; }
+            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
         }
-        /* === 熊熊遊戲 CSS 結束 === */
+        /* === 遊戲元素 CSS 結束 === */
 
         .container { 
             max-width: 900px; 
@@ -262,6 +362,8 @@
             .date-day { font-size: 1.5em; }
             .route-arrow { margin: 0 8px; }
             .pass-date { padding-right: 10px; min-width: 50px; }
+            .char-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 8px; }
+            .char-btn { width: 60px; height: 60px; font-size: 2em; }
         }
 
         .warning-box { 
@@ -654,9 +756,35 @@
 </head>
 <body id="top">
     
-    <div id="ebi-score-board">
-        <span>🐻</span>
-        <span id="ebi-score-val">0</span>
+    <div id="game-score-board" onclick="openCharSelector()">
+        <div id="score-icon">🌟</div>
+        <span id="game-score-val">0</span>
+    </div>
+
+    <div id="char-selector-modal" onclick="closeCharSelector(event)">
+        <div class="selector-content">
+            <div class="selector-title">🎮 選擇掉落角色</div>
+            <div class="char-grid">
+                <div class="char-btn" onclick="selectChar('random')">🌟</div>
+                
+                <div class="char-btn" onclick="selectChar('kitty')">
+                    <img src="https://upload.wikimedia.org/wikipedia/zh/3/34/Hello_Kitty_character.png" alt="Kitty">
+                </div>
+                <div class="char-btn" onclick="selectChar('melody')">
+                    <img src="https://upload.wikimedia.org/wikipedia/zh/d/d4/My_Melody_character.png" alt="Melody">
+                </div>
+                <div class="char-btn" onclick="selectChar('kuromi')">
+                    <img src="https://upload.wikimedia.org/wikipedia/zh/a/a9/Kuromi_characters.png" alt="Kuromi">
+                </div>
+
+                <div class="char-btn" onclick="selectChar('kumamon')">
+                    <img src="https://today-obs.line-scdn.net/0ho2V2ah3oMB1rSyTL_hxPSlMdPGxYLSoUSS4vf0xKaylEZ39CVS5jfh1LbjFPe3EbS3gseRsbb3hFf3IZBw/w280" alt="kumamon">
+                </div>
+                <div class="char-btn" onclick="selectChar('🍤')">🍤</div>
+                <div class="char-btn" onclick="selectChar('🍣')">🍣</div>
+            </div>
+            <p style="font-size:0.9em; color:#777; margin-top:15px;">(點擊星星可恢復隨機大亂鬥)</p>
+        </div>
     </div>
 
     <canvas id="snow-canvas"></canvas>
@@ -1167,7 +1295,7 @@
                             <td>0967-32-0622</td>
                         </tr>
                         <tr>
-                            <td><a href="https://www.cuddly.co.jp/" target="_blank">🐻 卡德利動物樂園</a><br><span class="note">🅿️ 園區正門停車場</span></td>
+                            <td><a href="https://www.cuddly.co.jp/" target="_blank">kumamon 卡德利動物樂園</a><br><span class="note">🅿️ 園區正門停車場</span></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=32.9239,131.0505" target="_blank">256 423 487*30</a></td>
                             <td>0967-34-2020</td>
                         </tr>
@@ -1661,71 +1789,119 @@
             });
         })();
 
-        // ================= 🐻 棕熊小遊戲邏輯 (修改版) =================
-        (function() {
-            let bearScore = 0;
-            const scoreDisplay = document.getElementById('ebi-score-val');
+        // ================= 🎮 角色自選與掉落邏輯 (最終修正版) =================
+        
+        const SANRIO_IMGS = {
+            'kitty': 'https://upload.wikimedia.org/wikipedia/zh/3/34/Hello_Kitty_character.png',
+            'melody': 'https://upload.wikimedia.org/wikipedia/zh/d/d4/My_Melody_character.png',
+            'kuromi': 'https://upload.wikimedia.org/wikipedia/zh/a/a9/Kuromi_characters.png',
+            'kumamon': 'https://today-obs.line-scdn.net/0ho2V2ah3oMB1rSyTL_hxPSlMdPGxYLSoUSS4vf0xKaylEZ39CVS5jfh1LbjFPe3EbS3gseRsbb3hFf3IZBw/w280'
+        };
 
-            function spawnBear() {
-                // 建立棕熊元素
-                const bear = document.createElement('div');
-                bear.innerHTML = '🐻'; 
-                bear.classList.add('falling-ebi');
-                
-                // 隨機 X 軸位置 (保留 10% 邊距以免超出螢幕)
-                const randomX = Math.random() * 80 + 10;
-                bear.style.left = randomX + 'vw';
-                
-                // 隨機旋轉動畫持續時間 (讓每一隻轉速不同)
-                const randomDuration = Math.random() * 5 + 3; // 3s - 8s
-                bear.style.animationDuration = randomDuration + 's';
+        const GAME_CHARS = ['kitty', 'melody', 'kuromi', 'kumamon', '🍤', '🍣'];
 
-                // 點擊事件
-                bear.addEventListener('click', function(e) {
-                    // 阻止事件冒泡 (避免觸發清除積雪或其他功能)
-                    e.stopPropagation();
+        let currentTargetChar = 'random';
+        let score = 0;
+        const scoreDisplay = document.getElementById('game-score-val');
+        const scoreIcon = document.getElementById('score-icon');
+        const charModal = document.getElementById('char-selector-modal');
 
-                    // 加分
-                    bearScore++;
-                    scoreDisplay.innerText = bearScore;
+        function openCharSelector() {
+            charModal.style.display = "flex";
+        }
 
-                    // 取得被點擊時的位置
-                    const rect = bear.getBoundingClientRect();
+        function closeCharSelector(e) {
+            if (e.target === charModal) {
+                charModal.style.display = "none";
+            }
+        }
 
-                    // 移除棕熊
-                    bear.remove();
+        function selectChar(char) {
+            currentTargetChar = char;
+            if(char === 'random') {
+                scoreIcon.innerHTML = '🌟';
+            } else if (SANRIO_IMGS[char]) {
+                let fallback = '';
+                if(char === 'kitty') fallback = '🐱';
+                else if(char === 'melody') fallback = '🐰';
+                else if(char === 'kuromi') fallback = '😈';
+                scoreIcon.innerHTML = ''; 
+                let img = document.createElement('img');
+                img.src = SANRIO_IMGS[char];
+                img.className = 'score-icon-img';
+                img.alt = char;
+                img.onerror = function() { this.style.display='none'; this.parentNode.innerText = fallback; };
+                scoreIcon.appendChild(img);
+            } else {
+                scoreIcon.innerText = char;
+            }
+            charModal.style.display = "none";
+        }
 
-                    // 產生爆炸特效
-                    // 計算絕對座標：滾動距離 + 元素視窗位置 + 元素寬高一半 (置中)
-                    createExplosion(rect.left + window.scrollX + rect.width/2, rect.top + window.scrollY + rect.height/2);
-                });
-
-                // 動畫結束後自動移除 DOM，避免記憶體洩漏
-                bear.addEventListener('animationend', function() {
-                    bear.remove();
-                });
-
-                document.body.appendChild(bear);
+        function spawnItem() {
+            const charEl = document.createElement('div');
+            let chosenCharStr = currentTargetChar;
+            if(currentTargetChar === 'random') {
+                chosenCharStr = GAME_CHARS[Math.floor(Math.random() * GAME_CHARS.length)];
+            }
+            
+            if (SANRIO_IMGS[chosenCharStr]) {
+                let img = document.createElement('img');
+                img.src = SANRIO_IMGS[chosenCharStr];
+                img.className = 'falling-img';
+                img.alt = chosenCharStr;
+                let fallbackChar = '❓';
+                if(chosenCharStr === 'kitty') fallbackChar = '🐱';
+                if(chosenCharStr === 'melody') fallbackChar = '🐰';
+                if(chosenCharStr === 'kuromi') fallbackChar = '😈';
+                img.onerror = function() { 
+                    this.style.display='none'; 
+                    charEl.innerText = fallbackChar;
+                    charEl.style.fontSize = '65px';
+                };
+                charEl.appendChild(img);
+            } else {
+                charEl.innerText = chosenCharStr;
+                charEl.style.fontSize = '65px';
             }
 
-            function createExplosion(x, y) {
-                const boom = document.createElement('div');
-                boom.innerHTML = '💥';
-                boom.classList.add('explosion-effect');
-                boom.style.left = x + 'px';
-                boom.style.top = y + 'px';
-                
-                document.body.appendChild(boom);
+            charEl.classList.add('falling-item');
+            const randomX = Math.random() * 80 + 10;
+            charEl.style.left = randomX + 'vw';
+            const randomDuration = Math.random() * 10 + 6; 
+            charEl.style.animationDuration = randomDuration + 's';
 
-                // 動畫結束移除爆炸
-                boom.addEventListener('animationend', function() {
-                    boom.remove();
-                });
-            }
+            charEl.addEventListener('click', function(e) {
+                e.stopPropagation();
+                score++;
+                scoreDisplay.innerText = score;
+                const rect = charEl.getBoundingClientRect();
+                charEl.remove();
+                createExplosion(rect.left + window.scrollX + rect.width/2, rect.top + window.scrollY + rect.height/2);
+            });
 
-            // 每 3 秒產生一隻棕熊
-            setInterval(spawnBear, 3000);
-        })();
+            charEl.addEventListener('animationend', function() {
+                charEl.remove();
+            });
+
+            document.body.appendChild(charEl);
+        }
+
+        function createExplosion(x, y) {
+            const boom = document.createElement('div');
+            boom.innerHTML = '💖'; 
+            boom.classList.add('explosion-effect');
+            boom.style.left = x + 'px';
+            boom.style.top = y + 'px';
+            document.body.appendChild(boom);
+            boom.addEventListener('animationend', function() {
+                boom.remove();
+            });
+        }
+
+        setInterval(spawnItem, 3000);
+        setTimeout(spawnItem, 500); 
+
     </script>
 </body>
 </html>
