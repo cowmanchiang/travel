@@ -117,56 +117,92 @@
 
         .info-box { background-color: #fff9c4; padding: 20px; border-radius: 12px; margin-bottom: 30px; border: 1px solid #fff59d; margin-top: 0; color: #555; }
         
-        /* 新版行程資訊卡片樣式 */
-        .trip-info-card {
-            background-color: #fff;
-            border: 1px solid #e3f2fd;
-            border-radius: var(--section-border-radius);
-            padding: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            margin-top: 20px;
+        /* ================= 🎫 新版登機證樣式 ================= */
+        .trip-header {
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px; padding: 15px;
+            background: #f8fbfe; border-radius: 12px;
+            border: 1px dashed #b3e5fc;
         }
-        .trip-info-row {
+        .trip-header-text { font-size: 1.1em; color: var(--primary-color); }
+
+        /* 機票並排容器 */
+        .boarding-pass-wrapper {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .boarding-pass {
+            background-color: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
+            overflow: hidden;
+            position: relative;
+            border-left: 5px solid var(--accent-color);
+            flex: 1; /* 讓兩張票均分寬度 */
+        }
+        
+        .pass-header {
+            background-color: #e3f2fd;
+            padding: 10px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            color: #1565c0; font-weight: bold; font-size: 0.9em;
+        }
+        .flight-no { font-family: monospace; font-size: 1.1em; letter-spacing: 1px; }
+
+        .pass-body {
+            padding: 20px;
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed #eee;
+            justify-content: space-between;
         }
-        .trip-info-row:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-        .trip-icon {
-            font-size: 1.5em;
-            margin-right: 15px;
-            width: 40px;
+
+        .pass-date {
             text-align: center;
+            padding-right: 15px;
+            border-right: 2px dashed #eee;
+            min-width: 50px;
         }
-        .trip-content { flex: 1; }
-        .trip-label {
-            font-size: 0.85em;
-            color: #78909c;
-            display: block;
-            margin-bottom: 3px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .date-day { font-size: 1.6em; font-weight: 800; color: var(--primary-color); line-height: 1; display: block; }
+        .date-month { font-size: 0.8em; color: #78909c; text-transform: uppercase; font-weight: bold; }
+        .date-year { font-size: 0.7em; color: #90a4ae; display: block; }
+
+        .pass-route {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 10px;
         }
-        .flight-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 5px;
+        .airport-code { font-size: 1.4em; font-weight: 800; color: var(--primary-color); }
+        .route-arrow { 
+            margin: 0 10px; color: var(--accent-color); font-size: 1.2em; 
+            display: flex; flex-direction: column; align-items: center;
         }
-        .flight-box {
-            background-color: #f8fbfe;
-            padding: 10px 15px;
-            border-radius: 8px;
-            border-left: 3px solid var(--accent-color);
+        .route-arrow span { font-size: 0.6em; color: #90caf9; }
+
+        .pass-time {
+            text-align: right;
+            min-width: 60px;
         }
-        .flight-route { font-weight: bold; color: var(--primary-color); }
-        .flight-time { font-size: 0.9em; color: #555; }
+        .time-label { font-size: 0.7em; color: #78909c; display: block; margin-bottom: 2px; }
+        .time-val { font-size: 1.1em; font-weight: bold; color: var(--primary-color); display: block; }
+        
+        /* 手機版登機證調整 */
+        @media (max-width: 600px) {
+            .boarding-pass-wrapper {
+                flex-direction: column; /* 手機版改回垂直排列 */
+                gap: 15px;
+            }
+            .boarding-pass { margin-bottom: 0; }
+            .pass-body { padding: 15px; }
+            .airport-code { font-size: 1.3em; }
+            .date-day { font-size: 1.5em; }
+            .route-arrow { margin: 0 8px; }
+            .pass-date { padding-right: 10px; min-width: 50px; }
+        }
 
         .warning-box { 
             background-color: #ffebee; 
@@ -577,7 +613,7 @@
         <div class="slide-group">
             <h1>
                 🇹🇼🇯🇵 2026 冬 九州親子自駕8日
-                <span class="version-info">Ver. 43 (更新：2025/12/03)</span>
+                <span class="version-info">Ver. 45 (更新：2025/12/03)</span>
             </h1>
             <img src="imgs/1048004.png" class="slide-img" alt="行程封面">
         </div>
@@ -585,35 +621,64 @@
         <div class="slide-group" id="trip-info">
             <h2 style="margin-top:0">🗓️ 行程資訊</h2>
             
-            <div class="trip-info-card">
-                <div class="trip-info-row">
-                    <div class="trip-icon">👨‍👩‍👧‍👦</div>
-                    <div class="trip-content">
-                        <span class="trip-label">成員 Members</span>
-                        <strong>2位大人、2位小孩</strong>（9歲 & 3歲）
-                    </div>
-                </div>
+            <div class="trip-header">
+                <span style="font-size:1.5em; margin-right:10px;">👨‍👩‍👧‍👦</span>
+                <span class="trip-header-text"><strong>2位大人、2位小孩</strong>（9歲 & 3歲）</span>
+            </div>
+
+            <div class="boarding-pass-wrapper">
                 
-                <div class="trip-info-row" style="align-items: flex-start;">
-                    <div class="trip-icon" style="margin-top: 5px;">✈️</div>
-                    <div class="trip-content">
-                        <span class="trip-label">星宇航空 Starlux Airlines</span>
-                        <div class="flight-grid">
-                            <div class="flight-box">
-                                <div style="font-size:0.8em; color:#777; margin-bottom:2px;">去程 JX846</div>
-                                <div class="flight-route">TPE ➔ KMJ</div>
-                                <div class="flight-time">07:30 - 10:35</div>
-                            </div>
-                            <div class="flight-box">
-                                <div style="font-size:0.8em; color:#777; margin-bottom:2px;">回程 JX841</div>
-                                <div class="flight-route">FUK ➔ TPE</div>
-                                <div class="flight-time">19:10 - 20:50</div>
-                            </div>
+                <div class="boarding-pass">
+                    <div class="pass-header">
+                        <span>✈️ 星宇航空 Starlux (去程)</span>
+                        <span class="flight-no">JX846</span>
+                    </div>
+                    <div class="pass-body">
+                        <div class="pass-date">
+                            <span class="date-day">20</span>
+                            <span class="date-month">JAN</span>
+                            <span class="date-year">2026</span>
+                        </div>
+                        <div class="pass-route">
+                            <span class="airport-code">TPE</span>
+                            <div class="route-arrow">✈️<span>To</span></div>
+                            <span class="airport-code">KMJ</span>
+                        </div>
+                        <div class="pass-time">
+                            <span class="time-label">Depart</span>
+                            <span class="time-val">07:30</span>
+                            <span class="time-label" style="margin-top:5px;">Arrive</span>
+                            <span class="time-val">10:35</span>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+
+                <div class="boarding-pass">
+                    <div class="pass-header">
+                        <span>✈️ 星宇航空 Starlux (回程)</span>
+                        <span class="flight-no">JX841</span>
+                    </div>
+                    <div class="pass-body">
+                        <div class="pass-date">
+                            <span class="date-day">27</span>
+                            <span class="date-month">JAN</span>
+                            <span class="date-year">2026</span>
+                        </div>
+                        <div class="pass-route">
+                            <span class="airport-code">FUK</span>
+                            <div class="route-arrow">✈️<span>To</span></div>
+                            <span class="airport-code">TPE</span>
+                        </div>
+                        <div class="pass-time">
+                            <span class="time-label">Depart</span>
+                            <span class="time-val">19:10</span>
+                            <span class="time-label" style="margin-top:5px;">Arrive</span>
+                            <span class="time-val">20:50</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div> </div>
 
         <div class="image-grid-wrapper">
             <div class="slide-group image-only"><img src="imgs/1047581.jpg" class="slide-img" alt="圖片1"></div>
