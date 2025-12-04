@@ -66,7 +66,7 @@
             cursor: crosshair; 
         }
 
-        /* === 炸蝦遊戲 CSS 開始 === */
+        /* === 炸蝦遊戲 CSS 開始 (修正版) === */
         #ebi-score-board {
             position: fixed;
             top: 20px;
@@ -88,14 +88,13 @@
 
         .falling-ebi {
             position: fixed;
-            top: -60px;
-            font-size: 50px;
-            z-index: 11500; /* 比雪花高，比Modal低 */
-            cursor: crosshair; /* 確保炸蝦上也是瞄準線 */
+            top: -100px; /* 初始位置在畫面外 */
+            font-size: 60px; /* 炸蝦大一點比較好點 */
+            z-index: 11500;
+            cursor: crosshair;
             user-select: none;
-            transition: transform 0.1s;
-            /* 讓炸蝦掉落動畫 */
-            animation: dropEbi linear forwards; 
+            /* 修正：加上預設時間 5s，確保動畫會執行 */
+            animation: dropEbi 5s linear forwards; 
         }
 
         .falling-ebi:active {
@@ -103,21 +102,24 @@
         }
 
         @keyframes dropEbi {
-            from { top: -60px; transform: rotate(0deg); }
-            to { top: 110vh; transform: rotate(360deg); }
+            0% { top: -100px; transform: rotate(0deg); }
+            100% { top: 110vh; transform: rotate(360deg); }
         }
 
         .explosion-effect {
             position: fixed;
-            font-size: 60px;
+            font-size: 80px;
             z-index: 11501;
             pointer-events: none;
             animation: explode 0.5s forwards;
+            /* 讓爆炸中心對準滑鼠點擊處 */
+            transform: translate(-50%, -50%); 
         }
 
         @keyframes explode {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(2); opacity: 0; }
+            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+            50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.8; }
+            100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
         }
         /* === 炸蝦遊戲 CSS 結束 === */
 
@@ -1659,7 +1661,7 @@
             });
         })();
 
-        // ================= 🍤 炸蝦小遊戲邏輯 =================
+        // ================= 🍤 炸蝦小遊戲邏輯 (修正版) =================
         (function() {
             let ebiScore = 0;
             const scoreDisplay = document.getElementById('ebi-score-val');
@@ -1675,8 +1677,8 @@
                 shrimp.style.left = randomX + 'vw';
                 
                 // 隨機旋轉動畫持續時間 (讓每一隻轉速不同)
-                // const randomDuration = Math.random() * 3 + 4; // 4s - 7s
-                // shrimp.style.animationDuration = randomDuration + 's';
+                const randomDuration = Math.random() * 5 + 3; // 3s - 8s
+                shrimp.style.animationDuration = randomDuration + 's';
 
                 // 點擊事件
                 shrimp.addEventListener('click', function(e) {
@@ -1694,7 +1696,8 @@
                     shrimp.remove();
 
                     // 產生爆炸特效
-                    createExplosion(rect.left, rect.top);
+                    // 計算絕對座標：滾動距離 + 元素視窗位置 + 元素寬高一半 (置中)
+                    createExplosion(rect.left + window.scrollX + rect.width/2, rect.top + window.scrollY + rect.height/2);
                 });
 
                 // 動畫結束後自動移除 DOM，避免記憶體洩漏
