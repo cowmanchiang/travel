@@ -9,7 +9,7 @@
     <meta property="og:title" content="🇹🇼🇯🇵 2026 冬 九州親子自駕之旅" >
     <meta property="og:description" content="日期：2026/01/20 (二) ～ 2026/01/27 (二)" >
     <meta property="og:image" content="https://cowmanchiang.github.io/travel/imgs/1048004_500.png" > 
-    <title>🇹🇼🇯🇵 2026 冬 九州親子自駕8日 + 炸蝦大作戰</title>
+    <title>🇹🇼🇯🇵 2026 冬 九州親子自駕8日 + 熊熊大作戰</title>
     <style>
         :root {
             /* === 清新冬季藍白配色方案 === */
@@ -62,22 +62,22 @@
             padding: 20px; 
             padding-bottom: 80px; 
             overflow-x: hidden; 
-            /* === 炸蝦遊戲：游標設定為瞄準線 === */
+            /* === 熊熊遊戲：游標設定為瞄準線 === */
             cursor: crosshair; 
         }
 
-        /* === 炸蝦遊戲 CSS 開始 (修正版) === */
+        /* === 熊熊遊戲 CSS 開始 (修正版) === */
         #ebi-score-board {
             position: fixed;
             top: 20px;
             right: 20px;
             background-color: rgba(255, 255, 255, 0.9);
-            border: 3px solid #ff9f43;
+            border: 3px solid #795548; /* 改成熊的棕色 */
             border-radius: 50px;
             padding: 10px 25px;
             font-size: 1.2em;
             font-weight: bold;
-            color: #d35400;
+            color: #5d4037; /* 改成深棕色文字 */
             z-index: 12000; /* 最上層 */
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             pointer-events: none; /* 讓點擊穿透 */
@@ -89,7 +89,7 @@
         .falling-ebi {
             position: fixed;
             top: -100px; /* 初始位置在畫面外 */
-            font-size: 60px; /* 炸蝦大一點比較好點 */
+            font-size: 60px; /* 熊熊大一點比較好點 */
             z-index: 11500;
             cursor: crosshair;
             user-select: none;
@@ -121,7 +121,7 @@
             50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.8; }
             100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
         }
-        /* === 炸蝦遊戲 CSS 結束 === */
+        /* === 熊熊遊戲 CSS 結束 === */
 
         .container { 
             max-width: 900px; 
@@ -655,7 +655,7 @@
 <body id="top">
     
     <div id="ebi-score-board">
-        <span>🍤</span>
+        <span>🐻</span>
         <span id="ebi-score-val">0</span>
     </div>
 
@@ -1661,39 +1661,39 @@
             });
         })();
 
-        // ================= 🍤 炸蝦小遊戲邏輯 (修正版) =================
+        // ================= 🐻 棕熊小遊戲邏輯 (修改版) =================
         (function() {
-            let ebiScore = 0;
+            let bearScore = 0;
             const scoreDisplay = document.getElementById('ebi-score-val');
 
-            function spawnShrimp() {
-                // 建立炸蝦元素
-                const shrimp = document.createElement('div');
-                shrimp.innerHTML = '🍤';
-                shrimp.classList.add('falling-ebi');
+            function spawnBear() {
+                // 建立棕熊元素
+                const bear = document.createElement('div');
+                bear.innerHTML = '🐻'; 
+                bear.classList.add('falling-ebi');
                 
                 // 隨機 X 軸位置 (保留 10% 邊距以免超出螢幕)
                 const randomX = Math.random() * 80 + 10;
-                shrimp.style.left = randomX + 'vw';
+                bear.style.left = randomX + 'vw';
                 
                 // 隨機旋轉動畫持續時間 (讓每一隻轉速不同)
                 const randomDuration = Math.random() * 5 + 3; // 3s - 8s
-                shrimp.style.animationDuration = randomDuration + 's';
+                bear.style.animationDuration = randomDuration + 's';
 
                 // 點擊事件
-                shrimp.addEventListener('click', function(e) {
+                bear.addEventListener('click', function(e) {
                     // 阻止事件冒泡 (避免觸發清除積雪或其他功能)
                     e.stopPropagation();
 
                     // 加分
-                    ebiScore++;
-                    scoreDisplay.innerText = ebiScore;
+                    bearScore++;
+                    scoreDisplay.innerText = bearScore;
 
                     // 取得被點擊時的位置
-                    const rect = shrimp.getBoundingClientRect();
+                    const rect = bear.getBoundingClientRect();
 
-                    // 移除炸蝦
-                    shrimp.remove();
+                    // 移除棕熊
+                    bear.remove();
 
                     // 產生爆炸特效
                     // 計算絕對座標：滾動距離 + 元素視窗位置 + 元素寬高一半 (置中)
@@ -1701,11 +1701,11 @@
                 });
 
                 // 動畫結束後自動移除 DOM，避免記憶體洩漏
-                shrimp.addEventListener('animationend', function() {
-                    shrimp.remove();
+                bear.addEventListener('animationend', function() {
+                    bear.remove();
                 });
 
-                document.body.appendChild(shrimp);
+                document.body.appendChild(bear);
             }
 
             function createExplosion(x, y) {
@@ -1723,8 +1723,8 @@
                 });
             }
 
-            // 每 3 秒產生一隻炸蝦
-            setInterval(spawnShrimp, 3000);
+            // 每 3 秒產生一隻棕熊
+            setInterval(spawnBear, 3000);
         })();
     </script>
 </body>
