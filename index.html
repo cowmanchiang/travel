@@ -40,8 +40,10 @@
             --backup-text: #2e7d32;      
             --backup-border: #a5d6a7;    
 
-            --shop-bg: #fff8e1;         
-            --shop-border: #ffcc80;     
+            /* 購物粉色系 */
+            --shop-bg: #fce4ec;         
+            --shop-border: #f48fb1;     
+            --shop-text: #ad1457;
             
             --coupon-color: #d81b60;    
             --fish-color: #0277bd;      
@@ -115,6 +117,57 @@
 
         .info-box { background-color: #fff9c4; padding: 20px; border-radius: 12px; margin-bottom: 30px; border: 1px solid #fff59d; margin-top: 0; color: #555; }
         
+        /* 新版行程資訊卡片樣式 */
+        .trip-info-card {
+            background-color: #fff;
+            border: 1px solid #e3f2fd;
+            border-radius: var(--section-border-radius);
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            margin-top: 20px;
+        }
+        .trip-info-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+        }
+        .trip-info-row:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .trip-icon {
+            font-size: 1.5em;
+            margin-right: 15px;
+            width: 40px;
+            text-align: center;
+        }
+        .trip-content { flex: 1; }
+        .trip-label {
+            font-size: 0.85em;
+            color: #78909c;
+            display: block;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .flight-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 5px;
+        }
+        .flight-box {
+            background-color: #f8fbfe;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-color);
+        }
+        .flight-route { font-weight: bold; color: var(--primary-color); }
+        .flight-time { font-size: 0.9em; color: #555; }
+
         .warning-box { 
             background-color: #ffebee; 
             border: 2px solid var(--warning-color); 
@@ -159,7 +212,7 @@
             background-color: var(--shop-bg);
             padding: 10px 15px;
             border-radius: 8px;
-            color: #ef6c00;
+            color: var(--shop-text);
             font-weight: bold;
             display: block;
             margin-top: 10px;
@@ -416,6 +469,8 @@
             th, td { padding: 10px; font-size: 0.9em; } 
             .slide-group.image-only { width: 50%; } 
 
+            .flight-grid { grid-template-columns: 1fr; gap: 10px; } /* 手機版航班資訊垂直排列 */
+
             table, thead, tbody, th, td, tr { display: block; }
             
             .weather-section table, #cost-table table { display: table !important; border-collapse: separate; width: 100%; border-radius: 8px; overflow: hidden;}
@@ -522,21 +577,41 @@
         <div class="slide-group">
             <h1>
                 🇹🇼🇯🇵 2026 冬 九州親子自駕8日
-                <span class="version-info">Ver. 40 (更新：2025/12/03)</span>
+                <span class="version-info">Ver. 43 (更新：2025/12/03)</span>
             </h1>
             <img src="imgs/1048004.png" class="slide-img" alt="行程封面">
         </div>
 
         <div class="slide-group" id="trip-info">
             <h2 style="margin-top:0">🗓️ 行程資訊</h2>
-            <div class="info-box">
-                <p><strong>👨‍👩‍👧‍👦 成員：</strong>2位大人、2位小孩（9歲 & 3歲）</p>
-                <hr style="border:0; border-top:1px dashed #d7ccc8; margin:15px 0;">
-                <p><strong>✈️ 航班 (星宇航空)：</strong></p>
-                <ul style="margin-bottom:0; padding-left:20px;">
-                    <li><strong>去程 (JX846)：</strong>1/20 07:30 TPE ➔ 10:35 KMJ</li>
-                    <li><strong>回程 (JX841)：</strong>1/27 19:10 FUK ➔ 20:50 TPE</li>
-                </ul>
+            
+            <div class="trip-info-card">
+                <div class="trip-info-row">
+                    <div class="trip-icon">👨‍👩‍👧‍👦</div>
+                    <div class="trip-content">
+                        <span class="trip-label">成員 Members</span>
+                        <strong>2位大人、2位小孩</strong>（9歲 & 3歲）
+                    </div>
+                </div>
+                
+                <div class="trip-info-row" style="align-items: flex-start;">
+                    <div class="trip-icon" style="margin-top: 5px;">✈️</div>
+                    <div class="trip-content">
+                        <span class="trip-label">星宇航空 Starlux Airlines</span>
+                        <div class="flight-grid">
+                            <div class="flight-box">
+                                <div style="font-size:0.8em; color:#777; margin-bottom:2px;">去程 JX846</div>
+                                <div class="flight-route">TPE ➔ KMJ</div>
+                                <div class="flight-time">07:30 - 10:35</div>
+                            </div>
+                            <div class="flight-box">
+                                <div style="font-size:0.8em; color:#777; margin-bottom:2px;">回程 JX841</div>
+                                <div class="flight-route">FUK ➔ TPE</div>
+                                <div class="flight-time">19:10 - 20:50</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -939,7 +1014,7 @@
                             <td>096-288-5600</td>
                         </tr>
                         <tr>
-                            <td style="background-color: var(--backup-bg);">☔ <a href="https://sakuramachi-kumamoto.jp/" target="_blank">SAKURA MACHI (室內商場)</a></td>
+                            <td>☔ <a href="https://sakuramachi-kumamoto.jp/" target="_blank">SAKURA MACHI (室內商場)</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=32.7990,130.7056" target="_blank">29 459 644*63</a></td>
                             <td>096-354-1111</td>
                         </tr>
@@ -977,12 +1052,12 @@
                             <td>0973-79-2200</td>
                         </tr>
                         <tr>
-                            <td style="background-color: var(--backup-bg);">☔ <a href="http://www.asomuse.jp/" target="_blank">阿蘇火山博物館 (室內)</a></td>
+                            <td>☔ <a href="http://www.asomuse.jp/" target="_blank">阿蘇火山博物館 (室內)</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=32.8847,131.0514" target="_blank">256 456 770*85</a></td>
                             <td>0967-34-2111</td>
                         </tr>
                         <tr>
-                            <td style="background-color: var(--backup-bg);">☔ <a href="https://asofarmland.co.jp/" target="_blank">阿蘇農場 (元気の森)</a></td>
+                            <td>☔ <a href="https://asofarmland.co.jp/" target="_blank">阿蘇農場 (元気の森)</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=32.8988,131.0069" target="_blank">256 512 856*85</a></td>
                             <td>0967-67-2100</td>
                         </tr>
@@ -1010,12 +1085,12 @@
                             <td>0977-84-3111</td>
                         </tr>
                         <tr>
-                            <td style="background-color: var(--backup-bg);">☔ <a href="http://www.yufuin-sg-museum.jp/" target="_blank">由布院彩繪玻璃美術館</a></td>
+                            <td>☔ <a href="http://www.yufuin-sg-museum.jp/" target="_blank">由布院彩繪玻璃美術館</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=33.2566,131.3630" target="_blank">269 328 355*55</a></td>
                             <td>0977-84-5575</td>
                         </tr>
                         <tr>
-                            <td style="background-color: var(--backup-bg);">☔ <a href="https://camy.oita.jp/" target="_blank">Comico Art Museum</a></td>
+                            <td>☔ <a href="https://camy.oita.jp/" target="_blank">Comico Art Museum</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=Comico+Art+Museum+Yufuin" target="_blank">Google Map</a></td>
                             <td>0977-28-8830</td>
                         </tr>
@@ -1048,7 +1123,7 @@
                             <td>097-534-1010</td>
                         </tr>
                         <tr>
-                            <td style="background-color: var(--backup-bg);">☔ <a href="https://takezaikudensankaikan.jp/" target="_blank">別府竹細工傳統產業會館</a></td>
+                            <td>☔ <a href="https://takezaikudensankaikan.jp/" target="_blank">別府竹細工傳統產業會館</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=33.3031,131.4727" target="_blank">46 437 816*30</a></td>
                             <td>0977-23-1072</td>
                         </tr>
@@ -1079,17 +1154,17 @@
                             <td>093-321-4151</td>
                         </tr>
                         <tr>
-                            <td style="background-color: var(--fish-bg); border-left: 3px solid var(--fish-color);"><a href="https://www.point-i.jp/shops/1297" target="_blank">🎣 釣具のポイント 八幡本店</a><br><span class="note">※ 北九州最大級釣具店</span></td>
+                            <td><a href="https://www.point-i.jp/shops/1297" target="_blank">🎣 釣具のポイント 八幡本店</a><br><span class="note">※ 北九州最大級釣具店</span></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=32.7990,130.70562" target="_blank">16 341 782*25</a></td>
                             <td>093-661-3111</td>
                         </tr>
                         <tr>
-                            <td style="background-color: var(--backup-bg);">☔ <a href="http://www.k-rhm.jp/" target="_blank">九州鐵道紀念館</a></td>
+                            <td>☔ <a href="http://www.k-rhm.jp/" target="_blank">九州鐵道紀念館</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=33.9431,130.9592" target="_blank">3 714 075*25</a></td>
                             <td>093-322-1006</td>
                         </tr>
                         <tr>
-                            <td style="background-color: var(--backup-bg);">☔ <a href="https://www.kmnh.jp/" target="_blank">生命之旅博物館 (恐龍)</a></td>
+                            <td>☔ <a href="https://www.kmnh.jp/" target="_blank">生命之旅博物館 (恐龍)</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=33.8682,130.8105" target="_blank">16 343 325*17</a></td>
                             <td>093-681-1011</td>
                         </tr>
@@ -1150,22 +1225,22 @@
                             <td>0570-079-711</td>
                         </tr>
                         <tr>
-                            <td style="background-color: var(--fish-bg); border-left: 3px solid var(--fish-color);"><a href="https://umizuri.com/" target="_blank">🎣 福岡市海づり公園</a><br><span class="note">※ 需入場費，有租借服務</span></td>
+                            <td><a href="https://umizuri.com/" target="_blank">🎣 福岡市海づり公園</a><br><span class="note">※ 需入場費，有租借服務</span></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=32.7990,130.70563" target="_blank">13 431 354*11</a></td>
                             <td>092-809-2666</td>
                         </tr>
                         <tr>
-                            <td style="background-color: var(--fish-bg); border-left: 3px solid var(--fish-color);"><a href="https://www.point-i.jp/shops/1296" target="_blank">🎣 釣具のポイント 福岡花畑本店</a><br><span class="note">※ 市區大型釣具店</span></td>
+                            <td><a href="https://www.point-i.jp/shops/1296" target="_blank">🎣 釣具のポイント 福岡花畑本店</a><br><span class="note">※ 市區大型釣具店</span></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=32.7990,130.70564" target="_blank">13 086 524*55</a></td>
                             <td>092-564-3371</td>
                         </tr>
                         <tr>
-                            <td style="background-color: var(--backup-bg);">☔ <a href="https://www.fukuokacity-kagakukan.jp/" target="_blank">福岡市科學館 (六本松)</a><br><span class="note">※無停車場，請停周邊付費車位</span></td>
+                            <td>☔ <a href="https://www.fukuokacity-kagakukan.jp/" target="_blank">福岡市科學館 (六本松)</a><br><span class="note">※無停車場，請停周邊付費車位</span></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=33.5788,130.3789" target="_blank">13 255 798*52</a></td>
                             <td>092-731-2525</td>
                         </tr>
                         <tr>
-                            <td style="background-color: var(--backup-bg);">☔ <a href="https://www.mec-markis.jp/fukuoka-momochi/" target="_blank">Mark Is 福岡 (百道濱)</a></td>
+                            <td>☔ <a href="https://www.mec-markis.jp/fukuoka-momochi/" target="_blank">Mark Is 福岡 (百道濱)</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=33.5932,130.3637" target="_blank">13 344 863*52</a></td>
                             <td>092-407-1111</td>
                         </tr>
@@ -1281,6 +1356,7 @@
             
             let width = window.innerWidth;
             let height = window.innerHeight;
+            let oldHeight = height; // 記錄舊高度，用於修正積雪位置
             
             // 設定畫布大小
             function resize() {
@@ -1288,10 +1364,23 @@
                 height = window.innerHeight;
                 canvas.width = width;
                 canvas.height = height;
-                // 若尺寸變更且尚未初始化，則重置地面
+                
+                // 修正：當視窗高度改變時 (例如手機網址列縮放)，
+                // 我們不重置積雪，而是根據高度差移動積雪，
+                // 這樣可以防止積雪「瞬間」填滿新出現的空間。
                 if(!groundHeight || groundHeight.length !== width) {
+                    // 寬度改變（如旋轉螢幕），只好重置
                     initGround();
+                } else {
+                    // 高度改變，移動積雪位置
+                    const diff = height - oldHeight;
+                    for(let i=0; i<width; i++) {
+                        groundHeight[i] += diff;
+                        // 確保不超過底部
+                        if(groundHeight[i] > height) groundHeight[i] = height;
+                    }
                 }
+                oldHeight = height;
             }
             
             // 地面高度陣列（每個像素的積雪高度）
@@ -1317,12 +1406,12 @@
                     this.y = initial ? Math.random() * -height : Math.random() * -50;
                     this.size = Math.random() * 15 + 10; // 雪花大小 10-25
                     
-                    // 修正 1：雪花飄落速度調慢
-                    this.speed = Math.random() * 1 + 1; // 輕飄飄的速度
+                    // 修正 1：雪花飄落速度調慢 (變得非常輕盈)
+                    this.speed = Math.random() * 0.4 + 0.2; 
                     
-                    this.drift = (Math.random() - 0.5) * 1.5; // 左右飄移
+                    this.drift = (Math.random() - 0.5) * 1; // 左右飄移
                     this.wobble = Math.random() * Math.PI * 2;
-                    this.wobbleSpeed = 0.05;
+                    this.wobbleSpeed = 0.03;
                 }
                 
                 update() {
@@ -1377,7 +1466,10 @@
 
             // 創建雪花池
             const particles = [];
-            const maxParticles = 80; 
+            // 根據螢幕寬度決定雪花數量 (手機版減少數量以免遮擋視線)
+            const isMobile = window.innerWidth < 600;
+            const maxParticles = isMobile ? 35 : 80; 
+
             for(let i=0; i<maxParticles; i++) {
                 particles.push(new Snowflake());
             }
