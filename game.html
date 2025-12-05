@@ -506,8 +506,9 @@
         .toc-show { display: block; animation: slideUp 0.3s ease-out; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .slide-img { width: 100%; height: auto; display: block; border-radius: 8px; border: 3px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; transition: opacity 0.3s, transform 0.3s; }
-        .slide-img:hover { opacity: 0.95; transform: scale(1.01); }
+        /*.slide-img { width: 100%; height: auto; display: block; border-radius: 8px; border: 3px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; transition: opacity 0.3s, transform 0.3s; }*/
+        .slide-img { width: 100%; height: auto; display: block; border-radius: 8px; border: 3px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        /*.slide-img:hover { opacity: 0.95; transform: scale(1.01); }*/
 
         .image-grid-wrapper { display: flex; flex-wrap: wrap; margin: 0 -8px; }
         
@@ -1530,34 +1531,34 @@
     </div>
 
     <script>
-        // 圖片放大功能
-        var modal = document.getElementById("imageModal");
-        var modalImg = document.getElementById("img01");
-        var images = document.querySelectorAll(".slide-img");
-        var closeBtn = document.getElementsByClassName("close")[0];
+        // // 圖片放大功能
+        // var modal = document.getElementById("imageModal");
+        // var modalImg = document.getElementById("img01");
+        // var images = document.querySelectorAll(".slide-img");
+        // var closeBtn = document.getElementsByClassName("close")[0];
 
-        images.forEach(function(img) {
-            img.onclick = function(){
-                modal.style.display = "block";
-                modalImg.src = this.src;
-            }
-        });
+        // images.forEach(function(img) {
+        //     img.onclick = function(){
+        //         modal.style.display = "block";
+        //         modalImg.src = this.src;
+        //     }
+        // });
 
-        closeBtn.onclick = function() { modal.style.display = "none"; }
-        modal.onclick = function(event) { if (event.target === modal) modal.style.display = "none"; }
+        // closeBtn.onclick = function() { modal.style.display = "none"; }
+        // modal.onclick = function(event) { if (event.target === modal) modal.style.display = "none"; }
 
-        // 目錄功能
-        function toggleToc() {
-            var menu = document.getElementById("tocMenu");
-            menu.classList.toggle("toc-show");
-        }
-        document.addEventListener('click', function(event) {
-            var menu = document.getElementById("tocMenu");
-            var btn = document.querySelector('.toc-btn');
-            if (menu && btn && !menu.contains(event.target) && !btn.contains(event.target) && menu.classList.contains('toc-show')) {
-                menu.classList.remove('toc-show');
-            }
-        });
+        // // 目錄功能
+        // function toggleToc() {
+        //     var menu = document.getElementById("tocMenu");
+        //     menu.classList.toggle("toc-show");
+        // }
+        // document.addEventListener('click', function(event) {
+        //     var menu = document.getElementById("tocMenu");
+        //     var btn = document.querySelector('.toc-btn');
+        //     if (menu && btn && !menu.contains(event.target) && !btn.contains(event.target) && menu.classList.contains('toc-show')) {
+        //         menu.classList.remove('toc-show');
+        //     }
+        // });
 
         // ================= 閱讀模式邏輯 =================
         let currentSlideIndex = 0;
