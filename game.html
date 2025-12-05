@@ -66,10 +66,6 @@
             cursor: crosshair; 
         }
 
-        /* === 新增封面切換設定 === */
-        /* 預設情況（電腦版）：強制隱藏手機圖 */
-        .img-mobile { display: none !important; }
-
         /* === 遊戲元素 CSS 開始 === */
         #game-score-board {
             position: fixed;
@@ -368,16 +364,6 @@
             .pass-date { padding-right: 10px; min-width: 50px; }
             .char-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 8px; }
             .char-btn { width: 60px; height: 60px; font-size: 2em; }
-
-            /* 手機版情況：強制隱藏電腦圖，強制顯示手機圖 */
-            @media (max-width: 600px) {
-                .img-desktop { 
-                    display: none !important; 
-                }
-                .img-mobile { 
-                    display: block !important; 
-                }
-            }            
         }
 
         .warning-box { 
@@ -823,8 +809,7 @@
                 🇹🇼🇯🇵 2026 冬 九州親子自駕8日
                 <span class="version-info">Ver. 49 (更新：2025/12/03)</span>
             </h1>
-            <img src="imgs/1048004.png" class="slide-img img-desktop" alt="行程封面">
-            <img src="imgs/1050119.jpg" class="slide-img img-mobile" alt="行程封面">
+            <img src="imgs/1048004.png" class="slide-img" alt="行程封面">
         </div>
 
         <div class="slide-group" id="trip-info">
