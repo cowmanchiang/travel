@@ -8,7 +8,7 @@
     <meta name="twitter:title" content="🇹🇼🇯🇵 2026 冬 九州親子自駕之旅" >
     <meta property="og:title" content="🇹🇼🇯🇵 2026 冬 九州親子自駕之旅" >
     <meta property="og:description" content="日期：2026/01/20 (二) ～ 2026/01/27 (二)" >
-    <meta property="og:image" content="https://cowmanchiang.github.io/travel/imgs/1048004_500.png" > 
+    <meta property="og:image" content="https://cowmanchiang.github.io/travel/imgs/1048004_500.png" >     
     <title>🇹🇼🇯🇵 2026 冬 九州親子自駕8日</title>
     <style>
         :root {
@@ -19,7 +19,7 @@
             --bg-color: #f0f4f8;        /* 背景：極淡的灰藍色 */
             --card-bg: #ffffff;         /* 卡片背景：純白 */
             --text-color: #333333;      /* 正文文字：深灰 */
-             
+            
             /* 特殊功能色 */
             --coffee-color: #8e44ad;    /* 咖啡：紫羅蘭色 */
             --aso-color: #27ae60;       /* 阿蘇綠 */
@@ -37,18 +37,16 @@
             --weather-border: #90caf9;  
             
             --backup-bg: #e8f5e9;       
-            --backup-text: #2e7d32;      
-            --backup-border: #a5d6a7;    
+            --backup-text: #2e7d32;     
+            --backup-border: #a5d6a7;   
 
-            /* 購物粉色系 (低對比柔和版) */
-            --shop-bg: #fff7fa;         /* 背景：極淡粉色 */
-            --shop-border: #ffd1df;     /* 邊框：更淺更柔和的粉色 */
-            --shop-text: #c75b7a;       /* 文字：調淺為柔和的玫瑰粉 */
+            /* 購物粉色系 */
+            --shop-bg: #fff7fa;         
+            --shop-border: #ffd1df;     
+            --shop-text: #c75b7a;       
             
             --coupon-color: #d81b60;    
-            --fish-color: #0277bd;      
-            --fish-bg: #e1f5fe;         
-            --drive-color: #546e7a;      
+            --drive-color: #546e7a;     
         }
 
         html { scroll-behavior: smooth; }
@@ -73,7 +71,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
             position: relative; 
             border-top: 6px solid var(--accent-color); 
-            z-index: 10; /* 一般模式下層級較低 */
+            z-index: 10; 
         }
         
         /* 標題與文字樣式 */
@@ -109,28 +107,11 @@
             font-weight: 500;
             transition: color 0.2s, opacity 0.2s;
         }
-        a:hover {
-            text-decoration: underline;
-            opacity: 0.8;
-            color: #2980b9;
-        }
+        a:hover { text-decoration: underline; opacity: 0.8; color: #2980b9; }
 
-        .info-box { background-color: #fff9c4; padding: 20px; border-radius: 12px; margin-bottom: 30px; border: 1px solid #fff59d; margin-top: 0; color: #555; }
-        
-        /* ================= 🎫 新版登機證樣式 ================= */
-        .trip-header {
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 20px; padding: 15px;
-            background: #f8fbfe; border-radius: 12px;
-            border: 1px dashed #b3e5fc;
-        }
-        .trip-header-text { font-size: 1.1em; color: var(--primary-color); }
-
-        /* 機票並排容器 */
+        /* ================= 🎫 登機證樣式 ================= */
         .boarding-pass-wrapper {
-            display: flex;
-            gap: 20px;
-            width: 100%;
+            display: flex; gap: 20px; width: 100%;
         }
 
         .boarding-pass {
@@ -141,7 +122,7 @@
             overflow: hidden;
             position: relative;
             border-left: 5px solid var(--accent-color);
-            flex: 1; /* 讓兩張票均分寬度 */
+            flex: 1; 
         }
         
         .pass-header {
@@ -154,54 +135,30 @@
 
         .pass-body {
             padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            display: flex; align-items: center; justify-content: space-between;
         }
 
         .pass-date {
-            text-align: center;
-            padding-right: 15px;
-            border-right: 2px dashed #eee;
-            min-width: 50px;
+            text-align: center; padding-right: 15px; border-right: 2px dashed #eee; min-width: 50px;
         }
         .date-day { font-size: 1.6em; font-weight: 800; color: var(--primary-color); line-height: 1; display: block; }
         .date-month { font-size: 0.8em; color: #78909c; text-transform: uppercase; font-weight: bold; }
         .date-year { font-size: 0.7em; color: #90a4ae; display: block; }
 
         .pass-route {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 10px;
+            flex: 1; display: flex; align-items: center; justify-content: center; padding: 0 10px;
         }
         .airport-code { font-size: 1.4em; font-weight: 800; color: var(--primary-color); }
-        .route-arrow { 
-            margin: 0 10px; color: var(--accent-color); font-size: 1.2em; 
-            display: flex; flex-direction: column; align-items: center;
-        }
+        .route-arrow { margin: 0 10px; color: var(--accent-color); font-size: 1.2em; display: flex; flex-direction: column; align-items: center; }
         .route-arrow span { font-size: 0.6em; color: #90caf9; }
 
-        .pass-time {
-            text-align: right;
-            min-width: 60px;
-        }
+        .pass-time { text-align: right; min-width: 60px; }
         .time-label { font-size: 0.7em; color: #78909c; display: block; margin-bottom: 2px; }
         .time-val { font-size: 1.1em; font-weight: bold; color: var(--primary-color); display: block; }
         
-        /* 手機版登機證調整 */
         @media (max-width: 600px) {
-            .boarding-pass-wrapper {
-                flex-direction: column; /* 手機版改回垂直排列 */
-                gap: 15px;
-            }
+            .boarding-pass-wrapper { flex-direction: column; gap: 15px; }
             .boarding-pass { margin-bottom: 0; }
-            .pass-body { padding: 15px; }
-            .airport-code { font-size: 1.3em; }
-            .date-day { font-size: 1.5em; }
-            .route-arrow { margin: 0 8px; }
-            .pass-date { padding-right: 10px; min-width: 50px; }
         }
 
         .warning-box { 
@@ -222,57 +179,31 @@
         .day-title { font-size: 1.4em; font-weight: bold; color: var(--primary-color); margin-bottom: 15px; }
         
         .hotel-card { 
-            background-color: #fafafa; 
-            border: 1px solid #eee; 
-            padding: 20px; 
-            border-radius: 12px; 
-            margin-bottom: 20px; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            background-color: #fafafa; border: 1px solid #eee; padding: 20px; 
+            border-radius: 12px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);
         }
         .hotel-name { font-weight: bold; font-size: 1.1em; color: var(--primary-color); }
         
         .note { font-size: 0.9em; color: #78909c; font-style: italic; display: block; margin-top: 5px; }
         
         .backup-plan {
-            background-color: var(--backup-bg);
-            padding: 10px 15px;
-            border-radius: 8px;
-            color: var(--backup-text);
-            font-weight: bold;
-            display: block;
-            margin-top: 10px;
-            border-left: 4px solid var(--backup-border);
+            background-color: var(--backup-bg); padding: 10px 15px; border-radius: 8px; color: var(--backup-text);
+            font-weight: bold; display: block; margin-top: 10px; border-left: 4px solid var(--backup-border);
         }
 
         .shopping-tag {
-            background-color: var(--shop-bg);
-            padding: 10px 15px;
-            border-radius: 8px;
-            color: var(--shop-text);
-            font-weight: bold;
-            display: block;
-            margin-top: 10px;
-            border-left: 4px solid var(--shop-border);
+            background-color: var(--shop-bg); padding: 10px 15px; border-radius: 8px; color: var(--shop-text);
+            font-weight: bold; display: block; margin-top: 10px; border-left: 4px solid var(--shop-border);
         }
 
-        .coupon-link {
-            color: var(--coupon-color);
-            font-weight: bold;
-            text-decoration: underline;
-            margin-left: 5px;
-        }
+        .coupon-link { color: var(--coupon-color); font-weight: bold; text-decoration: underline; margin-left: 5px; }
 
         table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 20px; font-size: 0.95em; border: 1px solid #cfd8dc; border-radius: 8px; overflow: hidden; }
         th, td { border-bottom: 1px solid #cfd8dc; border-right: 1px solid #cfd8dc; padding: 14px; text-align: left; } 
         th:last-child, td:last-child { border-right: none; text-align: right; }
         tr:last-child td { border-bottom: none; }
         
-        th { 
-            background-color: var(--table-header-bg); 
-            color: var(--primary-color); 
-            white-space: nowrap; 
-            font-weight: 600; 
-        }
+        th { background-color: var(--table-header-bg); color: var(--primary-color); white-space: nowrap; font-weight: 600; }
         .total-row { font-weight: bold; background-color: #eceff1; }
         
         ul { padding-left: 20px; } li { margin-bottom: 8px; }
@@ -293,23 +224,10 @@
 
         .weather-section { background-color: var(--weather-bg); padding: 25px; border-radius: var(--section-border-radius); border: 2px solid var(--weather-border); margin-top: 20px; }
         .weather-title { color: #0277bd; margin-bottom: 5px; }
-        .weather-link { display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: var(--accent-color); color: white; text-decoration: none; border-radius: 50px; font-size: 0.95em; font-weight: bold; transition: background 0.3s; box-shadow: 0 4px 6px rgba(52, 152, 219, 0.2); }
-        .weather-link:hover { background-color: #2980b9; text-decoration: none; opacity: 1;}
-
-        .weather-location-link {
-            color: #0277bd;
-            text-decoration: none;
-            border-bottom: 1px dotted #0277bd;
-            font-weight: bold;
-        }
-        .weather-location-link:hover {
-            color: var(--warning-color);
-            border-bottom: 1px solid var(--warning-color);
-        }
+        .weather-location-link { color: #0277bd; text-decoration: none; border-bottom: 1px dotted #0277bd; font-weight: bold; }
 
         .toc-btn {
-            position: fixed; bottom: 30px; 
-            right: 20px; width: 60px; height: 60px;
+            position: fixed; bottom: 30px; right: 20px; width: 60px; height: 60px;
             background-color: var(--accent-color); color: white; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             font-size: 28px; box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
@@ -318,8 +236,7 @@
         .toc-btn:hover { transform: scale(1.1); background-color: #2980b9; }
         
         .toc-menu {
-            position: fixed; bottom: 100px;
-            right: 20px;
+            position: fixed; bottom: 100px; right: 20px;
             background-color: var(--toc-bg); padding: 15px; border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 9996;
             display: none; width: 220px; backdrop-filter: blur(8px);
@@ -327,20 +244,11 @@
         .toc-menu a {
             display: block; color: #fff; text-decoration: none;
             padding: 12px 10px; border-bottom: 1px solid rgba(255,255,255,0.1);
-            font-size: 1em; transition: padding-left 0.2s;
         }
         .toc-menu a:last-child { border-bottom: none; }
         .toc-menu a:hover { padding-left: 15px; color: #81d4fa; }
         
-        .reader-mode-link { 
-            font-weight: bold; 
-            background-color: rgba(255, 255, 255, 0.15); 
-            border-radius: 6px; 
-            margin-top: 5px; 
-            color: #ffeb3b !important; 
-        }
-        .reader-mode-link:hover { background-color: rgba(255, 255, 255, 0.25); }
-
+        .reader-mode-link { font-weight: bold; background-color: rgba(255, 255, 255, 0.15); border-radius: 6px; margin-top: 5px; color: #ffeb3b !important; }
         .toc-show { display: block; animation: slideUp 0.3s ease-out; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -348,118 +256,55 @@
         .slide-img:hover { opacity: 0.95; transform: scale(1.01); }
 
         .image-grid-wrapper { display: flex; flex-wrap: wrap; margin: 0 -8px; }
-        
         .slide-group { margin-bottom: 25px; display: block; }
-        
         .slide-group.image-only { width: 50%; padding: 8px; box-sizing: border-box; }
-        
         .reader-only-title { display: none; }
 
-        /* ================= 導航表格無縫拼接 CSS ================= */
-        
-        #nav-mapcode, 
-        #nav-mapcode + .slide-group, 
-        #nav-mapcode + .slide-group + .slide-group,
-        #nav-mapcode + .slide-group + .slide-group + .slide-group,
-        #nav-mapcode + .slide-group + .slide-group + .slide-group + .slide-group,
-        #nav-mapcode + .slide-group + .slide-group + .slide-group + .slide-group + .slide-group {
-            margin-bottom: 0 !important;
-        }
+        /* ================= 導航表格 CSS ================= */
+        #nav-mapcode, #nav-mapcode + .slide-group, #nav-mapcode + .slide-group + .slide-group, #nav-mapcode + .slide-group + .slide-group + .slide-group { margin-bottom: 0 !important; }
 
-        .nav-merge-top { 
-            border-bottom: none !important; 
-            border-radius: 16px 16px 0 0 !important; 
-            padding-bottom: 5px !important;
-            z-index: 6; position: relative; 
-        }
-
-        .nav-merge-mid { 
-            border-top: none !important; 
-            border-bottom: none !important; 
-            border-radius: 0 !important; 
-            padding-top: 5px !important; 
-            padding-bottom: 5px !important;
-            margin-top: -2px !important; 
-            z-index: 5; position: relative;
-        }
-
-        .nav-merge-bot { 
-            border-top: none !important; 
-            border-radius: 0 0 16px 16px !important; 
-            padding-top: 5px !important;
-            margin-top: -2px !important; 
-            z-index: 4; position: relative;
-        }
+        .nav-merge-top { border-bottom: none !important; border-radius: 16px 16px 0 0 !important; padding-bottom: 5px !important; z-index: 6; position: relative; }
+        .nav-merge-mid { border-top: none !important; border-bottom: none !important; border-radius: 0 !important; padding-top: 5px !important; padding-bottom: 5px !important; margin-top: -2px !important; z-index: 5; position: relative; }
+        .nav-merge-bot { border-top: none !important; border-radius: 0 0 16px 16px !important; padding-top: 5px !important; margin-top: -2px !important; z-index: 4; position: relative; }
 
         /* ================= 閱讀模式核心 CSS ================= */
-        
         body.reader-active { overflow: hidden; }
         #reader-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: rgba(44, 62, 80, 0.92); z-index: 9990; backdrop-filter: blur(8px);
         }
         body.reader-active .slide-group { display: none !important; }
-
         body.reader-active .reader-only-title { display: block; margin-top: 0; }
-
         body.reader-active .section-title-large { font-size: 1.8em; margin-bottom: 25px; }
-
-        body.reader-active .guide-section-wrapper {
-            display: contents; background: none; border: none; padding: 0; margin: 0;
-        }
-
+        body.reader-active .guide-section-wrapper { display: contents; background: none; border: none; padding: 0; margin: 0; }
+        
         body.reader-active .slide-group.active-slide {
-            display: block !important;
-            position: fixed; top: 50%; left: 50%;
-            transform: translate(-50%, -50%); 
-            width: 90%; max-width: 800px; max-height: 85vh;
-            overflow-y: auto; 
-            background: white; padding: 30px; border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            z-index: 10001; 
+            display: block !important; position: fixed; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); width: 90%; max-width: 800px; max-height: 85vh;
+            overflow-y: auto; background: white; padding: 30px; border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5); z-index: 10001; 
             animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* 閱讀模式下，容器樣式修正 */
-        body.reader-active .container {
-            z-index: 10000; 
-            background-color: transparent;
-            box-shadow: none;
-            border: none;
+        body.reader-active .container { z-index: 10000; background-color: transparent; box-shadow: none; border: none; }
+        
+        body.reader-active .nav-merge-top, body.reader-active .nav-merge-mid, body.reader-active .nav-merge-bot {
+            border: 2px solid var(--nav-border) !important; border-radius: 16px !important;
+            margin-top: 0 !important; padding: 25px !important; background-color: var(--nav-bg) !important;
         }
-
-        /* 閱讀模式下：強制重置導航表格樣式為獨立卡片 */
-        body.reader-active .nav-merge-top,
-        body.reader-active .nav-merge-mid,
-        body.reader-active .nav-merge-bot {
-            border: 2px solid var(--nav-border) !important;
-            border-radius: 16px !important;
-            margin-top: 0 !important;
-            padding: 25px !important;
-            background-color: var(--nav-bg) !important;
-        }
-        body.reader-active #nav-mapcode, 
-        body.reader-active #nav-mapcode + .slide-group, 
-        body.reader-active #nav-mapcode + .slide-group + .slide-group {
-            margin-bottom: 20px !important;
-        }
+        body.reader-active #nav-mapcode, body.reader-active #nav-mapcode + .slide-group { margin-bottom: 20px !important; }
 
         body.reader-active .slide-group.active-slide.image-only {
             background: transparent; box-shadow: none; padding: 0; 
             width: 100%; height: 100%; max-width: none; max-height: none;
             display: flex !important; align-items: center; justify-content: center;
         }
-
         body.reader-active .slide-group.active-slide.image-only img {
-            width: auto; height: auto; max-width: 95vw; max-height: 85vh; 
-            object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,0.8);
-            border: none;
+            width: auto; height: auto; max-width: 95vw; max-height: 85vh; object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,0.8); border: none;
         }
 
         .reader-controls, .reader-top-bar {
-            display: none; position: fixed; left: 0; width: 100%;
-            background: rgba(30, 30, 30, 0.9); z-index: 10002;
-            box-sizing: border-box;
+            display: none; position: fixed; left: 0; width: 100%; background: rgba(30, 30, 30, 0.9); z-index: 10002; box-sizing: border-box;
         }
         .reader-controls { bottom: 0; padding: 20px; justify-content: space-between; align-items: center; }
         .reader-top-bar { top: 0; height: 60px; color: white; justify-content: space-between; align-items: center; padding: 0 25px; }
@@ -467,127 +312,60 @@
         body.reader-active .reader-controls, body.reader-active .reader-top-bar { display: flex; }
 
         .ctrl-btn {
-            background: var(--accent-color); border: none; color: white;
-            padding: 10px 24px; border-radius: 30px;
-            font-size: 16px; cursor: pointer; font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: background 0.2s;
+            background: var(--accent-color); border: none; color: white; padding: 10px 24px; border-radius: 30px;
+            font-size: 16px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: background 0.2s;
         }
         .ctrl-btn:hover { background: #2980b9; }
         
-        @keyframes popIn {
-            from { opacity: 0; transform: translate(-50%, -40%) scale(0.95); }
-            to { opacity: 1; transform: translateY(-50%, -50%) scale(1); }
-        }
+        @keyframes popIn { from { opacity: 0; transform: translate(-50%, -40%) scale(0.95); } to { opacity: 1; transform: translateY(-50%, -50%) scale(1); } }
 
         .modal { display: none; position: fixed; z-index: 11000; padding-top: 50px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.95); backdrop-filter: blur(5px); }
         .modal-content { margin: auto; display: block; width: 80%; max-width: 1200px; max-height: 90vh; object-fit: contain; }
         .close { position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; }
 
-        /* ================= ❄️ 高效能 Canvas 雪花特效 CSS ❄️ ================= */
-        #snow-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 9995; /* 保持在文字與卡片下方，但在背景上方 */
-            pointer-events: none; /* 讓點擊穿透 Canvas，除非我們用 JS 攔截 */
-        }
+        /* ================= ❄️ Canvas 雪花特效 ================= */
+        #snow-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9995; pointer-events: none; }
 
         /* ================= 📱 手機版優化 ================= */
         @media (max-width: 600px) { 
             body { padding: 15px; padding-bottom: 90px; } 
             .container { padding: 20px 15px; } 
             h1 { font-size: 1.6em; margin-bottom: 20px; }
-
             body.reader-active .slide-group.active-slide { width: 92%; padding: 20px; }
             th, td { padding: 10px; font-size: 0.9em; } 
             .slide-group.image-only { width: 50%; } 
-
-            .flight-grid { grid-template-columns: 1fr; gap: 10px; } /* 手機版航班資訊垂直排列 */
-
+            
             table, thead, tbody, th, td, tr { display: block; }
             
-            .weather-section table, #cost-table table { display: table !important; border-collapse: separate; width: 100%; border-radius: 8px; overflow: hidden;}
+            .weather-section table, #cost-table table { display: table !important; width: 100%; border-radius: 8px; overflow: hidden;}
             .weather-section thead, #cost-table thead { display: table-header-group !important; }
             .weather-section tbody, #cost-table tbody { display: table-row-group !important; }
-            .weather-section tr, #cost-table tr { 
-                display: table-row !important; 
-                margin-bottom: 0; 
-                border: none; 
-                box-shadow: none; 
-                grid-template-columns: none !important; 
-            }
+            .weather-section tr, #cost-table tr { display: table-row !important; border: none; box-shadow: none; grid-template-columns: none !important; }
             .weather-section thead tr, #cost-table thead tr { position: static !important; }
             
             .weather-section th, .weather-section td, #cost-table th, #cost-table td { 
-                display: table-cell !important; 
-                border-bottom: 1px solid #cfd8dc !important;
-                border-right: 1px solid #cfd8dc !important;
-                padding: 8px !important; 
-                text-align: left; 
-                font-size: 0.85em; 
+                display: table-cell !important; border-bottom: 1px solid #cfd8dc !important;
+                border-right: 1px solid #cfd8dc !important; padding: 8px !important; text-align: left; font-size: 0.85em; 
             }
             .weather-section td:last-child, #cost-table td:last-child { border-right: none !important; }
 
             .weather-section th, #cost-table th { background-color: var(--weather-bg); color: #0277bd; font-weight: bold; text-align: center; }
             #cost-table th { background-color: #fff3e0; color: #5d4037; }
-            
             #cost-table td { padding: 6px 3px !important; font-size: 0.8em; }
             #cost-table td:last-child { text-align: right !important; }
             
-            .weather-section td:nth-child(1) { width: 15%; white-space: nowrap; text-align: center; } 
-            .weather-section td:nth-child(2) { width: 15%; white-space: nowrap; text-align: center; } 
-            .weather-section td:nth-child(3) { text-align: left; } 
-
-            .weather-section td::before, #cost-table td::before { content: none !important; }
-
-            .weather-section td:nth-of-type(1), #cost-table td:nth-of-type(1) {
-                grid-column: auto !important;
-                border-bottom: 1px solid #cfd8dc !important;
-                padding-bottom: 8px !important;
-                margin-bottom: 0 !important;
-                color: inherit !important;
-                font-weight: normal !important;
-            }
-
             table:not(.weather-section table):not(#cost-table table) thead tr { position: absolute; top: -9999px; left: -9999px; }
-            
             table:not(.weather-section table):not(#cost-table table) tr { 
-                display: grid; 
-                grid-template-columns: 1fr 1fr; 
-                border: 1px solid #e0e0e0; 
-                border-radius: 12px; 
-                margin-bottom: 15px; 
-                background: #fff; 
-                padding: 12px; 
-                box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+                display: grid; grid-template-columns: 1fr 1fr; border: 1px solid #e0e0e0; border-radius: 12px; margin-bottom: 15px; background: #fff; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             }
-            
             table:not(.weather-section table):not(#cost-table table) td { border: none; padding: 4px 0; position: relative; }
             
             table:not(.weather-section table):not(#cost-table table) td:nth-of-type(1) { 
-                grid-column: 1 / -1; 
-                font-weight: bold; 
-                font-size: 1.1em; 
-                border-bottom: 1px dashed #eee; 
-                padding-bottom: 8px; 
-                margin-bottom: 5px;
-                color: var(--primary-color);
+                grid-column: 1 / -1; font-weight: bold; font-size: 1.1em; border-bottom: 1px dashed #eee; padding-bottom: 8px; margin-bottom: 5px; color: var(--primary-color);
             }
-            
-            .drive-section td:nth-of-type(2) { 
-                grid-column: 1 / 2; 
-                font-size: 0.95em; 
-            }
+            .drive-section td:nth-of-type(2) { grid-column: 1 / 2; font-size: 0.95em; }
             .drive-section td:nth-of-type(2)::before { content: "🚗 "; }
-            
-            .drive-section td:nth-of-type(3) { 
-                grid-column: 2 / 3; 
-                text-align: right; 
-                font-size: 0.95em; 
-            }
+            .drive-section td:nth-of-type(3) { grid-column: 2 / 3; text-align: right; font-size: 0.95em; }
             .drive-section td:nth-of-type(3)::before { content: "📞 "; }
         }
     </style>
@@ -613,7 +391,7 @@
         <div class="slide-group">
             <h1>
                 🇹🇼🇯🇵 2026 冬 九州親子自駕8日
-                <span class="version-info">Ver. 49 (更新：2025/12/03)</span>
+                <span class="version-info">Ver. 52 (更新：2025/12/08)</span>
             </h1>
             <img src="imgs/1048004.png" class="slide-img" alt="行程封面">
         </div>
@@ -690,10 +468,10 @@
             <div class="warning-box" id="checklist">
                 <div class="warning-title">🚨 行前最重要！關鍵檢查表</div>
                 <ul>
-                    <li><strong>🚗 租車關鍵：</strong>務必確認已指定<strong>【雪胎 (Snow Tires)】</strong>。車型推薦 Sienta。</li>
-                    <li><strong>📍 機場取還：</strong>確認「熊本機場取車、福岡機場還車」。</li>
-                    <li><strong>🎫 提前預約：</strong>Day 7 teamLab、Day 5 動物園叢林巴士。</li>
-                    <li><strong>🧥 冬季穿著：</strong>戶外重點區必備防風保暖裝備。</li>
+                    <li><strong>💰 財務確認：</strong>請準備 <strong>¥150,000 現金</strong> (含租車費/ETC/餐費)。</li>
+                    <li><strong>🚗 租車關鍵：</strong>務必確認已指定<strong>【雪胎 (Snow Tires)】</strong>。機場付款約 ¥114,000。</li>
+                    <li><strong>⚠️ Day 5 戰術：</strong>早上禁止繞去車站咖啡廳！9:30前務必抵達動物園。</li>
+                    <li><strong>🎫 提前預約：</strong>Day 7 teamLab、Day 5 動物園叢林巴士(現場排隊)。</li>
                     <li><strong>📦 打包提醒：</strong>布丁、果醬類屬液體，回程請務必放託運。</li>
                 </ul>
             </div>
@@ -702,8 +480,7 @@
         <div class="slide-group" id="weather-info">
             <div class="weather-section">
                 <div class="section-title-large weather-title">🌦️ 旅途天氣預報 (1月歷史均溫)</div>
-                <p class="note" style="color: #0277bd;">※ 此為歷史數據參考，山區(阿蘇/由布院)體感約 -5°C，請務必洋蔥式穿搭。</p>
-                <p class="note" style="color: #0277bd;">※ 點擊地點名稱可查看詳細天氣預報 (Yahoo JP)</p>
+                <p class="note" style="color: #0277bd;">※ 山區(阿蘇/由布院)體感約 -5°C，務必洋蔥式穿搭。</p>
                 
                 <table>
                     <thead>
@@ -724,29 +501,22 @@
                         <tr><td>1/27 (二)</td><td><a href="https://weather.yahoo.co.jp/weather/jp/40/8210.html" target="_blank" class="weather-location-link">福岡機場</a></td><td>⛅ 晴朗 (3°C ~ 11°C)</td></tr>
                     </tbody>
                 </table>
-                <a href="https://weather.yahoo.co.jp/weather/" target="_blank" class="weather-link">🔗 出發前點此查詢日本即時天氣 (Yahoo JP 首頁)</a>
             </div>
         </div>
 
         <div class="slide-group" id="day1">
             <h2 style="margin-top:0">🗺️ Day 1 (1/20 二)</h2>
             <div class="day-card">
-                <div class="day-title">抵達熊本、UNIQLO採購</div>
+                <div class="day-title">抵達熊本、UNIQLO 裝備補給</div>
                 <ul>
-                    <li><strong>10:35</strong> 抵達熊本 ➔ <strong>11:30 機場取車</strong>。</li>
-                    <li><strong>中午：</strong>熊本市區午餐 (勝烈亭豬排)。</li>
-                    <li><strong>🍢 必吃小吃：</strong>いきなり団子 (紅豆地瓜)、辛子蓮藕。</li>
-                    <li><strong>下午：</strong>
-                        <ul>
-                            <li><strong>UNIQLO 新市街店：</strong>補齊上山裝備。</li>
-                            <li><strong>熊本熊部長辦公室：</strong>提早卡位。</li>
-                            <li><strong>城彩苑：</strong>傍晚逛街吃點心。</li>
-                        </ul>
-                    </li>
-                    <li><strong>晚餐：</strong>馬肉料理或熊本拉麵。</li>
+                    <li><strong>10:35</strong> 抵達熊本機場 (JX846，前排座位搶先下機)。</li>
+                    <li><strong>11:30 機場取車：</strong>辦理手續、付現 (¥114,000)、裝好安全座椅出發。</li>
+                    <li><strong>12:30 午餐：</strong><strong style="color:var(--primary-color);">勝烈亭豬排 (新市街本店)</strong>。<br><span class="note">亮點：鹿兒島黑豚、自己磨芝麻(小孩愛玩)、白飯高麗菜可續。</span></li>
+                    <li><strong>13:30 補給：</strong>UNIQLO 新市街店 (餐廳隔壁)。<br><span class="note">任務：補齊 HEATTECH 發熱衣、羽絨衣、防風褲。</span></li>
+                    <li><strong>15:00 景點：</strong>熊本熊部長辦公室 (看表演/參觀)。</li>
+                    <li><strong>16:30 點心：</strong>城彩苑 (吃海膽可樂餅、いきなり団子)。</li>
+                    <li><strong>晚餐：</strong>市區馬肉料理或熊本拉麵 (桂花/黑亭)。</li>
                     <li><strong>🏠 住宿：</strong>熊本城飯店</li>
-                    <li class="shopping-tag">🎁 必買特產：熊本熊周邊 (辦公室/城彩苑)、譽之陣太鼓 (金色包裝求肥甜點)、芥末蓮藕脆片 (下酒菜)。</li>
-                    <li class="backup-plan">☔ 雨雪備案：下通商店街 (全區有屋頂)、SAKURA MACHI 購物中心 (室內)。</li>
                 </ul>
             </div>
         </div>
@@ -754,20 +524,16 @@
         <div class="slide-group" id="day2">
             <h2 style="margin-top:0">🗺️ Day 2 (1/21 三)</h2>
             <div class="day-card">
-                <div class="day-title">早安熊本城 ➔ 阿蘇震撼</div>
+                <div class="day-title">早安熊本城 ➔ 藏壽司 ➔ 阿蘇</div>
                 <ul>
-                    <li><strong>09:00</strong> 準時<strong>「進去」參觀熊本城</strong>。</li>
-                    <li><strong>中午：</strong>開車往阿蘇 (1.5hr)。<span class="note">必停「道の駅 大津」。</span></li>
-                    <li><strong>🍢 必吃小吃：</strong>阿蘇澤西牛乳霜淇淋 (草千里)、高菜飯。</li>
-                    <li><strong>下午 (阿蘇)：</strong>
-                        <ul>
-                            <li><strong>直升機體驗：</strong>推薦「卡德利動物樂園」。</li>
-                            <li><strong>草千里 & 火山口：</strong>視天氣走訪。</li>
-                        </ul>
-                    </li>
-                    <li><strong>傍晚：</strong>飯店 Check-in 溫泉晚餐。</li>
-                    <li><strong>🏠 住宿：</strong>阿蘇 湯巡追莊 (霜降牛吃到飽!)</li>
-                    <li class="backup-plan">☔ 雨雪備案：阿蘇火山博物館 (草千里旁室內)、阿蘇農場 Aso Farm Land (室內巨蛋)。</li>
+                    <li><strong>08:30 早餐：</strong>超商買好房內吃 或 Joyfull 家庭餐廳。</li>
+                    <li><strong>09:00 景點：</strong>進「熊本城天守閣」參觀 (開門進場避人潮)。</li>
+                    <li><strong>11:30：</strong>退房，開車離開市區。</li>
+                    <li><strong>12:20 午餐：</strong><span style="color:#e67e22; font-weight:bold;">★無添藏壽司 (熊本大津店)</span>。<br><span class="note">亮點：順路、好停車、玩扭蛋。</span></li>
+                    <li><strong>14:00 體驗：</strong>阿蘇直升機 (卡德利動物樂園)。</li>
+                    <li><strong>15:30 景點：</strong>草千里 & 火山口 (冬季雪白草原)。</li>
+                    <li><strong>18:30 晚餐：</strong>飯店豪華 Buffet (霜降牛/螃蟹吃到飽)。</li>
+                    <li><strong>🏠 住宿：</strong>阿蘇 湯巡追莊 (房內泡半露天溫泉)</li>
                 </ul>
             </div>
         </div>
@@ -777,11 +543,12 @@
             <div class="day-card">
                 <div class="day-title">阿蘇歡樂玩雪日</div>
                 <ul>
-                    <li><strong>全日目標：</strong>**九重森林公園滑雪場**。<span class="note">專攻「兒童雪盆區」。</span></li>
-                    <li><strong>🍢 必吃小吃：</strong>滑雪場食堂的熱咖哩飯、暖呼呼玉米濃湯。</li>
+                    <li><strong>09:30：</strong>睡飽後悠閒出發。</li>
+                    <li><strong>10:30 景點：</strong>**九重森林公園滑雪場**。<br><span class="note">攻略：專攻「兒童雪盆區」，利用電動步道省力。</span></li>
+                    <li><strong>午餐：</strong>滑雪場食堂 (咖哩飯/烏龍麵)。</li>
+                    <li><strong>15:00：</strong>回飯店休息、泡湯、享受設施。</li>
                     <li><strong>🏠 住宿：</strong>阿蘇 湯巡追莊 (續住)</li>
-                    <li class="shopping-tag">🎁 必買特產：阿部牧場 ASOMILK (三星獎鮮奶)、阿蘇牛奶年輪蛋糕 (常溫好帶)。</li>
-                    <li class="backup-plan">☔ 暴風雪備案：改去「阿蘇農場 (元気の森)」室內運動區，或飯店溫泉耍廢。</li>
+                    <li class="backup-plan">☔ 太冷備案：改去「阿蘇農場 (Aso Farm Land)」玩室內元氣之森。</li>
                 </ul>
             </div>
         </div>
@@ -789,16 +556,17 @@
         <div class="slide-group" id="day4">
             <h2 style="margin-top:0">🗺️ Day 4 (1/23 五)</h2>
             <div class="day-card">
-                <div class="day-title">絕景公路移動日 (阿蘇➔由布院)</div>
+                <div class="day-title">絕景公路移動日 (阿蘇 ➔ 由布院)</div>
                 <ul>
-                    <li><strong>10:00</strong> 退房，行駛 **山並公路**。<span class="note">中途停「瀨之本高原」。</span></li>
-                    <li><strong>中途停留：</strong>**九重夢大吊橋**。</li>
-                    <li><strong>午餐：</strong>吊橋遊客中心漢堡。</li>
-                    <li><strong>下午：</strong>抵達由布院 ➔ **湯之坪** ➔ **金鱗湖**。</li>
-                    <li><strong>🍢 必吃小吃：</strong>金賞可樂餅、Milch 布丁、B-Speak 蛋糕捲。</li>
-                    <li><strong>🏠 住宿：</strong>由布院 UBL 飯店 (懷石料理)</li>
-                    <li class="shopping-tag">🎁 必買特產：柚子胡椒 (湯之坪醬料店)、Milch 烤甜甜圈 (常溫)、GOEMON 蛋糕卷。</li>
-                    <li class="backup-plan">☔ 雨雪備案：由布院彩繪玻璃美術館、Comico Art Museum (隈研吾建築)、岩下收藏館。</li>
+                    <li><strong>10:00：</strong>準時退房，行駛 **山並公路** (冬季慢行)。</li>
+                    <li><strong>🚽 廁所：</strong>必停「瀨之本高原休息站」或「長者原遊客中心」。</li>
+                    <li><strong>11:00 景點：</strong>九重夢大吊橋 (風大注意保暖)。</li>
+                    <li><strong>12:00 午餐：</strong>吊橋遊客中心吃漢堡。</li>
+                    <li><strong>14:30：</strong>抵達由布院 Check-in，車停飯店。</li>
+                    <li><strong>下午茶：</strong>Cafe La Ruche (金鱗湖畔) 或 Carandonel。</li>
+                    <li><strong>散策：</strong>湯之坪 (Snoopy 茶屋/金賞可樂餅) ➔ 金鱗湖黃昏。</li>
+                    <li><strong>18:30 晚餐：</strong>飯店內懷石料理。</li>
+                    <li><strong>🏠 住宿：</strong>由布院 UBL 飯店</li>
                 </ul>
             </div>
         </div>
@@ -806,13 +574,17 @@
         <div class="slide-group" id="day5">
             <h2 style="margin-top:0">🗺️ Day 5 (1/24 六)</h2>
             <div class="day-card">
-                <div class="day-title">別府親子雙重奏</div>
+                <div class="day-title">別府親子雙重奏 (戰術調整版)</div>
                 <ul>
-                    <li><strong>09:00 出發：</strong>**九州自然動物園**。<span class="note">搶搭「叢林巴士」。</span></li>
-                    <li><strong>下午：</strong>**三麗鷗和諧樂園**。</li>
-                    <li><strong>🍢 必吃小吃：</strong>地獄蒸布丁 (別府)、大分炸雞天婦羅 (Toriten)。</li>
+                    <li><strong>08:00：</strong>飯店早餐。</li>
+                    <li><strong>09:00：</strong><span style="color:red; font-weight:bold;">務必準時出發！</span>中途超商買咖啡，不繞去車站。</li>
+                    <li><strong>09:30 景點：</strong>**九州自然動物園** (搭叢林巴士餵獅子)。</li>
+                    <li><strong>12:50 午餐戰術：</strong>Hotto Motto 日出店買便當 或 路邊炸雞。</li>
+                    <li><strong>13:10：</strong>抵達和諧樂園停車場，在車上吃完午餐再入園。</li>
+                    <li><strong>13:40 景點：</strong>**三麗鷗和諧樂園** (全家搭摩天輪)。</li>
+                    <li><strong>16:45：</strong>撤退 (避開閉園車潮)。</li>
+                    <li><strong>18:00：</strong>返回由布院飯店晚餐。</li>
                     <li><strong>🏠 住宿：</strong>由布院 UBL 飯店 (續住)</li>
-                    <li class="backup-plan">☔ 雨雪備案：大分海洋宮殿水族館「海之卵」(室內為主)、別府竹細工傳統產業會館。</li>
                 </ul>
             </div>
         </div>
@@ -820,16 +592,18 @@
         <div class="slide-group" id="day6">
             <h2 style="margin-top:0">🗺️ Day 6 (1/25 日)</h2>
             <div class="day-card">
-                <div class="day-title">跨越北九州 (避開塞車)</div>
+                <div class="day-title">跨越北九州 (避開塞車策略)</div>
                 <ul>
-                    <li><strong>上午：</strong>07:30 金鱗湖晨霧。10:00 退房往北九州。</li>
-                    <li><strong>中午 (小倉)：</strong>參觀 **小倉城**。</li>
-                    <li><strong>下午 (門司)：</strong>**關門海峽人行隧道**。</li>
-                    <li><strong>🍢 必吃小吃：</strong>門司港燒咖哩 (Yaki Curry)、鐵鍋餃子。</li>
-                    <li><strong>晚餐：</strong>**AEON MALL 福津** (避開福岡市區塞車)。</li>
+                    <li><strong>07:30：</strong>早鳥散策 (金鱗湖晨霧)。</li>
+                    <li><strong>10:00：</strong>退房，開車前往北九州 (中停別府灣 SA)。</li>
+                    <li><strong>11:30 景點：</strong>**小倉城** (參觀互動天守閣)。</li>
+                    <li><strong>12:30 午餐：</strong>小倉城旁 Riverwalk 商場。</li>
+                    <li><strong>14:30 體驗：</strong>**關門海峽人行隧道** (走路跨縣界)。</li>
+                    <li><strong>16:00：</strong>離開北九州，開往福津。</li>
+                    <li><strong>17:00 戰略停留：</strong><span style="color:#e67e22; font-weight:bold;">★AEON MALL 福津</span>。<br><span class="note">目的：避開進福岡市區塞車潮，吃飽逛完再回飯店。</span></li>
+                    <li><strong>備案晚餐：</strong>一蘭拉麵 (新宮店)。</li>
+                    <li><strong>19:40：</strong>抵達飯店 Check-in。</li>
                     <li><strong>🏠 住宿：</strong>福岡貝塚 Vessel Hotel</li>
-                    <li class="shopping-tag">🎁 必買特產：螺絲巧克力 (小倉城/門司港)、香蕉夾心餅乾、燒咖哩調理包。</li>
-                    <li class="backup-plan">☔ 雨雪備案：九州鐵道紀念館 (門司港/室內)、北九州市立自然史博物館 (生命之旅/恐龍)。</li>
                 </ul>
             </div>
         </div>
@@ -839,13 +613,13 @@
             <div class="day-card">
                 <div class="day-title">海陸空制霸 + 百道濱</div>
                 <ul>
-                    <li><strong>上午：</strong>**海中之道海洋世界** (海豚秀)。</li>
-                    <li><strong>🍢 必吃小吃：</strong>明太子法國麵包 (Full Full)、博多豚骨拉麵。</li>
-                    <li><strong>下午：</strong>**teamLab Forest Fukuoka**。</li>
-                    <li><strong>傍晚：</strong>**百道海濱公園** ➔ **福岡塔** 夜景。</li>
+                    <li><strong>09:30 景點：</strong>**海中之道海洋世界** (看海豚秀)。</li>
+                    <li><strong>14:30：</strong>移動至百道濱 (停 MARK IS 停車場)。</li>
+                    <li><strong>下午茶：</strong>RHC CAFE (Markis 2F)。</li>
+                    <li><strong>15:30 體驗：</strong>**teamLab Forest Fukuoka** (⚠️務必預約)。</li>
+                    <li><strong>17:30 景點：</strong>百道海濱公園 (沙灘散步)。</li>
+                    <li><strong>18:30 景點：</strong>**福岡塔** (上塔看夜景)。</li>
                     <li><strong>🏠 住宿：</strong>福岡貝塚 Vessel Hotel (續住)</li>
-                    <li class="shopping-tag">🎁 必買特產：一蘭/一風堂拉麵禮盒 (超市買便宜)、福岡甜王草莓 (Amaou) 限定零食。</li>
-                    <li class="backup-plan">☔ 雨雪備案：福岡市科學館 (六本松/室內互動多)、Mark Is 福岡 (百道濱大型商場)。</li>
                 </ul>
             </div>
         </div>
@@ -855,15 +629,13 @@
             <div class="day-card">
                 <div class="day-title">鋼彈 ➔ 機場大採購</div>
                 <ul>
-                    <li><strong>上午：</strong>10:30 退房前往 **LaLaport**。</li>
-                    <li><strong>午餐/逛街：</strong>看 1:1 Nu 鋼彈、補貨。</li>
-                    <li><strong>14:30：</strong>前往機場，避開車潮。</li>
-                    <li><strong>🍢 必買伴手禮：</strong>努努雞 (冷炸雞)、博多通利蒙、Menbei 仙貝。</li>
-                    <li><strong>15:00：</strong>機場還車 ➔ 免稅店採購。</li>
-                    <li><strong>19:10：</strong>搭機返台。</li>
-                    <li class="shopping-tag">🎁 機場必掃：福太郎 Menbei (明太子仙貝)、博多通饅頭 (奶香白豆沙)、管狀明太子 (Tubu Tube)。</li>
-                    <li class="backup-plan">⚠️ 重要提醒：布丁/果醬屬液體，請在機場報到前放入託運！明太子機場買可附保冷劑。</li>
-                    <li class="backup-plan">☔ 雨雪備案：LaLaport 為全室內商場，無須擔心天氣。</li>
+                    <li><strong>10:30：</strong>睡飽退房，前往 **LaLaport 福岡**。</li>
+                    <li><strong>攻略：</strong>1:1 Nu 鋼彈、4F 鋼彈基地、2F UNIQLO 童裝。</li>
+                    <li><strong>休息：</strong>倉式珈琲店。</li>
+                    <li><strong>14:30：</strong>離開商場，提早前往機場。</li>
+                    <li><strong>15:00 還車：</strong>直接在機場停車場交車，推行李進航廈。</li>
+                    <li><strong>16:00 採購：</strong>機場免稅店 (小雞饅頭/明太子/一蘭禮盒)。</li>
+                    <li><strong>19:10：</strong>搭機返台 (JX841，座位 52/53 排)。</li>
                 </ul>
             </div>
         </div>
@@ -895,119 +667,40 @@
             </table>
         </div>
 
-        <div class="slide-group" id="time">
-            <div class="time-section">
-                <div class="section-title-large time-title">⏰ 每日建議出發時間</div>
-                <ul>
-                    <li><strong>Day 1：</strong>11:30 機場取車</li>
-                    <li><strong>Day 2：</strong>08:40 走路去熊本城</li>
-                    <li><strong>Day 3：</strong>09:30 出發去滑雪</li>
-                    <li><strong>Day 4：</strong>10:00 準時退房</li>
-                    <li><strong>Day 5：</strong>09:00 準時出發</li>
-                    <li><strong>Day 6：</strong>10:00 準時退房</li>
-                    <li><strong>Day 7：</strong>09:15 出發水族館</li>
-                    <li><strong>Day 8：</strong>10:30 退房去 LaLaport</li>
-                </ul>
-            </div>
-        </div>
-
         <div class="slide-group" id="coffee">
             <div class="coffee-section">
-                <div class="section-title-large coffee-title">☕ 每日拿鐵補給站</div>
+                <div class="section-title-large coffee-title">☕ 每日拿鐵 & 豪華備案</div>
+                <h4 style="margin-top:0">🚗 每日順路補給：</h4>
                 <ul>
                     <li><strong>Day 1 熊本：</strong>Gluck Coffee Spot</li>
                     <li><strong>Day 2 阿蘇：</strong>Kusasenri Coffee (草千里)</li>
                     <li><strong>Day 3 阿蘇：</strong>道之驛阿蘇</li>
-                    <li><strong>Day 4 由布院：</strong>Cafe La Ruche</li>
-                    <li><strong>Day 5 別府：</strong>Carandonel</li>
+                    <li><strong>Day 5 別府：</strong>超商咖啡 (趕路專用)</li>
                     <li><strong>Day 6 小倉：</strong>Parts Of Life</li>
                     <li><strong>Day 7 福岡：</strong>RHC CAFE</li>
                     <li><strong>Day 8 LaLaport：</strong>倉式珈琲店</li>
                 </ul>
-            </div>
-        </div>
-
-        <div class="slide-group" id="drive">
-            <div class="drive-section">
-                <div class="section-title-large drive-title">🚗 廁所 & 開車指南</div>
+                <h4 style="color: var(--coupon-color); margin-top: 15px;">🌟 Worth the Detour (值得特地繞路)：</h4>
                 <ul>
-                    <li><strong>Day 2 (往阿蘇)：</strong>必停「道の駅 大津」。</li>
-                    <li><strong>Day 4 (往由布院)：</strong>必停「瀨之本高原」或「長者原」。</li>
-                    <li><strong>Day 6 (往北九州)：</strong>必停「別府灣 SA」。</li>
-                    <li><strong>Day 6 (往福岡)：</strong>必停「AEON MALL 福津」。</li>
-                    <li><strong>車型：</strong>Sienta，下坡用 B 檔。</li>
+                    <li><strong>🍰 Chez Tani (Day 4)：</strong>九重高原上的童話小屋。外帶年輪蛋糕在車上看雪景吃。</li>
+                    <li><strong>🍫 theomurata (Day 4)：</strong>由布院山莊無量塔區域。精品巧克力與 P-Roll，遠離塵囂。</li>
+                    <li><strong>🕶️ NO COFFEE (Day 7)：</strong>福岡平尾潮流聖地。極簡黑白風，買周邊商品必去。</li>
                 </ul>
             </div>
         </div>
 
-        <div class="guide-section-wrapper" id="guide">
+        <div class="slide-group" id="guide">
             <div class="slide-group">
-                <h2>📘 區域深度攻略</h2>
+                <h2>📘 區域深度攻略 & 優惠券</h2>
                 <h3>1. 🏯 熊本城 & 城彩苑 (Day 1/2)</h3>
                 <ul>
                     <li><h4>✨ 親子亮點：</h4>熊本城旁有一個<strong>「湧湧座」</strong>歷史文化體驗館，小孩可以體驗穿忍者服。</li>
-                    <li><h4>🍦 城彩苑必吃：</h4>海膽可樂餅、熊本熊人形燒。</li>
-                    <li><h4>💡 小撇步：</h4>天守閣裡面有現代化冷暖氣與電梯。</li>
-                    <li><h4>🎟️ 省錢攻略：</h4>購買「熊本城 + 湧湧座」共通入場券 (約850円)，比分開買便宜。</li>
+                    <li><h4>🎟️ 省錢攻略：</h4>購買「熊本城 + 湧湧座」共通入場券 (約850円)。</li>
                 </ul>
             </div>
 
             <div class="slide-group">
-                <h3>2. 🌋 阿蘇火山 & 草千里 (Day 2/3)</h3>
-                <ul>
-                    <li><h4>🚁 必玩體驗 (直升機)：</h4>強烈推薦去<strong>「卡德利動物樂園」</strong>搭乘。</li>
-                    <li><h4>☕ 草千里之冬：</h4>冬天是一片銀白世界。必去<strong>「Kusasenri Coffee Roastery」</strong>。</li>
-                    <li><h4>🥩 必吃美食 (赤牛丼)：</h4>推薦<strong>「Imakin食堂」</strong>。</li>
-                    <li><h4>☔ 壞天氣備案：</h4><strong>「阿蘇農場 (Aso Farm Land)」</strong>。</li>
-                    <li><h4>🎟️ 省錢攻略：</h4>「卡德利動物樂園」官網常有折價券 (需出示手機畫面)，約可省 100~200円。</li>
-                </ul>
-            </div>
-
-            <div class="slide-group">
-                <h3>3. 🧸 由布院親子散策 (Day 4/5)</h3>
-                <ul>
-                    <li><h4>✨ 必訪體驗：</h4>Floral Village (童話村)、金鱗湖晨霧。</li>
-                    <li><h4>🛍️ 卡通名店：</h4>橡子之森、SNOOPY 茶屋。</li>
-                    <li><h4>🍰 必吃美食：</h4>金賞可樂餅、Milch 半熟起司蛋糕、B-Speak 生乳捲。</li>
-                    <li><h4>🎟️ 省錢攻略：</h4>「九州自然動物園」門票建議提前在 Klook/KKday 購買，通常比現場便宜且省排隊時間。</li>
-                </ul>
-            </div>
-
-            <div class="slide-group">
-                <h3>4. 🏰 北九州：小倉城 & 門司港 (Day 6)</h3>
-                <ul>
-                    <li><h4>✨ 親子亮點 (小倉城)：</h4>小倉城內部已經改裝成互動樂園！</li>
-                    <li><h4>🌉 必看 (門司港)：</h4><strong>「藍翼門司吊橋」</strong>開橋秀。</li>
-                    <li><h4>🚶‍♂️ 體驗：</h4>走「關門海峽海底隧道」一腳跨兩縣。</li>
-                    <li><h4>🎟️ 省錢攻略：</h4>若要參觀多個館，可購買「門司港懷舊周遊券 (Clover Ticket)」。</li>
-                </ul>
-            </div>
-
-            <div class="slide-group">
-                <h3>5. 🗼 福岡百道濱區 (Day 7)</h3>
-                <ul>
-                    <li><h4>📲 teamLab Forest 攻略：</h4>下載 APP 抓動物。</li>
-                    <li><h4>🌇 福岡塔：</h4>黃昏轉夜景的時間最美。</li>
-                    <li><h4>🎟️ 省錢攻略：</h4>外國遊客出示護照，福岡塔門票享 20% 折扣優惠。</li>
-                </ul>
-            </div>
-
-            <div class="slide-group">
-                <h3>6. 🛍️ LaLaport 鋼彈 & 購物 (Day 8)</h3>
-                <ul>
-                    <li><h4>🤖 鋼彈表演：</h4>1:1 Nu鋼彈立像表演。</li>
-                    <li><h4>🎮 4F 孩子天堂：</h4>Namco 遊戲中心和各種轉蛋機。</li>
-                    <li><h4>🎟️ 優惠券攻略：</h4>
-                        <ul>
-                            <li><strong>百貨公司 (博多阪急/岩田屋)：</strong>至服務台領取 5% Guest Card。</li>
-                            <li><strong>藥妝店/Bic Camera：</strong>結帳前 Google 搜尋「Bic Camera coupon」，出示條碼享免稅10%+折扣3~7%。</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="slide-group">
-                <h3>7. 🎟️ 購物與優惠券 (含藥妝/電器)</h3>
+                <h3>2. 🎟️ 購物與優惠券 (含藥妝/電器)</h3>
                 <ul>
                     <li><strong>🏔️ Alpen FUKUOKA (博多運河城)：</strong><br>
                         <a href="https://d1grca2t3zpuug.cloudfront.net/2025/10/APF_coupon-banner_251030-1000x722-1761809065.webp" target="_blank" class="coupon-link">👉 點此開啟優惠券</a>
@@ -1015,111 +708,64 @@
                     <li><strong>📸 Bic Camera (必記本)：</strong><br>
                         <a href="https://d1grca2t3zpuug.cloudfront.net/2025/06/biccameracoupontwhk-1787x2527-1750209030.webp" target="_blank" class="coupon-link">👉 點此開啟優惠券</a>
                     </li>
-                    <li><strong>💊 Cocokarafine (可開嘉來)：</strong><br>
-                        <a href="https://d1grca2t3zpuug.cloudfront.net/2025/03/cocokarafine20260331_L2-855x1300.webp" target="_blank" class="coupon-link">👉 點此開啟優惠券</a>
-                    </li>
                     <li><strong>💊 松本清 (Matsumoto Kiyoshi)：</strong><br>
                         <a href="https://d1grca2t3zpuug.cloudfront.net/2025/01/20250131matsucoupontw-1631x2475.webp" target="_blank" class="coupon-link">👉 點此開啟優惠券</a>
                     </li>
                     <li><strong>🐧 唐吉訶德 (Don Quijote)：</strong><br>
                         <a href="https://japanportal.donki-global.com/coupon/cp001_zhtw.html" target="_blank" class="coupon-link">👉 點此開啟優惠券</a>
                     </li>
-                    <li><strong>🔌 愛電王 (Edion)：</strong><br>
-                        <a href="https://travelcontentsapp.com/coupon/edion/" target="_blank" class="coupon-link">👉 點此開啟優惠券</a>
-                    </li>
                 </ul>
             </div>
-            
-            <div class="slide-group">
-                <h3>8. 🎣 九州親子釣魚指南</h3>
-                <ul>
-                    <li><h4>🛒 推薦釣具店 (補給站)：</h4>
-                        <strong>Fishing Point (釣具のポイント)</strong>：九州最大連鎖。<br>
-                        <span class="note">※ 推薦「八幡本店」(北九州) 或「福岡花畑本店」。可免稅。</span>
-                    </li>
-                    <li><h4>📍 推薦釣點 (親子友善)：</h4>
-                        <strong>1. 福岡市海づり公園：</strong>有護欄、販賣部、租借服務。<br>
-                        <strong>2. 門司港懷舊區：</strong>岸壁安全，目標魚竹莢魚。
-                    </li>
-                    <li><h4>⚠️ 注意事項：</h4>
-                        兒童務必穿著救生衣。垃圾請自行帶走。推薦使用「薩比基 (Sabiki)」釣組。
-                    </li>
-                </ul>
-            </div>
-
         </div>
 
         <div class="slide-group" id="nav-mapcode">
             <div class="drive-section nav-merge-top" style="border-color: var(--nav-border); background-color: var(--nav-bg);">
-                <h2 class="section-title-large" style="color: var(--drive-color);">🛰️ 導航資訊</h2>
+                <h2 class="section-title-large" style="color: var(--drive-color);">🛰️ 導航資訊 (Ver.52 完整版)</h2>
                 <p class="note" style="color: var(--primary-color);">※ 點擊「地點名稱」可前往官網。<br>※ 點擊「MapCode」可開啟 Google Maps 導航。</p>
                 
-                <h4 style="border-left:4px solid #e74c3c; padding-left:10px; margin-top: 20px;">📍 熊本區域 (Kumamoto)</h4>
+                <h4 style="border-left:4px solid #e74c3c; padding-left:10px; margin-top: 20px;">📍 熊本/阿蘇 (Kumamoto/Aso)</h4>
                 <table style="margin-top: 5px;">
-                    <thead><tr><th width="40%">地點 / 🅿️ 停車資訊</th><th>MapCode (🚗 導航設定)</th><th>電話</th></tr></thead>
+                    <thead><tr><th width="40%">地點 / 🅿️ 停車資訊</th><th>MapCode / 電話</th><th>備註</th></tr></thead>
                     <tbody>
                         <tr>
-                            <td><a href="https://www.kumamoto-airport.co.jp/" target="_blank">✈️ 熊本機場 (取車)</a><br><span class="note">🅿️ 租車公司專用區域</span></td>
+                            <td><a href="https://www.kumamoto-airport.co.jp/" target="_blank">✈️ 熊本機場 (取車)</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=熊本機場租車" target="_blank">415 440 317*41</a></td>
                             <td>096-232-2311</td>
                         </tr>
                         <tr>
-                            <td><a href="https://www.hotel-castle.co.jp/" target="_blank">🏨 熊本城飯店</a><br><span class="note">🅿️ 飯店附設停車場</span></td>
+                            <td><a href="http://gourmet.katsuretsutei.co.jp/" target="_blank">🐖 勝烈亭豬排 (新市街)</a></td>
+                            <td>096-322-8771</td>
+                            <td>Day 1 午餐</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.kurasushi.co.jp/" target="_blank">🍣 無添藏壽司 (大津店)</a></td>
+                            <td>096-294-6101</td>
+                            <td>Day 2 午餐</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.hotel-castle.co.jp/" target="_blank">🏨 熊本城飯店</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=熊本城飯店" target="_blank">29 459 485*82</a></td>
                             <td>096-326-3311</td>
                         </tr>
                         <tr>
-                            <td><a href="https://castle.kumamoto-guide.jp/" target="_blank">🏯 熊本城 & 城彩苑</a><br><span class="note">🅿️ 城彩苑停車場 (最近)</span></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=櫻之馬場城彩苑停車場" target="_blank">29 489 267*58</a></td>
-                            <td>096-288-5600</td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://sakuramachi-kumamoto.jp/" target="_blank">🛍️ SAKURA MACHI</a><br><span class="note">※ 雨天備案 (室內商場)</span></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=SAKURA+MACHI+Kumamoto" target="_blank">29 459 644*63</a></td>
-                            <td>096-354-1111</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="slide-group">
-            <div class="drive-section nav-merge-mid" style="border-color: var(--nav-border); background-color: var(--nav-bg);">
-                <h2 class="section-title-large reader-only-title" style="color: var(--drive-color);">🛰️ 導航：阿蘇區域</h2>
-
-                <h4 style="border-left:4px solid #27ae60; padding-left:10px; margin-top: 5px;">📍 阿蘇區域 (Aso)</h4>
-                <table style="margin-top: 5px;">
-                    <thead><tr><th width="40%">地點 / 🅿️ 停車資訊</th><th>MapCode (🚗 導航設定)</th><th>電話</th></tr></thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="https://yumeoisou.com/" target="_blank">♨️ 阿蘇 湯巡追莊</a><br><span class="note">🅿️ 飯店專用停車場</span></td>
+                            <td><a href="https://yumeoisou.com/" target="_blank">♨️ 阿蘇 湯巡追莊</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=阿蘇+湯巡追莊" target="_blank">256 657 512*82</a></td>
                             <td>0967-32-0622</td>
                         </tr>
                         <tr>
-                            <td><a href="https://www.cuddly.co.jp/" target="_blank">🐻 卡德利動物樂園</a><br><span class="note">🅿️ 園區正門停車場</span></td>
+                            <td><a href="https://www.cuddly.co.jp/" target="_blank">🐻 卡德利動物樂園</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=阿蘇卡德利動物樂園" target="_blank">256 423 487*30</a></td>
-                            <td>0967-34-2020</td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://kumamoto.guide/tw/spots/detail/210" target="_blank">🌋 阿蘇火山 (草千里)</a><br><span class="note">🅿️ 草千里收費停車場</span></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=草千里停車場" target="_blank">256 456 835*36</a></td>
-                            <td>0967-34-2111</td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://www.kujyuski.co.jp/" target="_blank">⛷️ 九重森林滑雪場</a><br><span class="note">🅿️ 滑雪場專用停車場</span></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=九重森林公園滑雪場" target="_blank">440 629 036*55</a></td>
-                            <td>0973-79-2200</td>
-                        </tr>
-                        <tr>
-                            <td><a href="http://www.asomuse.jp/" target="_blank">☔ 阿蘇火山博物館</a></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=阿蘇火山博物館" target="_blank">256 456 770*85</a></td>
-                            <td>0967-34-2111</td>
+                            <td>直升機體驗</td>
                         </tr>
                          <tr>
-                            <td><a href="https://asofarmland.co.jp/" target="_blank">☔ 阿蘇農場 (元気の森)</a></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=阿蘇農場" target="_blank">256 512 856*85</a></td>
-                            <td>0967-67-2100</td>
+                            <td><a href="https://www.kujyuski.co.jp/" target="_blank">⛷️ 九重森林滑雪場</a></td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&query=九重森林公園滑雪場" target="_blank">440 629 036*55</a></td>
+                            <td>Day 3 滑雪</td>
+                        </tr>
+                        <tr>
+                            <td><a href="http://www.cheztani.com/shop/senomoto/" target="_blank">🍰 Chez Tani (瀨之本)</a></td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&query=SAKURA+MACHI+Kumamoto7" target="_blank">440 341 570*55</a></td>
+                            <td>豪華繞路備案</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1128,105 +774,41 @@
 
         <div class="slide-group">
             <div class="drive-section nav-merge-mid" style="border-color: var(--nav-border); background-color: var(--nav-bg);">
-                <h2 class="section-title-large reader-only-title" style="color: var(--drive-color);">🛰️ 導航：由布院區域</h2>
+                <h2 class="section-title-large reader-only-title" style="color: var(--drive-color);">🛰️ 導航：由布院/別府</h2>
 
-                <h4 style="border-left:4px solid #f39c12; padding-left:10px; margin-top: 5px;">📍 由布院/九重區域 (Yufuin)</h4>
+                <h4 style="border-left:4px solid #f39c12; padding-left:10px; margin-top: 5px;">📍 由布院/別府 (Yufuin/Beppu)</h4>
                 <table style="margin-top: 5px;">
-                    <thead><tr><th width="40%">地點 / 🅿️ 停車資訊</th><th>MapCode (🚗 導航設定)</th><th>電話</th></tr></thead>
+                    <thead><tr><th width="40%">地點 / 🅿️ 停車資訊</th><th>MapCode / 電話</th><th>備註</th></tr></thead>
                     <tbody>
                         <tr>
-                            <td><a href="https://www.yumeooturihashi.com/" target="_blank">🌉 九重夢大吊橋</a><br><span class="note">🅿️ 中村口停車場 (較大)</span></td>
+                            <td><a href="https://www.yumeooturihashi.com/" target="_blank">🌉 九重夢大吊橋</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=九重夢大吊橋+中村口" target="_blank">269 012 125*14</a></td>
-                            <td>0973-73-3800</td>
+                            <td>Day 4 上午</td>
                         </tr>
                         <tr>
-                            <td><a href="http://www.yufuin-ublhotel.jp/" target="_blank">🏨 由布院 UBL 飯店</a><br><span class="note">🅿️ 飯店專用停車場</span></td>
+                            <td><a href="http://www.yufuin-ublhotel.jp/" target="_blank">🏨 由布院 UBL 飯店</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=由布院UBL飯店" target="_blank">269 359 521*55</a></td>
                             <td>0977-84-3111</td>
                         </tr>
                         <tr>
-                            <td><a href="http://www.yufuin-sg-museum.jp/" target="_blank">☔ 由布院彩繪玻璃美術館</a></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=由布院彩繪玻璃美術館" target="_blank">269 328 355*55</a></td>
-                            <td>0977-84-5575</td>
+                            <td><a href="http://murata-shop.jp/theomurata/" target="_blank">🍫 theomurata (無量塔)</a></td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&query=SAKURA+MACHI+Kumamoto8" target="_blank">269 359 853*63</a></td>
+                            <td>豪華繞路備案</td>
                         </tr>
                         <tr>
-                            <td><a href="https://camy.oita.jp/" target="_blank">☔ Comico Art Museum</a></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=Comico+Art+Museum+Yufuin" target="_blank">269 358 452*74</a></td>
-                            <td>0977-28-8830</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="slide-group">
-            <div class="drive-section nav-merge-mid" style="border-color: var(--nav-border); background-color: var(--nav-bg);">
-                <h2 class="section-title-large reader-only-title" style="color: var(--drive-color);">🛰️ 導航：別府區域</h2>
-
-                <h4 style="border-left:4px solid #3498db; padding-left:10px; margin-top: 5px;">📍 別府區域 (Beppu)</h4>
-                <table style="margin-top: 5px;">
-                    <thead><tr><th width="40%">地點 / 🅿️ 停車資訊</th><th>MapCode (🚗 導航設定)</th><th>電話</th></tr></thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="http://www.africansafari.co.jp/" target="_blank">🦁 九州自然動物園</a><br><span class="note">🅿️ 入口處大型停車場</span></td>
+                            <td><a href="http://www.africansafari.co.jp/" target="_blank">🦁 九州自然動物園</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=九州自然動物園" target="_blank">46 635 545*60</a></td>
                             <td>0978-48-2331</td>
                         </tr>
+                         <tr>
+                            <td>🍱 Hotto Motto (日出店)</td>
+                            <td>0977-73-0005</td>
+                            <td>Day 5 午餐便當</td>
+                        </tr>
                         <tr>
-                            <td><a href="https://www.harmonyland.jp/" target="_blank">🎀 和諧樂園 (Kitty)</a><br><span class="note">🅿️ 樂園正門停車場</span></td>
+                            <td><a href="https://www.harmonyland.jp/" target="_blank">🎀 和諧樂園</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=和諧樂園" target="_blank">46 833 460*58</a></td>
                             <td>0977-73-1111</td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://www.umitamago.jp/" target="_blank">🐬 海之卵水族館</a><br><span class="note">🅿️ 共有停車場</span></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=大分海洋宮殿水族館+海之卵" target="_blank">46 405 660*71</a></td>
-                            <td>097-534-1010</td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://takezaikudensankaikan.jp/" target="_blank">☔ 別府竹細工會館</a></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=別府市竹細工傳統產業會館" target="_blank">46 437 816*30</a></td>
-                            <td>0977-23-1072</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="slide-group">
-            <div class="drive-section nav-merge-mid" style="border-color: var(--nav-border); background-color: var(--nav-bg);">
-                <h2 class="section-title-large reader-only-title" style="color: var(--drive-color);">🛰️ 導航：北九州區域</h2>
-
-                <h4 style="border-left:4px solid #8e44ad; padding-left:10px; margin-top: 5px;">📍 北九州區域 (Kitakyushu)</h4>
-                <table style="margin-top: 5px;">
-                    <thead><tr><th width="40%">地點 / 🅿️ 停車資訊</th><th>MapCode (🚗 導航設定)</th><th>電話</th></tr></thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="https://www.kokura-castle.jp/" target="_blank">🏯 小倉城</a><br><span class="note">🅿️ 勝山公園地下停車場</span></td>
-                            <td>
-                                🏯 <a href="https://www.google.com/maps/search/?api=1&query=小倉城" target="_blank">16 465 525*33</a><br>
-                                🅿️ <a href="https://www.google.com/maps/search/?api=1&query=勝山公園地下駐車場" target="_blank">16 465 484*44</a>
-                            </td>
-                            <td>093-561-1210</td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://www.mojiko.info/" target="_blank">⚓ 門司港懷舊區</a><br><span class="note">🅿️ 門司港懷舊停車場</span></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=門司港懷舊停車場" target="_blank">3 634 322*11</a></td>
-                            <td>093-321-4151</td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://www.point-i.jp/shops/1297" target="_blank">🎣 釣具のポイント 八幡本店</a><br><span class="note">※ 北九州最大級釣具店</span></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=釣具のポイント+八幡本店" target="_blank">16 341 782*25</a></td>
-                            <td>093-661-3111</td>
-                        </tr>
-                        <tr>
-                            <td><a href="http://www.k-rhm.jp/" target="_blank">☔ 九州鐵道紀念館</a></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=九州鐵道紀念館" target="_blank">3 714 075*25</a></td>
-                            <td>093-322-1006</td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://www.kmnh.jp/" target="_blank">☔ 生命之旅博物館 (恐龍)</a></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=北九州市立自然史博物館" target="_blank">16 343 325*17</a></td>
-                            <td>093-681-1011</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1235,75 +817,57 @@
 
         <div class="slide-group">
             <div class="drive-section nav-merge-bot" style="border-color: var(--nav-border); background-color: var(--nav-bg);">
-                <h2 class="section-title-large reader-only-title" style="color: var(--drive-color);">🛰️ 導航：福岡區域</h2>
+                <h2 class="section-title-large reader-only-title" style="color: var(--drive-color);">🛰️ 導航：北九州/福岡</h2>
 
-                <h4 style="border-left:4px solid #2980b9; padding-left:10px; margin-top: 5px;">📍 福岡區域 (Fukuoka)</h4>
+                <h4 style="border-left:4px solid #2980b9; padding-left:10px; margin-top: 5px;">📍 北九州/福岡 (Fukuoka)</h4>
                 <table style="margin-top: 5px;">
-                    <thead><tr><th width="40%">地點 / 🅿️ 停車資訊</th><th>MapCode (🚗 導航設定)</th><th>電話</th></tr></thead>
+                    <thead><tr><th width="40%">地點 / 🅿️ 停車資訊</th><th>MapCode / 電話</th><th>備註</th></tr></thead>
                     <tbody>
                         <tr>
-                            <td><a href="https://fukutsu-aeonmall.com/" target="_blank">🛍️ AEON MALL 福津</a><br><span class="note">🅿️ 商場免費停車場</span></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=AEON+MALL+Fukutsu" target="_blank">13 738 238*85</a></td>
-                            <td>0940-38-5600</td>
+                            <td><a href="https://www.kokura-castle.jp/" target="_blank">🏯 小倉城</a></td>
+                            <td>
+                                🏯 <a href="https://www.google.com/maps/search/?api=1&query=小倉城" target="_blank">16 465 525*33</a><br>
+                                🅿️ <a href="https://www.google.com/maps/search/?api=1&query=勝山公園地下駐車場" target="_blank">16 465 484*44</a>
+                            </td>
+                            <td>093-561-1210</td>
                         </tr>
                         <tr>
-                            <td><a href="https://www.vessel-hotel.jp/hotel/fukuoka/" target="_blank">🏨 福岡 Vessel 貝塚</a><br><span class="note">🅿️ 飯店平面停車場</span></td>
+                            <td><a href="https://fukutsu-aeonmall.com/" target="_blank">🛍️ AEON MALL 福津</a></td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&query=AEON+MALL+Fukutsu" target="_blank">13 738 238*85</a></td>
+                            <td>Day 6 戰略停留</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://ichiran.com/shop/kyushu/shingu/" target="_blank">🍜 一蘭拉麵 (新宮店)</a></td>
+                            <td>092-963-3688</td>
+                            <td>Day 6 備案</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.vessel-hotel.jp/hotel/fukuoka/" target="_blank">🏨 福岡 Vessel 貝塚</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=Vessel+Hotel+Fukuoka+Kaizuka" target="_blank">13 469 663*55</a></td>
                             <td>092-642-0101</td>
                         </tr>
                         <tr>
-                            <td><a href="https://marine-world.jp/" target="_blank">🐬 海中之道水族館</a><br><span class="note">🅿️ 海洋世界停車場</span></td>
+                            <td><a href="https://marine-world.jp/" target="_blank">🐬 海中之道水族館</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=海中之道海洋世界+停車場" target="_blank">13 522 795*55</a></td>
                             <td>092-603-0400</td>
                         </tr>
                         <tr>
-                            <td><a href="https://e-zofukuoka.com/teamlabforest/" target="_blank">💡 teamLab (BOSS EZO)</a><br><span class="note">🅿️ PayPay巨蛋停車場</span></td>
-                            <td>
+                            <td><a href="https://e-zofukuoka.com/teamlabforest/" target="_blank">💡 teamLab (BOSS EZO)</a></td>
+                             <td>
                                 💡 <a href="https://www.google.com/maps/search/?api=1&query=teamLab+Forest+Fukuoka" target="_blank">13 345 547*55</a><br>
                                 🅿️ <a href="https://www.google.com/maps/search/?api=1&query=PayPay巨蛋停車場" target="_blank">13 345 373*52</a>
                             </td>
                             <td>092-844-1189</td>
                         </tr>
                         <tr>
-                            <td><a href="https://mitsui-shopping-park.com/lalaport/fukuoka/" target="_blank">🤖 LaLaport 福岡</a><br><span class="note">🅿️ 商場停車場 (鋼彈旁)</span></td>
+                            <td><a href="https://nocoffee.net/" target="_blank">🕶️ NO COFFEE (平尾)</a></td>
+                            <td>Google Search:<br>"NO COFFEE 福岡"</td>
+                            <td>豪華繞路備案</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://mitsui-shopping-park.com/lalaport/fukuoka/" target="_blank">🤖 LaLaport 福岡</a></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=LaLaport+福岡+停車場" target="_blank">13 162 481*63</a></td>
                             <td>092-707-9820</td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://canalcity.co.jp/" target="_blank">🛍️ 博多運河城</a><br><span class="note">※ Alpen/愛電王/松本清</span></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=博多運河城" target="_blank">13 318 632*52</a></td>
-                            <td>092-282-2525</td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://www.biccamera.com/bc/i/shop/shoplist/shop118.jsp" target="_blank">📸 Bic Camera 天神二號館</a><br><span class="note">🅿️ 需停周邊收費停車場</span></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=Bic+Camera+天神2號館" target="_blank">13 317 763*41</a></td>
-                            <td>092-732-1112</td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://www.donki.com/store/shop_detail.php?shop_id=315" target="_blank">🐧 唐吉訶德 箱崎店</a><br><span class="note">🅿️ 免費停車場 (近Vessel飯店)</span></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=唐吉訶德+箱崎店" target="_blank">13 469 353*22</a></td>
-                            <td>0570-079-711</td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://umizuri.com/" target="_blank">🎣 福岡市海づり公園</a><br><span class="note">🅿️ 專用停車場 (海釣公園前)</span></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=福岡市海づり公園+停車場" target="_blank">13 431 385*77</a></td>
-                            <td>092-809-2666</td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://www.point-i.jp/shops/1296" target="_blank">🎣 釣具のポイント 花畑本店</a><br><span class="note">※ 市區大型釣具店</span></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=釣具のポイント+福岡花畑本店" target="_blank">13 086 554*66</a></td>
-                            <td>092-564-3371</td>
-                        </tr>
-                        
-                        <tr>
-                            <td><a href="https://www.fukuokacity-kagakukan.jp/" target="_blank">☔ 福岡市科學館 (六本松)</a><br><span class="note">※無停車場，請停周邊</span></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=福岡市科學館" target="_blank">13 255 798*52</a></td>
-                            <td>092-731-2525</td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://www.mec-markis.jp/fukuoka-momochi/" target="_blank">☔ Mark Is 福岡 (百道濱)</a></td>
-                            <td><a href="https://www.google.com/maps/search/?api=1&query=Mark+Is+Fukuoka+Momochi" target="_blank">13 344 863*52</a></td>
-                            <td>092-407-1111</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1319,10 +883,7 @@
         <a href="#day1" onclick="toggleToc()">📅 每日行程</a>
         <a href="#hotels" onclick="toggleToc()">🏨 住宿資訊</a>
         <a href="#cost" onclick="toggleToc()">💰 費用統計</a>
-        <a href="#time" onclick="toggleToc()">⏰ 出發時間</a>
         <a href="#coffee" onclick="toggleToc()">☕ 咖啡地圖</a>
-        <a href="#drive" onclick="toggleToc()">🚗 開車攻略</a>
-        <a href="#guide" onclick="toggleToc()">📘 區域攻略</a>
         <a href="#nav-mapcode" onclick="toggleToc()">🛰️ 導航資訊</a>
         <a href="javascript:void(0)" class="reader-mode-link" onclick="toggleReaderMode(); toggleToc();">📖 開啟閱讀模式</a>
     </div>
@@ -1374,16 +935,14 @@
             slideGroups = document.querySelectorAll('.slide-group');
             
             if (body.classList.contains('reader-active')) {
-                // 關閉閱讀模式
                 body.classList.remove('reader-active');
                 overlay.style.display = 'none';
-                tocBtn.style.display = 'flex'; // 顯示目錄按鈕
+                tocBtn.style.display = 'flex'; 
                 slideGroups.forEach(s => s.classList.remove('active-slide'));
             } else {
-                // 開啟閱讀模式
                 body.classList.add('reader-active');
                 overlay.style.display = 'block';
-                tocBtn.style.display = 'none'; // 隱藏目錄按鈕
+                tocBtn.style.display = 'none'; 
                 showSlide(0);
             }
         }
@@ -1417,46 +976,37 @@
             
             let width = window.innerWidth;
             let height = window.innerHeight;
-            let oldHeight = height; // 記錄舊高度，用於修正積雪位置
+            let oldHeight = height; 
             
-            // 設定畫布大小
             function resize() {
                 width = window.innerWidth;
                 height = window.innerHeight;
                 canvas.width = width;
                 canvas.height = height;
                 
-                // 修正：當視窗高度改變時 (例如手機網址列縮放)，
-                // 我們不重置積雪，而是根據高度差移動積雪，
-                // 這樣可以防止積雪「瞬間」填滿新出現的空間。
                 if(!groundHeight || groundHeight.length !== width) {
-                    // 寬度改變（如旋轉螢幕），只好重置
                     initGround();
                 } else {
-                    // 高度改變，移動積雪位置
                     const diff = height - oldHeight;
                     for(let i=0; i<width; i++) {
                         groundHeight[i] += diff;
-                        // 確保不超過底部
                         if(groundHeight[i] > height) groundHeight[i] = height;
                     }
                 }
                 oldHeight = height;
             }
             
-            // 地面高度陣列（每個像素的積雪高度）
             let groundHeight = [];
             function initGround() {
                 groundHeight = new Float32Array(width);
                 for(let i=0; i<width; i++) {
-                    groundHeight[i] = height; // 初始高度為螢幕底部
+                    groundHeight[i] = height; 
                 }
             }
             
             window.addEventListener('resize', resize);
             resize();
 
-            // 雪花物件
             class Snowflake {
                 constructor() {
                     this.reset(true);
@@ -1465,12 +1015,9 @@
                 reset(initial = false) {
                     this.x = Math.random() * width;
                     this.y = initial ? Math.random() * -height : Math.random() * -50;
-                    this.size = Math.random() * 15 + 10; // 雪花大小 10-25
-                    
-                    // 修正 1：雪花飄落速度調慢 (變得非常輕盈)
+                    this.size = Math.random() * 15 + 10; 
                     this.speed = Math.random() * 0.4 + 0.2; 
-                    
-                    this.drift = (Math.random() - 0.5) * 1; // 左右飄移
+                    this.drift = (Math.random() - 0.5) * 1; 
                     this.wobble = Math.random() * Math.PI * 2;
                     this.wobbleSpeed = 0.03;
                 }
@@ -1480,11 +1027,9 @@
                     this.wobble += this.wobbleSpeed;
                     this.x += Math.sin(this.wobble) * 1 + this.drift;
                     
-                    // 邊界檢查
                     if (this.x > width) this.x = 0;
                     if (this.x < 0) this.x = width;
                     
-                    // 檢查是否落地
                     let floorX = Math.floor(this.x);
                     if (floorX >= 0 && floorX < width) {
                         if (this.y + this.size >= groundHeight[floorX]) {
@@ -1499,17 +1044,14 @@
                 }
                 
                 land(x) {
-                    // 積雪邏輯
                     const range = 20; 
-                    const pileAmount = 4; // 每次堆積高度
+                    const pileAmount = 4; 
                     
                     for(let i = -range; i <= range; i++) {
                         let targetX = x + i;
                         if(targetX >= 0 && targetX < width) {
                             let amount = pileAmount * (1 - Math.abs(i) / range);
                             groundHeight[targetX] -= amount;
-                            
-                            // 修正 2：移除積雪高度限制，可以積滿整個螢幕 (直到 y=0)
                             if(groundHeight[targetX] < 0) {
                                 groundHeight[targetX] = 0;
                             }
@@ -1525,9 +1067,7 @@
                 }
             }
 
-            // 創建雪花池
             const particles = [];
-            // 根據螢幕寬度決定雪花數量 (手機版減少數量以免遮擋視線)
             const isMobile = window.innerWidth < 600;
             const maxParticles = isMobile ? 35 : 80; 
 
@@ -1535,11 +1075,9 @@
                 particles.push(new Snowflake());
             }
 
-            // 動畫迴圈
             function animate() {
                 ctx.clearRect(0, 0, width, height);
                 
-                // 1. 繪製積雪地面 (帶陰影)
                 ctx.fillStyle = "rgba(255, 255, 255, 1)";
                 ctx.shadowColor = "rgba(0, 0, 0, 0.15)"; 
                 ctx.shadowBlur = 10; 
@@ -1552,7 +1090,7 @@
                     ctx.lineTo(i, groundHeight[i]);
                 }
                 ctx.lineTo(width, height);
-                ctx.lineTo(0, height); // 確保閉合路徑正確填滿下方區域
+                ctx.lineTo(0, height); 
                 ctx.closePath();
                 ctx.fill();
 
@@ -1560,7 +1098,6 @@
                 ctx.shadowBlur = 0;
                 ctx.shadowOffsetY = 0;
 
-                // 2. 更新並繪製飄落雪花
                 particles.forEach(p => {
                     p.update();
                     p.draw();
@@ -1570,7 +1107,6 @@
             }
             animate();
 
-            // 🖱️ 點擊清除積雪功能
             document.addEventListener('click', function(e) {
                 const clickY = e.clientY;
                 const clickX = Math.floor(e.clientX);
