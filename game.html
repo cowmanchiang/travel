@@ -22,7 +22,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             margin: 0;
-            padding: 10px; /* 縮小邊距以讓圖片更大 */
+            padding: 0; /* 移除 padding，由 img-container 的 margin 控制 */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -32,14 +32,15 @@
             cursor: crosshair;
         }
 
-        /* === 1. 返回按鈕樣式 (靠左) === */
+        /* === 1. 返回按鈕樣式 (固定定位 + 高度對齊) === */
         .back-btn {
-            align-self: flex-start; /* 關鍵：讓按鈕在 Flex 容器中靠左對齊 */
+            position: fixed; /* 改為固定定位，如同積分板 */
+            top: 20px;       /* 【關鍵】與積分板 top 高度一致 */
+            left: 20px;      /* 固定在最左邊 */
+            
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
-            margin-left: 5px; /* 稍微留點左邊距 */
             padding: 10px 25px;
             background-color: var(--accent-color);
             color: white;
@@ -49,7 +50,7 @@
             font-weight: bold;
             box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
             transition: transform 0.2s, background-color 0.2s;
-            z-index: 1000;
+            z-index: 12000; /* 層級與積分板相同，確保在最上層 */
             cursor: pointer;
         }
 
@@ -58,32 +59,36 @@
             transform: translateY(-2px);
         }
 
-        /* === 2. 圖片樣式 (最大化) === */
+        /* === 2. 圖片樣式 (最大化 + 避開按鈕) === */
         .img-container {
-            width: 100%; /* 寬度佔滿 */
+            width: 100%; 
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-grow: 1; /* 讓容器填滿剩餘空間 */
+            flex-grow: 1; 
             z-index: 10;
+            /* 增加頂部邊距，避免圖片被上方的按鈕和積分板擋住 */
+            margin-top: 80px; 
+            padding-bottom: 20px;
         }
 
         .slide-img {
             width: auto;
             height: auto;
-            max-width: 98vw; /* 寬度最大佔滿視窗寬度 98% */
-            max-height: 85vh; /* 高度最大佔滿視窗高度 85% */
+            max-width: 98vw; 
+            max-height: 85vh; 
             object-fit: contain;
             border-radius: 12px;
             border: 3px solid white;
             box-shadow: 0 5px 20px rgba(0,0,0,0.15);
         }
 
-        /* === 3. 遊戲元素 CSS === */
+        /* === 3. 遊戲元素 CSS (積分板) === */
         #game-score-board {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 20px;      /* 【關鍵】與返回按鈕 top 高度一致 */
+            right: 20px;    /* 固定在右邊 */
+            
             background-color: rgba(255, 255, 255, 0.95);
             border: 3px solid #ff9ff3;
             border-radius: 50px;
@@ -222,9 +227,15 @@
         @media (max-width: 600px) {
             .char-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 8px; }
             .char-btn { width: 60px; height: 60px; font-size: 2em; }
-            /* 手機版讓圖片佔比更大 */
+            
+            /* 手機版設定 */
             .slide-img { max-width: 100vw; border-width: 2px; }
-            body { padding: 5px; }
+            
+            /* 手機版如果覺得按鈕太高，可以一起調整，目前保持一致 */
+            .back-btn, #game-score-board {
+                top: 15px; 
+            }
+            .img-container { margin-top: 70px; } /* 手機版間距微調 */
         }
     </style>
 </head>
