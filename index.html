@@ -391,7 +391,7 @@
         <div class="slide-group">
             <h1>
                 🇹🇼🇯🇵 2026 冬 九州親子自駕8日
-                <span class="version-info">Ver. 57 (更新：2025/12/15 - 黃金開局版)</span>
+                <span class="version-info">Ver. 58 (更新：2025/12/17 - 即時天氣資訊)</span>
             </h1>
             <img src="imgs/1048004.png" class="slide-img" alt="行程封面">
         </div>
@@ -479,26 +479,102 @@
 
         <div class="slide-group" id="weather-info">
             <div class="weather-section">
-                <div class="section-title-large weather-title">🌦️ 旅途天氣預報 (1月歷史均溫)</div>
-                <p class="note" style="color: #0277bd;">※ 山區(阿蘇/由布院)體感約 -5°C，務必洋蔥式穿搭。</p>
+                <div class="section-title-large weather-title">🌦️ 九州天氣情報</div>
+                <p class="note" style="color: #0277bd;">
+                    ※ 點擊<strong>地點</strong>可開啟 Yahoo 詳報；<strong>現在天氣</strong>為即時更新。
+                    <span id="fetch-time" style="color: #666; font-size: 0.9em; margin-left: 5px; display: inline-block;"></span>
+                </p>
                 
-                <table>
+                <style>
+                    /* 表格基礎設定 */
+                    .weather-table-4col { width: 100%; font-size: 0.95em; table-layout: fixed; }
+                    .weather-table-4col th, .weather-table-4col td { 
+                        vertical-align: middle; padding: 10px 5px; 
+                        text-align: center; /* 確保所有欄位(包含日期)都置中 */
+                    }
+                    
+                    /* 連結樣式 (地點) */
+                    .loc-link { 
+                        color: #0277bd; font-weight: bold; text-decoration: none; 
+                        border-bottom: 1px dotted #0277bd; transition: all 0.2s;
+                    }
+                    .loc-link:hover { background-color: #e1f5fe; border-bottom: 1px solid #0277bd; }
+
+                    /* 歷史數據 (灰色) */
+                    .hist-val { color: #78909c; font-size: 0.85em; display: block; }
+                    
+                    /* 即時數據 (強調色) */
+                    .live-val { font-weight: bold; color: #d84315; font-size: 1.0em; }
+                    .weather-loading { color: #ccc; font-size: 0.8em; font-style: italic; }
+
+                    /* 手機版微調 */
+                    @media (max-width: 600px) {
+                        .weather-table-4col { font-size: 0.85em; }
+                        .weather-table-4col th, .weather-table-4col td { padding: 8px 2px; }
+                        .weather-icon-hist { display: none; } 
+                        /* 手機版讓時間換行顯示，避免擠壓 */
+                        #fetch-time { display: block !important; margin-left: 0 !important; margin-top: 5px; }
+                    }
+                </style>
+
+                <table class="weather-table-4col">
                     <thead>
                         <tr>
-                            <th style="background-color: var(--weather-bg); color: #0277bd;">日期</th>
-                            <th style="background-color: var(--weather-bg); color: #0277bd;">地點</th>
-                            <th style="background-color: var(--weather-bg); color: #0277bd;">天氣/氣溫 (參考)</th>
+                            <th style="background-color: var(--weather-bg); color: #0277bd; width: 22%;">日期</th>
+                            <th style="background-color: var(--weather-bg); color: #0277bd; width: 22%;">地點</th>
+                            <th style="background-color: var(--weather-bg); color: #546e7a; width: 28%;">歷史均溫</th>
+                            <th style="background-color: var(--weather-bg); color: #d84315; width: 28%;">現在天氣</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>1/20 (二)</td><td><a href="https://weather.yahoo.co.jp/weather/jp/43/8610.html" target="_blank" class="weather-location-link">熊本市</a></td><td>☁️ 多雲 (2°C ~ 11°C)</td></tr>
-                        <tr><td>1/21 (三)</td><td><a href="https://weather.yahoo.co.jp/weather/jp/43/8620.html" target="_blank" class="weather-location-link">阿蘇山</a></td><td>❄️ <strong>降雪機率高</strong> (-4°C ~ 4°C)</td></tr>
-                        <tr><td>1/22 (四)</td><td><a href="https://weather.yahoo.co.jp/weather/jp/44/8340.html" target="_blank" class="weather-location-link">阿蘇/九重</a></td><td>❄️ <strong>滑雪場</strong> (-6°C ~ 1°C)</td></tr>
-                        <tr><td>1/23 (五)</td><td><a href="https://weather.yahoo.co.jp/weather/jp/44/8310.html" target="_blank" class="weather-location-link">由布院</a></td><td>🌫️ 晨霧/寒冷 (-1°C ~ 7°C)</td></tr>
-                        <tr><td>1/24 (六)</td><td><a href="https://weather.yahoo.co.jp/weather/jp/44/8310.html" target="_blank" class="weather-location-link">別府</a></td><td>⛅ 晴時多雲 (3°C ~ 9°C)</td></tr>
-                        <tr><td>1/25 (日)</td><td><a href="https://weather.yahoo.co.jp/weather/jp/40/8220.html" target="_blank" class="weather-location-link">門司/小倉</a></td><td>🌬️ 海風強勁 (4°C ~ 10°C)</td></tr>
-                        <tr><td>1/26 (一)</td><td><a href="https://weather.yahoo.co.jp/weather/jp/40/8210.html" target="_blank" class="weather-location-link">福岡市</a></td><td>☁️ 多雲 (3°C ~ 11°C)</td></tr>
-                        <tr><td>1/27 (二)</td><td><a href="https://weather.yahoo.co.jp/weather/jp/40/8210.html" target="_blank" class="weather-location-link">福岡機場</a></td><td>⛅ 晴朗 (3°C ~ 11°C)</td></tr>
+                        <tr>
+                            <td>1/20 (二)</td>
+                            <td><a href="https://weather.yahoo.co.jp/weather/jp/43/8610.html" target="_blank" class="loc-link">熊本市</a></td>
+                            <td><span class="weather-icon-hist">☁️ </span><span class="hist-val">2~11°C</span></td>
+                            <td><span id="w-kumamoto" class="weather-loading">讀取中</span></td>
+                        </tr>
+                        <tr>
+                            <td>1/21 (三)</td>
+                            <td><a href="https://weather.yahoo.co.jp/weather/jp/43/8620.html" target="_blank" class="loc-link">阿蘇山</a></td>
+                            <td><span class="weather-icon-hist">❄️ </span><span class="hist-val">-4~4°C</span></td>
+                            <td><span id="w-aso" class="weather-loading">讀取中</span></td>
+                        </tr>
+                        <tr>
+                            <td>1/22 (四)</td>
+                            <td><a href="https://weather.yahoo.co.jp/weather/jp/44/8340.html" target="_blank" class="loc-link">九重滑雪</a></td>
+                            <td><span class="weather-icon-hist">☃️ </span><span class="hist-val">-6~1°C</span></td>
+                            <td><span id="w-kuju" class="weather-loading">讀取中</span></td>
+                        </tr>
+                        <tr>
+                            <td>1/23 (五)</td>
+                            <td><a href="https://weather.yahoo.co.jp/weather/jp/44/8310.html" target="_blank" class="loc-link">由布院</a></td>
+                            <td><span class="weather-icon-hist">🌫️ </span><span class="hist-val">-1~7°C</span></td>
+                            <td><span id="w-yufuin" class="weather-loading">讀取中</span></td>
+                        </tr>
+                        <tr>
+                            <td>1/24 (六)</td>
+                            <td><a href="https://weather.yahoo.co.jp/weather/jp/44/8310.html" target="_blank" class="loc-link">別府</a></td>
+                            <td><span class="weather-icon-hist">🌤️ </span><span class="hist-val">3~9°C</span></td>
+                            <td><span id="w-beppu" class="weather-loading">讀取中</span></td>
+                        </tr>
+                        <tr>
+                            <td>1/25 (日)</td>
+                            <td><a href="https://weather.yahoo.co.jp/weather/jp/40/8220.html" target="_blank" class="loc-link">門司/小倉</a></td>
+                            <td><span class="weather-icon-hist">🌬️ </span><span class="hist-val">4~10°C</span></td>
+                            <td><span id="w-kitakyushu" class="weather-loading">讀取中</span></td>
+                        </tr>
+                        <tr>
+                            <td>1/26 (一)</td>
+                            <td><a href="https://weather.yahoo.co.jp/weather/jp/40/8210.html" target="_blank" class="loc-link">福岡市</a></td>
+                            <td><span class="weather-icon-hist">☁️ </span><span class="hist-val">3~11°C</span></td>
+                            <td><span id="w-fukuoka" class="weather-loading">讀取中</span></td>
+                        </tr>
+                         <tr>
+                            <td>1/27 (二)</td>
+                            <td><a href="https://weather.yahoo.co.jp/weather/jp/40/8210.html" target="_blank" class="loc-link">福岡機場</a></td>
+                            <td><span class="weather-icon-hist">☀️ </span><span class="hist-val">3~11°C</span></td>
+                            <td><span id="w-airport" class="weather-loading">讀取中</span></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -1238,6 +1314,74 @@
                 }
             });
         })();
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. 顯示更新時間 (含日期)
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = (now.getMonth() + 1).toString().padStart(2, '0');
+            const day = now.getDate().toString().padStart(2, '0');
+            const hour = now.getHours().toString().padStart(2, '0');
+            const minute = now.getMinutes().toString().padStart(2, '0');
+            
+            // 格式範例：2025/12/17 18:30
+            const timeString = `${year}/${month}/${day} ${hour}:${minute}`;
+            
+            const timeEl = document.getElementById('fetch-time');
+            if(timeEl) {
+                timeEl.innerText = `(更新時間: ${timeString})`;
+            }
+
+            // 2. 定義地點與執行抓取
+            const locations = [
+                { id: 'w-kumamoto',   lat: 32.8031, lon: 130.7079 },
+                { id: 'w-aso',        lat: 32.8842, lon: 131.1042 },
+                { id: 'w-kuju',       lat: 33.1122, lon: 131.2294 },
+                { id: 'w-yufuin',     lat: 33.2656, lon: 131.3567 },
+                { id: 'w-beppu',      lat: 33.2778, lon: 131.5028 },
+                { id: 'w-kitakyushu', lat: 33.8833, lon: 130.8750 },
+                { id: 'w-fukuoka',    lat: 33.5902, lon: 130.4017 },
+                { id: 'w-airport',    lat: 33.5859, lon: 130.4440 }
+            ];
+
+            function getWeatherIcon(code) {
+                if (code <= 1) return '☀️';
+                if (code <= 3) return '☁️';
+                if (code <= 48) return '🌫️';
+                if (code <= 57) return '🌧️';
+                if (code <= 67) return '☔';
+                if (code <= 77) return '❄️';
+                if (code <= 82) return '🌧️';
+                if (code <= 86) return '🌨️';
+                if (code <= 99) return '⛈️';
+                return '🌡️';
+            }
+
+            locations.forEach(loc => {
+                const url = `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&current_weather=true`;
+                
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        const weather = data.current_weather;
+                        const temp = Math.round(weather.temperature);
+                        const icon = getWeatherIcon(weather.weathercode);
+                        
+                        const el = document.getElementById(loc.id);
+                        if(el) {
+                            el.className = "live-val";
+                            el.innerHTML = `${icon} ${temp}°C`;
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Weather error:', error);
+                        const el = document.getElementById(loc.id);
+                        if(el) el.innerText = "-";
+                    });
+            });
+        });
     </script>
 </body>
 </html>
