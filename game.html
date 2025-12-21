@@ -2,17 +2,9 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="日期：2026/01/20 (二) ～ 2026/01/27 (二)">
-    <meta name="twitter:description" content="日期：2026/01/20 (二) ～ 2026/01/27 (二)" >
-    <meta name="twitter:title" content="🇹🇼🇯🇵 2026 冬 九州親子自駕 - 小遊戲" >
-    <meta property="og:title" content="🇹🇼🇯🇵 2026 冬 九州親子自駕 - 小遊戲" >
-    <meta property="og:description" content="日期：2026/01/20 (二) ～ 2026/01/27 (二)" >
-    <meta property="og:image" content="https://cowmanchiang.github.io/travel/imgs/1048004_500.png" >  
-    <title>🇹🇼🇯🇵 2026 冬 九州親子自駕 - 小遊戲</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <title>🇹🇼🇯🇵 2026 冬 九州親子自駕 - 小遊戲</title>
     <style>
         :root {
-            /* === 清新冬季藍白配色方案 === */
             --bg-color: #f0f4f8;        
             --accent-color: #3498db;     
             --hover-color: #2980b9;
@@ -22,22 +14,24 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             margin: 0;
-            padding: 0; /* 移除 padding，由 img-container 的 margin 控制 */
+            padding: 0; 
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            overflow-x: hidden;
-            /* === 遊戲：游標設定為瞄準線 === */
+            overflow: hidden; /* 防止遊戲時捲動 */
+            /* === 關鍵：禁止瀏覽器預設的觸控行為（如捲動、縮放），讓JS完全接管 === */
+            touch-action: none; 
+            user-select: none;
+            -webkit-user-select: none;
             cursor: crosshair;
         }
 
-        /* === 1. 返回按鈕樣式 (固定定位 + 高度對齊) === */
+        /* === 1. 返回按鈕 === */
         .back-btn {
-            position: fixed; /* 改為固定定位，如同積分板 */
-            top: 20px;       /* 【關鍵】與積分板 top 高度一致 */
-            left: 20px;      /* 固定在最左邊 */
-            
+            position: fixed; 
+            top: 20px;       
+            left: 20px;      
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -50,7 +44,7 @@
             font-weight: bold;
             box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
             transition: transform 0.2s, background-color 0.2s;
-            z-index: 12000; /* 層級與積分板相同，確保在最上層 */
+            z-index: 12000; 
             cursor: pointer;
         }
 
@@ -59,7 +53,7 @@
             transform: translateY(-2px);
         }
 
-        /* === 2. 圖片樣式 (最大化 + 避開按鈕) === */
+        /* === 2. 圖片樣式 === */
         .img-container {
             width: 100%; 
             display: flex;
@@ -67,9 +61,9 @@
             align-items: center;
             flex-grow: 1; 
             z-index: 10;
-            /* 增加頂部邊距，避免圖片被上方的按鈕和積分板擋住 */
             margin-top: 80px; 
             padding-bottom: 20px;
+            pointer-events: none; /* 讓圖片不擋住滑動事件偵測 */
         }
 
         .slide-img {
@@ -86,9 +80,8 @@
         /* === 3. 遊戲元素 CSS (積分板) === */
         #game-score-board {
             position: fixed;
-            top: 20px;      /* 【關鍵】與返回按鈕 top 高度一致 */
-            right: 20px;    /* 固定在右邊 */
-            
+            top: 20px;      
+            right: 20px;    
             background-color: rgba(255, 255, 255, 0.95);
             border: 3px solid #ff9ff3;
             border-radius: 50px;
@@ -126,6 +119,7 @@
             align-items: center;
             justify-content: center;
             cursor: default;
+            touch-action: auto; /* Modal 內部允許正常操作 */
         }
 
         .selector-content {
@@ -135,7 +129,7 @@
             text-align: center;
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
             max-width: 95%;
-            width: 400px; /* 稍微加寬一點以容納設定按鈕 */
+            width: 400px; 
             border: 5px solid #ff9ff3;
             animation: popIn 0.3s;
             max-height: 90vh;
@@ -175,7 +169,7 @@
             border-color: #ff9ff3;
         }
 
-        /* === 新增：設定區塊樣式 === */
+        /* 設定區塊樣式 */
         .settings-container {
             border-top: 2px dashed #ff9ff3;
             padding-top: 15px;
@@ -184,7 +178,7 @@
 
         .setting-row {
             display: flex;
-            flex-direction: column; /* 手機版優先 */
+            flex-direction: column; 
             align-items: center;
             margin-bottom: 12px;
         }
@@ -237,6 +231,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            /* 關鍵：讓 JS 可以抓到這個元素，但不要阻擋下層的事件 (視情況調整) */
+            pointer-events: auto; 
         }
 
         .falling-img { width: 90px; height: 90px; object-fit: contain; pointer-events: none; }
@@ -274,22 +270,15 @@
             width: 100%;
             height: 100%;
             z-index: 9995;
-            pointer-events: none;
+            pointer-events: none; /* 積雪不可點擊，穿透給下層 */
         }
 
         @media (max-width: 600px) {
             .char-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 8px; }
             .char-btn { width: 60px; height: 60px; font-size: 2em; }
-            
-            /* 手機版設定 */
             .slide-img { max-width: 100vw; border-width: 2px; }
-            
-            /* 手機版如果覺得按鈕太高，可以一起調整，目前保持一致 */
-            .back-btn, #game-score-board {
-                top: 15px; 
-            }
-            .img-container { margin-top: 70px; } /* 手機版間距微調 */
-            
+            .back-btn, #game-score-board { top: 15px; }
+            .img-container { margin-top: 70px; } 
             .setting-row { flex-direction: column; align-items: center; }
         }
     </style>
@@ -492,20 +481,6 @@
                 requestAnimationFrame(animate);
             }
             animate();
-
-            document.addEventListener('click', function(e) {
-                // 如果點擊的是 Modal 內部，不觸發除雪
-                if (e.target.closest('#char-selector-modal')) return;
-
-                const clickY = e.clientY;
-                const clickX = Math.floor(e.clientX);
-                let hitSnow = false;
-                if(clickX >= 0 && clickX < width) {
-                     if(clickY >= groundHeight[clickX] - 50) { hitSnow = true; }
-                }
-                if (clickY > window.innerHeight * 0.9) { hitSnow = true; }
-                if (hitSnow) { initGround(); }
-            });
         })();
 
         // ================= 🎮 角色自選與掉落邏輯 =================
@@ -525,11 +500,9 @@
 
         let currentTargetChar = 'random';
         let score = 0;
-        
-        // === 新增：速度與數量的全域變數 ===
-        let speedMultiplier = 1; // 速度倍率
-        let rateMultiplier = 1;  // 數量倍率 (生成頻率)
-        let spawnIntervalId = null; // 用來存儲 setInterval ID
+        let speedMultiplier = 1; 
+        let rateMultiplier = 1;  
+        let spawnIntervalId = null; 
 
         const scoreDisplay = document.getElementById('game-score-val');
         const scoreIcon = document.getElementById('score-icon');
@@ -538,7 +511,6 @@
         function openCharSelector() { charModal.style.display = "flex"; }
         function closeCharSelector(e) { if (e.target === charModal) { charModal.style.display = "none"; } }
 
-        // === 新增：設定調整函式 ===
         function setSpeed(val, btn) {
             speedMultiplier = val;
             updateBtnStyles('speed-opts', btn);
@@ -547,7 +519,6 @@
         function setRate(val, btn) {
             rateMultiplier = val;
             updateBtnStyles('rate-opts', btn);
-            // 當頻率改變時，必須重置生成計時器
             resetSpawnTimer();
         }
 
@@ -562,7 +533,6 @@
 
         function resetSpawnTimer() {
             if (spawnIntervalId) clearInterval(spawnIntervalId);
-            // 基礎頻率 3000ms，除以倍率 (倍率越高，間隔越短)
             const newInterval = 3000 / rateMultiplier;
             spawnIntervalId = setInterval(spawnItem, newInterval);
         }
@@ -586,8 +556,64 @@
             } else {
                 scoreIcon.innerText = char;
             }
-            // 選擇角色後不關閉視窗，讓使用者繼續選設定 (或根據需求也可關閉)
-            // charModal.style.display = "none"; 
+        }
+
+        // === 🚀 核心邏輯修改：處理消除 (Hit) ===
+        // 獨立出一個 function，讓「點擊」和「滑過」都能呼叫
+        function handleHit(element) {
+            // 如果元素已經在消失中，就不要重複觸發
+            if(element.getAttribute('data-hit') === 'true') return;
+            element.setAttribute('data-hit', 'true');
+
+            score++;
+            scoreDisplay.innerText = score;
+            const rect = element.getBoundingClientRect();
+            
+            // 產生爆炸特效
+            createExplosion(rect.left + window.scrollX + rect.width/2, rect.top + window.scrollY + rect.height/2);
+            
+            // 移除元素
+            element.remove();
+        }
+
+        // === 🚀 新增：觸控/滑鼠滑動偵測 ===
+        let isMouseDown = false;
+
+        document.addEventListener('mousedown', () => isMouseDown = true);
+        document.addEventListener('mouseup', () => isMouseDown = false);
+
+        // 電腦版：滑鼠按住移動
+        document.addEventListener('mousemove', function(e) {
+            if(!isMouseDown) return;
+            checkCollision(e.clientX, e.clientY);
+        });
+
+        // 手機版：手指移動 (支援多點觸控)
+        document.addEventListener('touchmove', function(e) {
+            // 阻止瀏覽器預設捲動
+            if(e.target.closest('.selector-content')) {
+                // 如果是在設定視窗內滑動，允許捲動
+                return;
+            }
+            // 遊戲區域禁止捲動
+            // e.preventDefault(); 
+            // (註：因為已經在 body 下了 touch-action: none，這裡通常不需要 e.preventDefault，但若有相容性問題可加上)
+
+            // 遍歷所有接觸點 (多手指支援)
+            for (let i = 0; i < e.touches.length; i++) {
+                const touch = e.touches[i];
+                checkCollision(touch.clientX, touch.clientY);
+            }
+        }, { passive: false });
+
+        // 偵測座標下是否有 falling-item
+        function checkCollision(x, y) {
+            // 取得座標下的所有元素
+            // 注意：elementFromPoint 只會拿到最上層的元素
+            const el = document.elementFromPoint(x, y);
+            if (el && el.closest('.falling-item')) {
+                handleHit(el.closest('.falling-item'));
+            }
         }
 
         function spawnItem() {
@@ -618,23 +644,18 @@
             }
 
             charEl.classList.add('falling-item');
-            const randomX = Math.random() * 80 + 10;
+            // 使用 vw 確保寬度自適應
+            const randomX = Math.random() * 85 + 5; 
             charEl.style.left = randomX + 'vw';
             
-            // === 修改：速度計算 ===
-            // 原始：6 ~ 16秒
-            // 新公式：原始時間 / 速度倍率 (倍率越高，時間越短，掉落越快)
             const baseDuration = Math.random() * 10 + 6;
             const finalDuration = baseDuration / speedMultiplier;
             charEl.style.animationDuration = finalDuration + 's';
 
+            // 保留原本的 Click 事件，以防有人只想單點
             charEl.addEventListener('click', function(e) {
                 e.stopPropagation();
-                score++;
-                scoreDisplay.innerText = score;
-                const rect = charEl.getBoundingClientRect();
-                charEl.remove();
-                createExplosion(rect.left + window.scrollX + rect.width/2, rect.top + window.scrollY + rect.height/2);
+                handleHit(charEl);
             });
 
             charEl.addEventListener('animationend', function() { charEl.remove(); });
@@ -651,7 +672,7 @@
             boom.addEventListener('animationend', function() { boom.remove(); });
         }
 
-        // 初始化：啟動計時器 (基礎設定)
+        // 初始化
         resetSpawnTimer();
         setTimeout(spawnItem, 500); 
     </script>
