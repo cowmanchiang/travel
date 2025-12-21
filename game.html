@@ -14,7 +14,7 @@
         :root {
             /* === 清新冬季藍白配色方案 === */
             --bg-color: #f0f4f8;        
-            --accent-color: #3498db;    
+            --accent-color: #3498db;     
             --hover-color: #2980b9;
         }
 
@@ -130,28 +130,32 @@
 
         .selector-content {
             background-color: #fff;
-            padding: 30px;
+            padding: 25px;
             border-radius: 20px;
             text-align: center;
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
             max-width: 95%;
+            width: 400px; /* 稍微加寬一點以容納設定按鈕 */
             border: 5px solid #ff9ff3;
             animation: popIn 0.3s;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
-        .selector-title { color: #ff6b6b; font-size: 1.5em; margin-bottom: 20px; font-weight: bold; }
+        .selector-title { color: #ff6b6b; font-size: 1.5em; margin-bottom: 15px; font-weight: bold; }
 
         .char-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr); 
             gap: 10px;
             justify-items: center;
+            margin-bottom: 20px;
         }
 
         .char-btn {
             font-size: 2.5em;
-            width: 70px;
-            height: 70px;
+            width: 65px;
+            height: 65px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -170,6 +174,55 @@
             transform: scale(1.1);
             border-color: #ff9ff3;
         }
+
+        /* === 新增：設定區塊樣式 === */
+        .settings-container {
+            border-top: 2px dashed #ff9ff3;
+            padding-top: 15px;
+            margin-top: 10px;
+        }
+
+        .setting-row {
+            display: flex;
+            flex-direction: column; /* 手機版優先 */
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .setting-label {
+            font-weight: bold;
+            color: #ff6b6b;
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+
+        .setting-options {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .opt-btn {
+            background-color: white;
+            border: 2px solid #ff9ff3;
+            color: #ff6b6b;
+            border-radius: 15px;
+            padding: 5px 10px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .opt-btn:hover { background-color: #fff0f5; }
+        
+        .opt-btn.active {
+            background-color: #ff9ff3;
+            color: white;
+            box-shadow: 0 2px 5px rgba(255, 107, 107, 0.3);
+        }
+
 
         /* 掉落動畫 */
         .falling-item {
@@ -236,6 +289,8 @@
                 top: 15px; 
             }
             .img-container { margin-top: 70px; } /* 手機版間距微調 */
+            
+            .setting-row { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
@@ -248,7 +303,9 @@
 
     <div id="char-selector-modal" onclick="closeCharSelector(event)">
         <div class="selector-content">
-            <div class="selector-title">🎮 選擇掉落角色</div>
+            <div class="selector-title">🎮 遊戲設定</div>
+            
+            <p style="font-size:0.9em; color:#777; margin-bottom:10px;">選擇掉落角色</p>
             <div class="char-grid">
                 <div class="char-btn" onclick="selectChar('random')">🌟</div>
                 <div class="char-btn" onclick="selectChar('kitty')"><img src="https://upload.wikimedia.org/wikipedia/zh/3/34/Hello_Kitty_character.png" alt="Kitty"></div>
@@ -263,7 +320,32 @@
                 <div class="char-btn" onclick="selectChar('anpanman')"><img src="https://www.jr-eki.com/aptrain/global/img/chara_anpanman.png" alt="Anpanman"></div>                  
                 <div class="char-btn" onclick="selectChar('bear')"><img src="https://png.pngtree.com/png-clipart/20250810/original/pngtree-realistic-full-body-illustration-of-a-brown-bear-png-image_21580109.png" alt="Bear"></div> 
             </div>
-            <p style="font-size:0.9em; color:#777; margin-top:15px;">(點擊星星可恢復隨機大亂鬥)</p>
+
+            <div class="settings-container">
+                <div class="setting-row">
+                    <span class="setting-label">⚡ 掉落速度</span>
+                    <div class="setting-options" id="speed-opts">
+                        <button class="opt-btn active" onclick="setSpeed(1, this)">x1</button>
+                        <button class="opt-btn" onclick="setSpeed(1.5, this)">x1.5</button>
+                        <button class="opt-btn" onclick="setSpeed(2, this)">x2</button>
+                        <button class="opt-btn" onclick="setSpeed(2.5, this)">x2.5</button>
+                        <button class="opt-btn" onclick="setSpeed(3, this)">x3</button>
+                    </div>
+                </div>
+
+                <div class="setting-row">
+                    <span class="setting-label">📦 掉落數量</span>
+                    <div class="setting-options" id="rate-opts">
+                        <button class="opt-btn active" onclick="setRate(1, this)">x1</button>
+                        <button class="opt-btn" onclick="setRate(1.5, this)">x1.5</button>
+                        <button class="opt-btn" onclick="setRate(2, this)">x2</button>
+                        <button class="opt-btn" onclick="setRate(2.5, this)">x2.5</button>
+                        <button class="opt-btn" onclick="setRate(3, this)">x3</button>
+                    </div>
+                </div>
+            </div>
+
+            <p style="font-size:0.8em; color:#aaa; margin-top:15px;">(點擊外部可關閉視窗)</p>
         </div>
     </div>
 
@@ -412,6 +494,9 @@
             animate();
 
             document.addEventListener('click', function(e) {
+                // 如果點擊的是 Modal 內部，不觸發除雪
+                if (e.target.closest('#char-selector-modal')) return;
+
                 const clickY = e.clientY;
                 const clickX = Math.floor(e.clientX);
                 let hitSnow = false;
@@ -440,12 +525,47 @@
 
         let currentTargetChar = 'random';
         let score = 0;
+        
+        // === 新增：速度與數量的全域變數 ===
+        let speedMultiplier = 1; // 速度倍率
+        let rateMultiplier = 1;  // 數量倍率 (生成頻率)
+        let spawnIntervalId = null; // 用來存儲 setInterval ID
+
         const scoreDisplay = document.getElementById('game-score-val');
         const scoreIcon = document.getElementById('score-icon');
         const charModal = document.getElementById('char-selector-modal');
 
         function openCharSelector() { charModal.style.display = "flex"; }
         function closeCharSelector(e) { if (e.target === charModal) { charModal.style.display = "none"; } }
+
+        // === 新增：設定調整函式 ===
+        function setSpeed(val, btn) {
+            speedMultiplier = val;
+            updateBtnStyles('speed-opts', btn);
+        }
+
+        function setRate(val, btn) {
+            rateMultiplier = val;
+            updateBtnStyles('rate-opts', btn);
+            // 當頻率改變時，必須重置生成計時器
+            resetSpawnTimer();
+        }
+
+        function updateBtnStyles(parentId, activeBtn) {
+            const container = document.getElementById(parentId);
+            const btns = container.getElementsByClassName('opt-btn');
+            for (let b of btns) {
+                b.classList.remove('active');
+            }
+            activeBtn.classList.add('active');
+        }
+
+        function resetSpawnTimer() {
+            if (spawnIntervalId) clearInterval(spawnIntervalId);
+            // 基礎頻率 3000ms，除以倍率 (倍率越高，間隔越短)
+            const newInterval = 3000 / rateMultiplier;
+            spawnIntervalId = setInterval(spawnItem, newInterval);
+        }
 
         function selectChar(char) {
             currentTargetChar = char;
@@ -466,7 +586,8 @@
             } else {
                 scoreIcon.innerText = char;
             }
-            charModal.style.display = "none";
+            // 選擇角色後不關閉視窗，讓使用者繼續選設定 (或根據需求也可關閉)
+            // charModal.style.display = "none"; 
         }
 
         function spawnItem() {
@@ -499,8 +620,13 @@
             charEl.classList.add('falling-item');
             const randomX = Math.random() * 80 + 10;
             charEl.style.left = randomX + 'vw';
-            const randomDuration = Math.random() * 10 + 6; 
-            charEl.style.animationDuration = randomDuration + 's';
+            
+            // === 修改：速度計算 ===
+            // 原始：6 ~ 16秒
+            // 新公式：原始時間 / 速度倍率 (倍率越高，時間越短，掉落越快)
+            const baseDuration = Math.random() * 10 + 6;
+            const finalDuration = baseDuration / speedMultiplier;
+            charEl.style.animationDuration = finalDuration + 's';
 
             charEl.addEventListener('click', function(e) {
                 e.stopPropagation();
@@ -525,7 +651,8 @@
             boom.addEventListener('animationend', function() { boom.remove(); });
         }
 
-        setInterval(spawnItem, 3000);
+        // 初始化：啟動計時器 (基礎設定)
+        resetSpawnTimer();
         setTimeout(spawnItem, 500); 
     </script>
 </body>
