@@ -37,8 +37,8 @@
             --weather-border: #90caf9;  
             
             --backup-bg: #e8f5e9;       
-            --backup-text: #2e7d32;     
-            --backup-border: #a5d6a7;   
+            --backup-text: #2e7d32;      
+            --backup-border: #a5d6a7;    
 
             /* 購物粉色系 */
             --shop-bg: #fff7fa;         
@@ -1077,6 +1077,8 @@
         <a href="game.html" onclick="toggleToc()">🔫 小遊戲</a>
         
         <a href="javascript:void(0)" class="reader-mode-link" onclick="toggleReaderMode(); toggleToc();">📖 開啟閱讀模式</a>
+
+        <a href="javascript:void(0)" id="snow-toggle-btn" onclick="toggleSnow()">❄️ 關閉雪花特效</a>
     </div>
 
     <div id="imageModal" class="modal">
@@ -1160,7 +1162,7 @@
             if (e.key === 'Escape') toggleReaderMode();
         });
 
-        // ================= ❄️ 高效能 Canvas 積雪特效 JS ❄️ =================
+        // ================= ❄️ 高效能 Canvas 積雪特效 (含開關控制) ❄️ =================
         (function() {
             const canvas = document.getElementById('snow-canvas');
             const ctx = canvas.getContext('2d');
@@ -1168,6 +1170,30 @@
             let width = window.innerWidth;
             let height = window.innerHeight;
             let oldHeight = height; 
+            
+            // 控制開關變數
+            let isSnowing = true;
+            let animationFrameId; // 用來儲存動畫 ID 以便取消
+
+            // 全域切換函式
+            window.toggleSnow = function() {
+                const btn = document.getElementById('snow-toggle-btn');
+                isSnowing = !isSnowing;
+
+                if (isSnowing) {
+                    // 開啟：更新按鈕文字並重新啟動動畫
+                    if(btn) btn.innerText = "❄️ 關閉雪花特效";
+                    animate();
+                } else {
+                    // 關閉：更新按鈕文字，取消動畫，並清除畫布
+                    if(btn) btn.innerText = "❄️ 開啟雪花特效";
+                    cancelAnimationFrame(animationFrameId);
+                    ctx.clearRect(0, 0, width, height);
+                }
+                
+                // 關閉選單 (優化體驗)
+                toggleToc();
+            };
             
             function resize() {
                 width = window.innerWidth;
@@ -1185,6 +1211,11 @@
                     }
                 }
                 oldHeight = height;
+                
+                // 如果在暫停狀態下縮放視窗，因為不會重繪，這裡強制清除一次避免殘影
+                if (!isSnowing) {
+                     ctx.clearRect(0, 0, width, height);
+                }
             }
             
             let groundHeight = [];
@@ -1267,6 +1298,8 @@
             }
 
             function animate() {
+                if (!isSnowing) return; // 雙重保險
+
                 ctx.clearRect(0, 0, width, height);
                 
                 ctx.fillStyle = "rgba(255, 255, 255, 1)";
@@ -1294,11 +1327,16 @@
                     p.draw();
                 });
                 
-                requestAnimationFrame(animate);
+                animationFrameId = requestAnimationFrame(animate);
             }
+            
+            // 預設啟動
             animate();
 
             document.addEventListener('click', function(e) {
+                // 如果雪花關閉，點擊不產生互動
+                if (!isSnowing) return;
+
                 const clickY = e.clientY;
                 const clickX = Math.floor(e.clientX);
                 
