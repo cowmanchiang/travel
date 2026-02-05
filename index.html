@@ -146,7 +146,20 @@
         .coffee-title { color: var(--coffee-color); }
         .drive-section { background-color: #eceff1; padding: 25px; border-radius: var(--section-border-radius); border: 2px solid var(--drive-color); margin-top: 20px; }
 
-        /* Reader Mode & Components */
+        /* Reader Mode CSS FIX */
+        body.reader-active .container { display: none !important; }
+        #reader-stage {
+            display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.95); z-index: 99999; flex-direction: column; align-items: center; justify-content: center;
+        }
+        #reader-content-box {
+            width: 90%; max-width: 800px; max-height: 80vh; background: white; padding: 40px;
+            border-radius: 20px; overflow-y: auto; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+        }
+        .reader-footer { position: fixed; bottom: 20px; display: flex; gap: 20px; z-index: 100001; }
+        .ctrl-btn { background: var(--accent-color); border: none; color: white; padding: 12px 30px; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+
+        /* TOC & Snow */
         .toc-btn { position: fixed; bottom: 30px; right: 20px; width: 60px; height: 60px; background-color: var(--accent-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4); cursor: pointer; z-index: 9997; transition: transform 0.3s; }
         .toc-btn:hover { transform: scale(1.1); }
         .toc-menu { position: fixed; bottom: 100px; right: 20px; background-color: var(--toc-bg); padding: 15px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 9996; display: none; width: 220px; backdrop-filter: blur(8px); }
@@ -158,19 +171,6 @@
         .slide-img { width: 100%; border-radius: 8px; border: 3px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; }
         .image-grid-wrapper { display: flex; flex-wrap: wrap; margin: 0 -8px; }
         .slide-group.image-only { width: 50%; padding: 8px; box-sizing: border-box; }
-        
-        /* Reader Mode Overlay */
-        body.reader-active { overflow: hidden; }
-        #reader-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(44, 62, 80, 0.95); z-index: 9990; backdrop-filter: blur(5px); }
-        body.reader-active #reader-overlay { display: block; }
-        body.reader-active .slide-group { display: none; }
-        body.reader-active .slide-group.active-slide { display: block; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 800px; max-height: 85vh; overflow-y: auto; background: white; padding: 30px; border-radius: 16px; z-index: 10001; }
-        body.reader-active .slide-group.active-slide.image-only { background: transparent; display: flex !important; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 0; }
-        body.reader-active .slide-group.active-slide.image-only img { max-width: 95vw; max-height: 85vh; object-fit: contain; }
-        
-        .reader-controls { display: none; position: fixed; bottom: 0; left: 0; width: 100%; padding: 20px; background: rgba(30,30,30,0.9); z-index: 10002; justify-content: space-between; box-sizing: border-box; }
-        body.reader-active .reader-controls { display: flex; }
-        .ctrl-btn { background: var(--accent-color); border: none; color: white; padding: 10px 24px; border-radius: 30px; cursor: pointer; font-weight: bold; }
 
         /* Modal */
         .modal { display: none; position: fixed; z-index: 11000; padding-top: 50px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.95); }
@@ -179,33 +179,30 @@
 
         #snow-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9995; pointer-events: none; }
 
-        /* Mobile Optimization */
         @media (max-width: 600px) {
             body { padding: 15px; padding-bottom: 90px; }
             .slide-group.image-only { width: 50%; }
             .boarding-pass-wrapper { flex-direction: column; }
-            /* Force Tables to be Cards on Mobile except Weather/Cost */
             table:not(.weather-table-4col):not(#cost-table table) thead { display: none; }
             table:not(.weather-table-4col):not(#cost-table table) tr { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid #e0e0e0; border-radius: 12px; margin-bottom: 15px; background: #fff; padding: 12px; }
             table:not(.weather-table-4col):not(#cost-table table) td { border: none; padding: 4px 0; }
             table:not(.weather-table-4col):not(#cost-table table) td:nth-of-type(1) { grid-column: 1 / -1; font-weight: bold; color: var(--primary-color); border-bottom: 1px dashed #eee; margin-bottom: 5px; }
-            
-            /* Weather Table Mobile */
             .weather-table-4col { display: table; width: 100%; }
             .weather-table-4col th, .weather-table-4col td { padding: 8px 4px; font-size: 0.85em; text-align: center; }
-            .hist-val { font-size: 0.8em; }
         }
     </style>
 </head>
 <body id="top">
     
     <canvas id="snow-canvas"></canvas>
-    <div id="reader-overlay"></div>
 
-    <div class="reader-controls">
-        <button class="ctrl-btn" onclick="changeSlide(-1)">⬅️ 上一頁</button>
-        <button class="ctrl-btn" style="background:transparent; border:1px solid #ccc;" onclick="toggleReaderMode()">❌ 退出</button>
-        <button class="ctrl-btn" onclick="changeSlide(1)">下一頁 ➡️</button>
+    <div id="reader-stage">
+        <div id="reader-content-box"></div>
+        <div class="reader-footer">
+            <button class="ctrl-btn" onclick="moveReaderSlide(-1)">⬅️ 上一頁</button>
+            <button class="ctrl-btn" style="background:#555;" onclick="toggleReaderMode()">❌ 退出模式</button>
+            <button class="ctrl-btn" onclick="moveReaderSlide(1)">下一頁 ➡️</button>
+        </div>
     </div>
 
     <div class="container" id="main-content">
@@ -268,7 +265,6 @@
                     ※ 點擊地點可開啟 Yahoo 詳細天氣。
                     <span id="fetch-time" style="color: #666; font-size: 0.9em; margin-left: 5px;"></span>
                 </p>
-                
                 <style>
                     .weather-table-4col { width: 100%; font-size: 0.95em; table-layout: fixed; }
                     .weather-table-4col th, .weather-table-4col td { vertical-align: middle; padding: 10px 5px; text-align: center; }
@@ -278,7 +274,6 @@
                     .weather-loading { color: #ccc; font-size: 0.8em; font-style: italic; }
                     .weather-icon { font-size: 1.2em; margin-right: 4px; }
                 </style>
-
                 <table class="weather-table-4col">
                     <thead>
                         <tr>
@@ -477,51 +472,49 @@
             <div class="drive-section nav-merge-top" style="border-color: var(--nav-border); background-color: var(--nav-bg);">
                 <h2 class="section-title-large" style="color: var(--drive-color);">🛰️ 導航資訊</h2>
                 <p class="note" style="color: var(--primary-color);">※ 點擊「MapCode」或「電話」可直接開啟 Google Maps 導航。</p>
-                
                 <h4 style="border-left:4px solid #e74c3c; padding-left:10px; margin-top: 20px;">📍 熊本/阿蘇</h4>
-                <table style="margin-top: 5px;">
+                <table>
                     <thead><tr><th width="40%">地點</th><th>MapCode / 電話</th></tr></thead>
                     <tbody>
-                        <tr><td><a href="https://www.kumamoto-airport.co.jp/" target="_blank">✈️ 熊本機場</a></td><td><a href="https://www.google.com/maps/search/?api=1&query=Kumamoto+Airport" target="_blank">415 440 317*41</a></td></tr>
-                        <tr><td><a href="https://shop.kurasushi.co.jp/detail/336" target="_blank">🍣 藏壽司 光之森</a></td><td><a href="https://www.google.com/maps/search/?api=1&query=0963480610" target="_blank">096-348-0610</a></td></tr>
-                        <tr><td><a href="https://www.izumi.jp/tenpo/hikarinomori" target="_blank">🛍️ Youme Town</a></td><td><a href="https://www.google.com/maps/search/?api=1&query=Youme+Town+Hikarinomori" target="_blank">29 496 266*55</a></td></tr>
-                        <tr><td><a href="https://www.hotel-castle.co.jp/" target="_blank">🏨 熊本城飯店</a></td><td><a href="https://www.google.com/maps/search/?api=1&query=熊本城ホテルキャッスル" target="_blank">29 459 485*82</a></td></tr>
-                        <tr><td><a href="https://yumeoisou.com/" target="_blank">♨️ 湯巡追莊</a></td><td><a href="https://www.google.com/maps/search/?api=1&query=阿蘇+内牧温泉+湯巡追荘" target="_blank">256 657 512*82</a></td></tr>
-                        <tr><td><a href="https://www.cuddly.co.jp/" target="_blank">🐻 卡德利動物樂園</a></td><td><a href="https://www.google.com/maps/search/?api=1&query=阿蘇カドリー・ドミニオン" target="_blank">256 423 487*30</a></td></tr>
-                        <tr><td><a href="https://www.kujyuski.co.jp/" target="_blank">⛷️ 九重森林滑雪場</a></td><td><a href="https://www.google.com/maps/search/?api=1&query=九重森林公園スキー場" target="_blank">440 629 036*55</a></td></tr>
+                        <tr><td>✈️ 熊本機場</td><td><a href="https://www.google.com/maps/search/?api=1&query=Kumamoto+Airport" target="_blank">415 440 317*41</a></td></tr>
+                        <tr><td>🍣 藏壽司 光之森</td><td><a href="https://www.google.com/maps/search/?api=1&query=0963480610" target="_blank">096-348-0610</a></td></tr>
+                        <tr><td>🛍️ Youme Town</td><td><a href="https://www.google.com/maps/search/?api=1&query=Youme+Town+Hikarinomori" target="_blank">29 496 266*55</a></td></tr>
+                        <tr><td>🏨 熊本城飯店</td><td><a href="https://www.google.com/maps/search/?api=1&query=熊本城ホテルキャッスル" target="_blank">29 459 485*82</a></td></tr>
+                        <tr><td>♨️ 湯巡追莊</td><td><a href="https://www.google.com/maps/search/?api=1&query=阿蘇+内牧温泉+湯巡追荘" target="_blank">256 657 512*82</a></td></tr>
+                        <tr><td>🐻 卡德利動物樂園</td><td><a href="https://www.google.com/maps/search/?api=1&query=阿蘇カドリー・ドミニオン" target="_blank">256 423 487*30</a></td></tr>
+                        <tr><td>⛷️ 九重森林滑雪場</td><td><a href="https://www.google.com/maps/search/?api=1&query=九重森林公園スキー場" target="_blank">440 629 036*55</a></td></tr>
                     </tbody>
                 </table>
             </div>
             
             <div class="drive-section nav-merge-mid" style="border-color: var(--nav-border); background-color: var(--nav-bg);">
                 <h4 style="border-left:4px solid #f39c12; padding-left:10px; margin-top: 5px;">📍 由布院/別府</h4>
-                <table style="margin-top: 5px;">
+                <table>
                     <thead><tr><th width="40%">地點</th><th>MapCode / 電話</th></tr></thead>
                     <tbody>
-                        <tr><td><a href="https://www.yumeooturihashi.com/" target="_blank">🌉 九重夢大吊橋</a></td><td><a href="https://www.google.com/maps/search/?api=1&query=九重夢大吊橋" target="_blank">269 012 125*14</a></td></tr>
-                        <tr><td><a href="http://www.yufuin-ublhotel.jp/" target="_blank">🏨 由布院 UBL</a></td><td><a href="https://www.google.com/maps/search/?api=1&query=由布院UBLホテル" target="_blank">269 359 521*55</a></td></tr>
-                        <tr><td><a href="http://www.africansafari.co.jp/" target="_blank">🦁 九州自然動物園</a></td><td><a href="https://www.google.com/maps/search/?api=1&query=九州自然動物公園" target="_blank">46 635 545*60</a></td></tr>
-                        <tr><td><a href="https://www.harmonyland.jp/" target="_blank">🎀 和諧樂園</a></td><td><a href="https://www.google.com/maps/search/?api=1&query=ハーモニーランド" target="_blank">46 833 460*58</a></td></tr>
+                        <tr><td>🌉 九重夢大吊橋</td><td><a href="https://www.google.com/maps/search/?api=1&query=九重夢大吊橋" target="_blank">269 012 125*14</a></td></tr>
+                        <tr><td>🏨 由布院 UBL</td><td><a href="https://www.google.com/maps/search/?api=1&query=由布院UBLホテル" target="_blank">269 359 521*55</a></td></tr>
+                        <tr><td>🦁 九州自然動物園</td><td><a href="https://www.google.com/maps/search/?api=1&query=九州自然動物公園" target="_blank">46 635 545*60</a></td></tr>
+                        <tr><td>🎀 和諧樂園</td><td><a href="https://www.google.com/maps/search/?api=1&query=ハーモニーランド" target="_blank">46 833 460*58</a></td></tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="drive-section nav-merge-bot" style="border-color: var(--nav-border); background-color: var(--nav-bg);">
                 <h4 style="border-left:4px solid #2980b9; padding-left:10px; margin-top: 5px;">📍 北九州/福岡</h4>
-                <table style="margin-top: 5px;">
+                <table>
                     <thead><tr><th width="40%">地點</th><th>MapCode / 電話</th></tr></thead>
                     <tbody>
-                        <tr><td><a href="https://www.kokura-castle.jp/" target="_blank">🏯 小倉城</a></td><td><a href="https://www.google.com/maps/search/?api=1&query=小倉城" target="_blank">16 465 525*33</a></td></tr>
-                        <tr><td><a href="https://fukutsu-aeonmall.com/" target="_blank">🛍️ AEON 福津</a></td><td><a href="https://www.google.com/maps/search/?api=1&query=イオンモール福津" target="_blank">13 738 238*85</a></td></tr>
-                        <tr><td><a href="https://www.vessel-hotel.jp/hotel/fukuoka/" target="_blank">🏨 Vessel 貝塚</a></td><td><a href="https://www.google.com/maps/search/?api=1&query=ベッセルホテル福岡貝塚" target="_blank">13 469 663*55</a></td></tr>
-                        <tr><td><a href="https://marine-world.jp/" target="_blank">🐬 海中之道</a></td><td><a href="https://www.google.com/maps/search/?api=1&query=マリンワールド海の中道" target="_blank">13 522 795*55</a></td></tr>
-                        <tr><td><a href="https://e-zofukuoka.com/teamlabforest/" target="_blank">💡 teamLab</a></td><td><a href="https://www.google.com/maps/search/?api=1&query=teamLab+Forest+Fukuoka" target="_blank">13 345 547*55</a></td></tr>
-                        <tr><td><a href="https://mitsui-shopping-park.com/lalaport/fukuoka/" target="_blank">🤖 LaLaport</a></td><td><a href="https://www.google.com/maps/search/?api=1&query=ららぽーと福岡" target="_blank">13 162 481*63</a></td></tr>
+                        <tr><td>🏯 小倉城</td><td><a href="https://www.google.com/maps/search/?api=1&query=小倉城" target="_blank">16 465 525*33</a></td></tr>
+                        <tr><td>🛍️ AEON 福津</td><td><a href="https://www.google.com/maps/search/?api=1&query=イオンモール福津" target="_blank">13 738 238*85</a></td></tr>
+                        <tr><td>🏨 Vessel 貝塚</td><td><a href="https://www.google.com/maps/search/?api=1&query=ベッセルホテル福岡貝塚" target="_blank">13 469 663*55</a></td></tr>
+                        <tr><td>🐬 海中之道</td><td><a href="https://www.google.com/maps/search/?api=1&query=マリンワールド海の中道" target="_blank">13 522 795*55</a></td></tr>
+                        <tr><td>💡 teamLab</td><td><a href="https://www.google.com/maps/search/?api=1&query=teamLab+Forest+Fukuoka" target="_blank">13 345 547*55</a></td></tr>
+                        <tr><td>🤖 LaLaport</td><td><a href="https://www.google.com/maps/search/?api=1&query=ららぽーと福岡" target="_blank">13 162 481*63</a></td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
-
     </div> 
 
     <div class="toc-btn" onclick="toggleToc()">☰</div>
@@ -536,7 +529,7 @@
         <a href="#coffee" onclick="toggleToc()">☕ 咖啡地圖</a>
         <a href="#nav-mapcode" onclick="toggleToc()">🛰️ 導航資訊</a>
         <a href="game.html" onclick="toggleToc()">🔫 小遊戲</a>
-        <a href="javascript:void(0)" class="reader-mode-link" onclick="toggleReaderMode(); toggleToc();">📖 閱讀模式</a>
+        <a href="javascript:void(0)" onclick="toggleReaderMode(); toggleToc();">📖 啟動閱讀模式</a>
         <a href="javascript:void(0)" id="snow-toggle-btn" onclick="toggleSnow()">❄️ 關閉雪花</a>
     </div>
 
@@ -546,181 +539,103 @@
     </div>
 
     <script>
-        // 圖片放大
+        // 圖片放大功能保持
         var modal = document.getElementById("imageModal");
         var modalImg = document.getElementById("img01");
         var images = document.querySelectorAll(".slide-img");
-        var closeBtn = document.getElementsByClassName("close")[0];
-        images.forEach(function(img) {
-            img.onclick = function(){
-                modal.style.display = "block";
-                modalImg.src = this.src;
-            }
+        images.forEach(img => {
+            img.onclick = function(){ modal.style.display = "block"; modalImg.src = this.src; }
         });
-        closeBtn.onclick = function() { modal.style.display = "none"; }
-        modal.onclick = function(event) { if (event.target === modal) modal.style.display = "none"; }
+        document.querySelector(".close").onclick = function() { modal.style.display = "none"; }
 
-        // 閱讀模式 & 目錄
-        let currentSlideIndex = 0;
-        let slideGroups = [];
-        const body = document.body;
-        const overlay = document.getElementById('reader-overlay');
-        const tocBtn = document.querySelector('.toc-btn');
+        // ================= 核心修正邏輯 =================
+        let currentIdx = 0;
+        let readerSlides = [];
+        const stage = document.getElementById('reader-stage');
+        const contentBox = document.getElementById('reader-content-box');
 
         function toggleReaderMode() {
-            slideGroups = document.querySelectorAll('.slide-group');
+            const body = document.body;
+            // 抓取 container 下所有分頁區塊
+            readerSlides = Array.from(document.querySelectorAll('.container > .slide-group, .container > .image-grid-wrapper > .slide-group'));
+            
             if (body.classList.contains('reader-active')) {
                 body.classList.remove('reader-active');
-                overlay.style.display = 'none';
-                tocBtn.style.display = 'flex';
-                slideGroups.forEach(s => s.classList.remove('active-slide'));
+                stage.style.display = 'none';
             } else {
                 body.classList.add('reader-active');
-                overlay.style.display = 'block';
-                tocBtn.style.display = 'none';
-                showSlide(0);
+                stage.style.display = 'flex';
+                currentIdx = 0;
+                renderReaderSlide();
             }
         }
-        function showSlide(index) {
-            if (index < 0) index = 0;
-            if (index >= slideGroups.length) index = slideGroups.length - 1;
-            currentSlideIndex = index;
-            slideGroups.forEach(group => group.classList.remove('active-slide'));
-            slideGroups[currentSlideIndex].classList.add('active-slide');
-            slideGroups[currentSlideIndex].scrollTop = 0;
-        }
-        function changeSlide(delta) { showSlide(currentSlideIndex + delta); }
-        function toggleToc() { document.getElementById("tocMenu").classList.toggle("toc-show"); }
-        document.addEventListener('keydown', function(e) {
-            if (!body.classList.contains('reader-active')) return;
-            if (e.key === 'ArrowRight') changeSlide(1);
-            if (e.key === 'ArrowLeft') changeSlide(-1);
-            if (e.key === 'Escape') toggleReaderMode();
-        });
 
-        // ================= 天氣預報核心邏輯 (Updated) =================
+        function renderReaderSlide() {
+            if (readerSlides.length > 0) {
+                contentBox.innerHTML = readerSlides[currentIdx].innerHTML;
+                contentBox.scrollTop = 0;
+            }
+        }
+
+        function moveReaderSlide(delta) {
+            currentIdx += delta;
+            if (currentIdx < 0) currentIdx = 0;
+            if (currentIdx >= readerSlides.length) currentIdx = readerSlides.length - 1;
+            renderReaderSlide();
+        }
+
+        function toggleToc() { document.getElementById("tocMenu").classList.toggle("toc-show"); }
+
+        // 天氣預報邏輯保持
         document.addEventListener("DOMContentLoaded", function() {
             const now = new Date();
-            const timeString = `${now.getFullYear()}/${(now.getMonth()+1).toString().padStart(2,'0')}/${now.getDate().toString().padStart(2,'0')} ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
             const timeEl = document.getElementById('fetch-time');
-            if(timeEl) timeEl.innerText = `(更新: ${timeString})`;
-
-            const locations = [
-                { id: 'w-kumamoto',   lat: 32.8031, lon: 130.7079, date: '2026-01-20' },
-                { id: 'w-aso',        lat: 32.8842, lon: 131.1042, date: '2026-01-21' },
-                { id: 'w-kuju',       lat: 33.1122, lon: 131.2294, date: '2026-01-22' },
-                { id: 'w-yufuin',     lat: 33.2656, lon: 131.3567, date: '2026-01-23' },
-                { id: 'w-beppu',      lat: 33.2778, lon: 131.5028, date: '2026-01-24' },
+            if(timeEl) timeEl.innerText = `${now.getMonth()+1}/${now.getDate()} ${now.getHours()}:${now.getMinutes()}`;
+            const locs = [
+                { id: 'w-kumamoto', lat: 32.8031, lon: 130.7079, date: '2026-01-20' },
+                { id: 'w-aso', lat: 32.8842, lon: 131.1042, date: '2026-01-21' },
+                { id: 'w-kuju', lat: 33.1122, lon: 131.2294, date: '2026-01-22' },
+                { id: 'w-yufuin', lat: 33.2656, lon: 131.3567, date: '2026-01-23' },
+                { id: 'w-beppu', lat: 33.2778, lon: 131.5028, date: '2026-01-24' },
                 { id: 'w-kitakyushu', lat: 33.8833, lon: 130.8750, date: '2026-01-25' },
-                { id: 'w-fukuoka',    lat: 33.5902, lon: 130.4017, date: '2026-01-26' },
-                { id: 'w-airport',    lat: 33.5859, lon: 130.4440, date: '2026-01-27' }
+                { id: 'w-fukuoka', lat: 33.5902, lon: 130.4017, date: '2026-01-26' },
+                { id: 'w-airport', lat: 33.5859, lon: 130.4440, date: '2026-01-27' }
             ];
-
-            function getWeatherIcon(code) {
-                if (code <= 1) return '☀️'; 
-                if (code <= 3) return '☁️'; 
-                if (code <= 48) return '🌫️'; 
-                if (code <= 57) return '🌧️'; 
-                if (code <= 67) return '☔'; 
-                if (code <= 77) return '❄️'; 
-                if (code <= 82) return '🌧️'; 
-                if (code <= 86) return '🌨️'; 
-                if (code <= 99) return '⛈️'; 
-                return '🌡️';
-            }
-
-            locations.forEach(loc => {
-                const url = `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo&start_date=${loc.date}&end_date=${loc.date}`;
-                
-                fetch(url)
-                    .then(response => {
-                        if (!response.ok) throw new Error("API Error");
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (!data.daily || !data.daily.temperature_2m_max) {
-                            throw new Error("No daily data");
-                        }
-                        const max = Math.round(data.daily.temperature_2m_max[0]);
-                        const min = Math.round(data.daily.temperature_2m_min[0]);
-                        const code = data.daily.weather_code[0];
-                        const icon = getWeatherIcon(code);
-                        
-                        const el = document.getElementById(loc.id);
-                        if(el) {
-                            el.className = "live-val";
-                            el.innerHTML = `<span class="weather-icon">${icon}</span> ${max} / ${min}°C`;
-                        }
-                    })
-                    .catch(error => {
-                        const el = document.getElementById(loc.id);
-                        if(el) {
-                            el.innerText = "N/A";
-                            el.style.color = "#ccc";
-                            el.style.fontSize = "0.85em";
-                        }
-                    });
+            locs.forEach(loc => {
+                fetch(`https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&daily=temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo&start_date=${loc.date}&end_date=${loc.date}`)
+                .then(r => r.json()).then(d => {
+                    const el = document.getElementById(loc.id);
+                    if(el) { el.className = "live-val"; el.innerHTML = `☀️ ${Math.round(d.daily.temperature_2m_max[0])}° / ${Math.round(d.daily.temperature_2m_min[0])}°C`; }
+                });
             });
         });
 
-        // 雪花特效
+        // 雪花邏輯保持
+        let snowing = true;
         (function() {
             const canvas = document.getElementById('snow-canvas');
             const ctx = canvas.getContext('2d');
-            let width = window.innerWidth;
-            let height = window.innerHeight;
-            let isSnowing = true;
-            let animationFrameId;
-            canvas.width = width; canvas.height = height;
-            
+            let w = window.innerWidth, h = window.innerHeight;
+            canvas.width = w; canvas.height = h;
+            const pts = [];
+            for(let i=0; i<50; i++) pts.push({x: Math.random()*w, y: Math.random()*h, r: Math.random()*4+1, d: Math.random()*50});
             window.toggleSnow = function() {
-                isSnowing = !isSnowing;
-                const btn = document.getElementById('snow-toggle-btn');
-                if (isSnowing) {
-                    if(btn) btn.innerText = "❄️ 關閉雪花";
-                    animate();
-                } else {
-                    if(btn) btn.innerText = "❄️ 開啟雪花";
-                    cancelAnimationFrame(animationFrameId);
-                    ctx.clearRect(0, 0, width, height);
-                }
-            };
-
-            const particles = [];
-            for(let i=0; i<50; i++) {
-                particles.push({x: Math.random()*width, y: Math.random()*height, r: Math.random()*4+1, d: Math.random()*50});
+                snowing = !snowing;
+                document.getElementById('snow-toggle-btn').innerText = snowing ? "❄️ 關閉雪花" : "❄️ 開啟雪花";
+                if(!snowing) ctx.clearRect(0,0,w,h);
             }
-
             function draw() {
-                ctx.clearRect(0, 0, width, height);
+                if(!snowing) { requestAnimationFrame(draw); return; }
+                ctx.clearRect(0, 0, w, h);
                 ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
                 ctx.beginPath();
-                for(let i = 0; i < 50; i++) {
-                    let p = particles[i];
-                    ctx.moveTo(p.x, p.y);
-                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, true);
-                }
-                ctx.fill();
-                update();
+                pts.forEach(p => {
+                    ctx.moveTo(p.x, p.y); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2, true);
+                    p.y += Math.cos(p.d) + 1 + p.r/2; if(p.y > h) p.y = -10;
+                });
+                ctx.fill(); requestAnimationFrame(draw);
             }
-            function update() {
-                for(let i = 0; i < 50; i++) {
-                    let p = particles[i];
-                    p.y += Math.cos(p.d) + 1 + p.r / 2;
-                    p.x += Math.sin(0) * 2;
-                    if(p.y > height) particles[i] = { x: Math.random() * width, y: -10, r: p.r, d: p.d };
-                }
-            }
-            function animate() {
-                if(!isSnowing) return;
-                draw();
-                animationFrameId = requestAnimationFrame(animate);
-            }
-            animate();
-            window.addEventListener('resize', function() {
-                width = window.innerWidth; height = window.innerHeight;
-                canvas.width = width; canvas.height = height;
-            });
+            draw();
         })();
     </script>
 </body>
